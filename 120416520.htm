@@ -1,0 +1,1103 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	基于强化学习的数据中心资源调度-整体报告单
+</title>
+    <style type="text/css">
+        html, body
+        {
+            font: 12px "宋体";
+            color: #666;
+            background-image: url(images/pmlc12_bgd_bg.gif);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .PMLC12_bgd_mainbody
+        {
+            width: 640px;
+            min-height: 600px;
+            background-color: #FFF;
+            background-image: url(images/pmlc12_bg_sy.gif);
+            background-repeat: repeat-y;
+            height: auto !important;
+            margin: 0px auto 0 auto;
+        }
+        /***********************head****************************/.PMLC12_bgd_head
+        {
+            width: 640px;
+            height: 80px;
+        }
+        .PMLC12_head_left
+        {
+            width: 143px;
+            height: 43px;
+            float: left;
+            margin-left: 15px;
+            background-image: url(images/pmlc12_amlc.gif);
+            background-repeat: no-repeat;
+        }
+        .PMLC12_head_right
+        {
+            width: 200px;
+            height: 23px;
+            float: right;
+            padding-top: 10px;
+        }
+        .PMLC12_text_back_a
+        {
+            font-size: 12px;
+            text-align: left;
+            color: #333;
+            font-weight: bold;
+        }
+        .PMLC12_text_back_a a:link
+        {
+            color: #333;
+            text-decoration: none;
+        }
+        .PMLC12_text_back_a a:visited
+        {
+            color: #333;
+            text-decoration: none;
+        }
+        .PMLC12_text_back_a a:hover
+        {
+            color: #1a5f02;
+            text-decoration: none;
+        }
+        .PMLC12_text_back_a a:active
+        {
+            color: #333;
+            text-decoration: none;
+        }
+        .PMLC12_bgd_bt
+        {
+            width: 640px;
+            height: 40px;
+            text-align: center;
+            font-size: 24px;
+            color: #000;
+            line-height: 40px;
+            font-weight: bold;
+        }
+        /******************head结束***************//******************检测条件*******************/.PMLC12_bgd_k1
+        {
+            width: 640px;
+            height: auto;
+            padding-top: 10px;
+        }
+        .PMLC12_table_a
+        {
+            width: 640px;
+            border: 0;
+        }
+        .PMLC12_table_a_cos
+        {
+            background-color: #f4f9ef;
+            height: 26px;
+        }
+        .PMLC12_table_a_cosa
+        {
+            background-color: #f4f9ef;
+            height: 20px;
+        }
+        .PMLC12_text_red_a
+        {
+            color: #860505;
+            line-height: 26px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: left;
+        }
+        .PMLC12_text_green
+        {
+            color: #1a5f02;
+            text-align: right;
+            line-height: 26px;
+            font-weight: bold;
+        }
+        .PMLC12_text_block_a
+        {
+            color: #666;
+            text-align: left;
+            padding-left: 10px;
+            line-height: 26px;
+        }
+        .PMLC12_text_block_aa
+        {
+            color: #666;
+            text-align: left;
+            line-height: 20px;
+        }
+        .PMLC12_text_block_a1
+        {
+            color: #666;
+            text-align: left;
+            padding-left: 10px;
+            line-height: 20px;
+        }
+        .PMLC12_text_block_b
+        {
+            color: #666;
+            text-align: left;
+            padding-left: 10px;
+            line-height: 20px;
+        }
+        .PMLC12_text_block_b6
+        {
+            color: #666;
+            text-align: left;
+            padding-left: 2px;
+            line-height: 20px;
+        }
+        .PMLC12_text_green_a
+        {
+            color: #1a5f02;
+            line-height: 20px;
+        }
+        /******************检测条件结束*******************//*******************去除本人复制比部分**********************/.PMLC12_bgd_k2
+        {
+            width: 640px;
+            height: auto;
+            padding-top: 5px;
+        }
+        .PMLC12_table_b
+        {
+            width: 640px;
+            border: 0px;
+            border-top-width: 2px;
+            border-top-style: solid;
+            border-top-color: #035d03;
+        }
+        .PMLC12_table_b_cos
+        {
+            background-color: #f4f9ef;
+            height: 26px;
+        }
+        .PMLC12_text_B
+        {
+            color: #666;
+            font-size: 12px;
+            font-weight: bold;
+            padding-left: 10px;
+            text-align: left;
+            line-height: 20px;
+        }
+        .PMLC12_table_b1
+        {
+            width: 640px;
+            border: 0px;
+            border-bottom-width: 1px;
+            border-bottom-style: dashed;
+            border-bottom-color: #a2c893;
+        }
+        .PMLC12_table_b2
+        {
+            width: 640px;
+            border: 0px;
+            border-top-width: 2px;
+            border-top-style: solid;
+            border-top-color: #035d03;
+            border-bottom-width: 1px;
+            border-bottom-style: dashed;
+            border-bottom-color: #a2c893;
+        }
+        .PMLC12_table_b3
+        {
+            width: 640px;
+            border: 0px;
+            padding-top: 5px;
+            border-top-width: 1px;
+            border-top-style: dashed;
+            border-top-color: #a2c893;
+        }
+        .PMLC12_table_b_cosa
+        {
+            background-color: #f4f9ef;
+            height: 20px;
+        }
+        .PMLC12_text_G
+        {
+            color: #1a5f02;
+            text-align: right;
+            font-size: 12px;
+            line-height: 20px;
+            font-family: "宋体";
+        }
+        .PMLC12_jcjg_a
+        {
+            width: 48px;
+            height: 17px;
+            background-image: url(images/pmlc12_icon1.gif);
+            background-repeat: no-repeat;
+            text-align: left;
+            line-height: 17px;
+            padding-left: 10px;
+            color: #333;
+        }
+        .PMLC12_k3
+        {
+            width: 636px;
+            height: auto;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin: 5px auto 5px auto;
+            background-color: #f7f7f7;
+        }
+        .PMLC12_k6
+        {
+            width: 640px;
+            height: auto;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin: auto auto 5px auto;
+            border-top-width: 2px;
+            border-top-style: dashed;
+            border-top-color: #666;
+        }
+        .PMLC12_pic
+        {
+            width: 636px;
+            height: 20px;
+            margin: auto;
+        }
+        /*******************去除本人复制比部分结束**********************/.PMLC12_text_Ba
+        {
+            color: #000;
+            padding-left: 10px;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: bold;
+            text-align: left;
+        }
+        .PMLC12_k4
+        {
+            width: 620px;
+            height: auto;
+            margin: auto;
+            text-align: left;
+        }
+        .PMLC12_text_block_a3 p
+        {
+            text-indent: 2em;
+        }
+        .PMLC12_text_red_b
+        {
+            color: #d90808;
+            line-height: 20px;
+            font-size: 12px;
+            text-align: left;
+            text-decoration: underline;
+        }
+        .PMLC12_text_red_c
+        {
+            color: #8b0411;
+            line-height: 20px;
+            font-size: 12px;
+            text-align: left;
+        }
+        .PMLC12_text_block_a3
+        {
+            color: #333;
+            text-align: left;
+            line-height: 20px;
+        }
+        .PMLC12_bgd_lt
+        {
+            width: 640px;
+            height: 23px;
+            padding-top: 5px;
+        }
+        .PMLC12_k5
+        {
+            width: 620px;
+            height: auto;
+            margin: auto;
+            text-align: left;
+            background-color: #f7f7f7;
+        }
+        /***********************************内容部分********************************/.PMLC12_xu
+        {
+            width: 640px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: #CCCCCC;
+        }
+        .PMLC12_xu_a
+        {
+            width: 20px;
+            height: 20px;
+            background-color: #fcfaf1;
+            text-align: center;
+            border-right-width: 1px;
+            border-bottom-width: 1px;
+            border-right-style: dashed;
+            border-bottom-style: dashed;
+            border-right-color: #CCCCCC;
+            border-bottom-color: #CCCCCC;
+        }
+        .PMLC12_text_G2
+        {
+            color: #333;
+            font-size: 14px;
+            font-weight: lighter;
+            text-align: left;
+            padding-left: 10px;
+        }
+        .PMLC12_xu_b
+        {
+            width: 100px;
+            height: 20px;
+            text-align: center;
+            border-bottom-width: 1px;
+            border-left-width: 1px;
+            border-bottom-style: dashed;
+            border-left-style: solid;
+            border-bottom-color: #CCCCCC;
+            border-left-color: #CCCCCC;
+        }
+        .PMLC12_text_red_d
+        {
+            color: #8b0411;
+            font-size: 12px;
+            text-align: center;
+        }
+        .PMLC12_xu_c
+        {
+            width: 100px;
+            text-align: left;
+            height: 20px;
+            border-left-width: 1px;
+            border-left-style: solid;
+            border-left-color: #CCCCCC;
+        }
+        .PMLC12_table_c_cosa
+        {
+            background-color: #fff;
+            height: 20px;
+        }
+        .PMLC12_text_BN
+        {
+            color: #333;
+            padding-top: 7px;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .PMLC12_text_yellow
+        {
+            color: #DCAF29;
+            line-height: 20px;
+            font-size: 12px;
+            text-align: left;
+        }
+        .PMLC12_text_red_x
+        {
+            color: #d90808;
+            line-height: 20px;
+            font-size: 12px;
+            text-align: left;
+        }
+        /***********************************内容部分结束********************************//***********************************bottom********************************/.PMLC12_bgd_bottom
+        {
+            width: 640px;
+            height: 20px;
+            background-color: #ccc;
+            padding-top: 5px;
+            margin-top: 10px;
+        }
+        .PMLC12_bgd_bottom_left
+        {
+            width: 200px;
+            padding-left: 10px;
+            float: left;
+        }
+        .PMLC12_bgd_bottom_right
+        {
+            width: 200px;
+            color: #FFF;
+            float: right;
+            padding-right: 10px;
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: bold;
+        }
+        /***********************************bottom 结束********************************//***************************按钮样式***************************************/a.PMLC12_btn_table, a.PMLC12_btn_table:visited, a.PMLC12_btn_table:link
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_table.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_table:hover, a.PMLC12_btn_table:active
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_table_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_table_A, a.PMLC12_btn_table_A:visited, a.PMLC12_btn_table_A:link
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_table_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_table_A:hover, a.PMLC12_btn_table_A:active
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_table_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_sy, a.PMLC12_btn_sy:visited, a.PMLC12_btn_sy:link
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_sy.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_sy:hover, a.PMLC12_btn_sy:active
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_sy_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_sy_A, a.PMLC12_btn_sy_A:visited, a.PMLC12_btn_sy_A:link
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_sy_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_sy_A:hover, a.PMLC12_btn_sy_A:active
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_sy_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_gd, a.PMLC12_btn_gd:visited, a.PMLC12_btn_gd:link
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_gd.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_gd:hover, a.PMLC12_btn_gd:active
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_gd_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_gd_A, a.PMLC12_btn_gd_A:visited, a.PMLC12_btn_gd_A:link
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_gd_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        a.PMLC12_btn_gd_A:hover, a.PMLC12_btn_gd_A:active
+        {
+            width: 25px;
+            height: 25px;
+            background-image: url(images/pmlc12_btn_gd_A.gif);
+            background-repeat: no-repeat;
+            display: block;
+        }
+        .OutStyle
+        {
+            cursor: pointer;
+            color: Red;
+            text-decoration: underline;
+        }
+        @media print
+        {
+            .clear_report1
+            {
+                display: none;
+            }
+        }
+        a:link
+        {
+            height: 24px;
+            color: #555;
+            text-decoration: underline;
+        }
+        a:visited
+        {
+            height: 24px;
+            color: #555;
+            text-decoration: underline;
+        }
+        a:hover, a:active
+        {
+            color: #555;
+            text-decoration: underline;
+        }
+        .Font_Color_Red
+        {
+            color: Red;
+            text-decoration: underline;
+        }
+        .Font_Color_Green
+        {
+            color: #e28a05;
+            text-decoration: underline;
+        }
+        .Font_Color_Grey
+        {
+            color: #666666;
+        }
+        .zsreport
+        {
+            width: 638px;
+            height: auto;
+            margin: 0px auto 5px auto;
+        }
+        .table_check_rsR table
+        {
+            border: solid 1px #cccccc;
+            border-collapse: collapse;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        .table_check_rsR table td, th
+        {
+            border: solid 1px #cccccc;
+            padding: 0px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .PMLC12_text_block_a2R
+        {
+            color: #333;
+            text-align: left;
+            padding-left: 10px;
+            line-height: 20px;
+        }
+        /********************************************0717修改********************************************/.PMLC12_bgd_biao
+        {
+            width: 630px;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 15px 5px 10px 5px;
+        }
+        .PMLC12_bgd_biao_a
+        {
+            width: 18px;
+        }
+        .PMLC12_bgd_biao_b
+        {
+            width: 300px;
+            height: 25px;
+            text-align: center;
+            border-top: 1px solid #999;
+            border-right: 1px solid #999;
+            border-bottom: 1px solid #999;
+            line-height: 25px;
+            background-color: #DDF0CE;
+            color: #000;
+        }
+        .PMLC12_bgd_biao_KU
+        {
+            width: 280px;
+            border-right: 1px solid #999;
+            border-bottom: 1px solid #999;
+            padding-left: 5px;
+            padding-right: 5px;
+            vertical-align: top;
+            text-align: left;
+        }
+        .PMLC12_bgd_biao_KUa
+        {
+            width: 280px;
+            padding: 5px;
+            vertical-align: top;
+            text-align: left;
+        }
+        .PMLC12_bgd_biao_c
+        {
+            width: 280px;
+            line-height: 18px;
+            background-color: #FDF4F2;
+            text-align: left;
+            margin-top: 5px;
+            padding: 5px;
+            color: #000;
+        }
+        .PMLC12_table_xu_a
+        {
+            width: 18px;
+            background-color: #fcfaf1;
+            text-align: center;
+            border-right: 1px dashed #999;
+            border-top: 1px solid #999;
+            border-left: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+        .PMLC12_table_xu_b
+        {
+            width: 18px;
+            background-color: #DDF0CE;
+            text-align: center;
+            border-top: 1px solid #999;
+            border-left: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+        .PMLC12_text_red_ax
+        {
+            color: #860505;
+            line-height: 26px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            padding-left: 10px;
+        }
+        .PMLC12_table_axx
+        {
+            width: 640px;
+            border-top: 1px solid #ccc;
+        }
+        /********************************************0717修改结束********************************************/</style>
+</head>
+<body>
+    <form name="form1" method="post" action="Report/Report.aspx?t=a&amp;LeftFile=120416520" id="form1" style="margin: 0px; padding: 0px;">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjgxMTgyNDkPZBYCAgMPZBYaAgEPDxYCHgRUZXh0BTNBREJEMjAxOFJfMjAxNjA1MjAxMjMwMDAyMDE4MDYwMTE1MjA1NTEyMDQxNjUyMDY5NDFkZAIDDw8WAh8ABS3ln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3lv4PotYTmupDosIPluqZkZAIFDw8WAh8ABQblkajpvI5kZAIHDw8WAh8ABZIE5Lit5Zu95a2m5pyv5pyf5YiK572R57uc5Ye654mI5oC75bqTPGJyIC8+5Lit5Zu95Y2a5aOr5a2m5L2N6K665paH5YWo5paH5pWw5o2u5bqTL+S4reWbveS8mOengOehleWjq+WtpuS9jeiuuuaWh+WFqOaWh+aVsOaNruW6kzxiciAvPuS4reWbvemHjeimgeS8muiuruiuuuaWh+WFqOaWh+aVsOaNruW6kzxiciAvPuS4reWbvemHjeimgeaKpee6uOWFqOaWh+aVsOaNruW6kzxiciAvPuS4reWbveS4k+WIqeWFqOaWh+aVsOaNruW6kzxiciAvPuWbvuS5pui1hOa6kDxiciAvPuS8mOWFiOWHuueJiOaWh+eMruW6kzxiciAvPuS6kuiBlOe9kei1hOa6kCjljIXlkKvotLTlkKfnrYnorrrlnZvotYTmupApPGJyIC8+6Iux5paH5pWw5o2u5bqTKOa2teebluacn+WIiuOAgeWNmuehleOAgeS8muiurueahOiLseaWh+aVsOaNruS7peWPiuW+t+WbvVNwcmluZ2Vy44CB6Iux5Zu9VGF5bG9yJmFtcDtGcmFuY2lzIOacn+WIiuaVsOaNruW6k+etiSk8YnIgLz7muK/mvrPlj7DlrabmnK/mlofnjK7lupM8YnIgLz7kupLogZTnvZHmlofmoaPotYTmupBkZAIJDw8WAh8ABRcxOTAwLTAxLTAx6IezMjAxOC0wNi0wMWRkAgsPDxYCHwAFEzIwMTgtMDYtMDEgMTU6MjA6NTVkZAIRDw8WAh8ABQIwJWRkAhMPZBYIZg9kFgICAQ8PFgIfAAUCMCVkZAIBD2QWAgIBDw8WAh8ABQIwJWRkAgIPZBYCAgEPDxYCHwAFATBkZAIDD2QWAgIBDw8WAh8ABQUzNDg4MmRkAhUPZBYEZg9kFgICAQ8PFgIfAAUBMGRkAgEPZBYCAgEPDxYCHwAFBTM0ODgyZGQCFw9kFgYCAQ9kFgICAQ8PFgIfAAUBNGRkAgMPZBYCAgEPDxYCHwAFATBkZAIFD2QWAgIBDw8WAh8ABQEwZGQCGQ9kFgYCAQ9kFgICAQ8PFgIfAAUBMGRkAgMPZBYCAgEPDxYCHwAFATBkZAIFD2QWAgIBDw8WAh8ABQEwZGQCGw9kFgJmD2QWAgIBDxYCHgtfIUl0ZW1Db3VudAIEFghmD2QWAmYPFQQbPGRpdiBjbGFzcz0icGVyX2ciPjAlPC9kaXY+DTEyMDQxNjUyMF8wMDA45Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit5b+D6LWE5rqQ6LCD5bqmX+esrDHpg6jliIYFMTI2MTZkAgEPZBYCZg8VBBs8ZGl2IGNsYXNzPSJwZXJfZyI+MCU8L2Rpdj4NMTIwNDE2NTIwXzAwMTjln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3lv4PotYTmupDosIPluqZf56ysMumDqOWIhgQ4NTQwZAICD2QWAmYPFQQbPGRpdiBjbGFzcz0icGVyX2ciPjAlPC9kaXY+DTEyMDQxNjUyMF8wMDI45Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit5b+D6LWE5rqQ6LCD5bqmX+esrDPpg6jliIYEOTAxMmQCAw9kFgJmDxUEGzxkaXYgY2xhc3M9InBlcl9nIj4wJTwvZGl2Pg0xMjA0MTY1MjBfMDAzOOWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4reW/g+i1hOa6kOiwg+W6pl/nrKw06YOo5YiGBDQ3MTRkAh8PFgIfAQIEFghmD2QWCmYPFQUNMTIwNDE2NTIwXzAwMDjln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3lv4PotYTmupDosIPluqZf56ysMemDqOWIhgEwATAFMTI2MTZkAgEPFgIfAWZkAgIPFQGHpgE8cD7lrablrabkvY3orrrorrrpopjnm67vvJog5Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5a2m5aeT5ZCN77yaIOWRqOm8juWtpuWtpuWPt++8mjwvcD48cD7kuJPkuJrvvJog6K6h566X5py656eR5a2m5LiO5oqA5pyv5oyH5a+85pWZ5biI77yaIOWGt+mdmeWtpumZouezuyDvvJrnlLXkv6Hmga/kuI7nlLXnqIvlrabpmaLln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqbln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3lv4PotYTmupDosIPluqY8L3A+PHA+5pGY6KaBPC9wPjxwPumaj+edgOWkmuenjeWFrOacieS6keWSjOengeacieS6keaetuaehOeahOWPkeWxleWSjOaIkOeGn++8jOi2iuadpei2iuWkmueahOe7nOW6lOWSjOiuoeeul+S7u+WKoeiiq+i/geenu+aVsOaNruS4rTwvcD48cD7miacg44CC5pWw5o2u5Lit5bu66YCg5ZKM6L+Q5oiQ5pys5piC77yM5YW25Lit5Lul5LiK55qE6Iqx6LS55LqO6LSt5Lmw5pyN5Yqh5Zmo56Gs5Lu244CC54S2IO+8jOWFtuacjeWKoeWZqOeahOW5s+Wdh+i1hOa6kOWIqeeOh+WNtOmAmuW4uOS4jei2hei/hyDjgILpgKDmiJDotYTmupDliKnnjofkvY7kuIvnmoTkuLvopoHljp/lm6DmmK/ph4/lu7bov5/mlY/mhJ/lnovku7vliqHnmoTlrZjlnKjjgILlpITnkIblmajkuK3nmoTorqHnrpfmoLjlhbHkuqvlpJrnp43orqHnrpfotYTmupDvvIzlm6DmraTvvIzlubbmiafnmoTku7vliqHpl7TlrZjlnKjotYTmupDnq57kuonlubblsIbnm7jkupLmibDjgILlu7bov5/mlY/mhJ/lnovku7vliqHlj5fliLDkuKXmoLznmoTmnI3liqHotKjph4/opoHmsYLpmZDliLbvvIzlr7nlhbHkuqvotYTmupDkuIrnmoTmibDliIbmlY/mhJ/vvJvkuLrkv53or4HlhbbmnI3liqHotKjph4/vvIzpgJrluLjnpoHlhbbku5bku7vliqHkuI7kuYvmt7flkIjmiacg44CC5Z+65LqO6L2v5Lu25ZKM56Gs5Lu255qE6LWE5rqQ6ZqU56a75oqA5pyv5Y+v5Lul5pyJ5pWI6ZmQ5Yi25YWx5Lqr6LWE5rqQ5LiK55qE55u45LqS5omw77yM5L2/5b6X5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5LiO5YW25LuW5Lu75Yqh55qE5re35ZCI5omn5oiQ5Li65Y+v6IO977yM5YW25pyJ5pWI5bqU55qE5oyR5oiY5Zyo5LqO5aSa56eN5YWx5Lqr6LWE5rqQ6Ze05Lqn55qE55u45LqS5omw44CC5pys5Lit77yM5oiR5Lus5bCd6K+V5Zyo5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5LiO5YW25LuW5Lu75Yqh5re35ZCI5omn55qE5oOF5aKD5LiL77yMPC9wPjxwPuW6lOW8uuWMluWtpuS5oOazleadpeWNj+iwg+WkmuenjeWFseS6q+i1hOa6kOeahOmalOemu++8jOWcqOS/neivgeW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoei0qOmHj+eahOWJjeaPkOS4i++8jOaPkOacjeWKoeWZqOaVtOS9k+eahOi1hOa6kOWIqeeOh+OAgjwvcD48cD7lhbPplK7or43vvJog5pWw5o2u5Lit6LWE5rqQ566h55CG5by65YyW5a2m5LmgPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6pjwvcD48cD48c3BhbiBjbGFzcz0iRm9udF9Db2xvcl9HcmV5Ij7nm67lvZU8L3NwYW4+PC9wPjxwPjxzcGFuIGNsYXNzPSJGb250X0NvbG9yX0dyZXkiPjwvc3Bhbj48L3A+PHA+5o+S5Zu+57Si5byV6KGo5qC857Si5byV566X5rOV57Si5byVPC9wPjxwPuesrOS4gOeroOe7quiuujwvcD48cD7mnI3liqHotKjph4/vvIgg77yMIO+8iTwvcD48cD7otYTmupDliKnnjofpl67popjmt7flkIjmiac8L3A+PHA+5rOh5rWL6K+V77yIIO+8iTwvcD48cD7otYTmupDpmpTnprvmioDmnK/orqHnrpfmoLjmnKvnuqfpgJ/nvJPlrZjliqjmgIHpmo/mnLrlrZjlgqjlmajorr/pl67luKblrr08L3A+PHA+57uc5bim5a6954Ot5Yqf546HPC9wPjxwPuesrOS6jOeroOW8uuWMluWtpuS5oOaWueazlTwvcD48cD7liqjmgIHotYTmupDosIPluqbnmoTliqjmnLrlpITnkIblmajmoLjmnKvnuqfpgJ/nvJPlrZg8L3A+PHA+57uc5bim5a6954Ot5Yqf546H5Yqo5oCB6LWE5rqQ6LCD5bqm5LqO5by65YyW5a2m5Lmg5by65YyW5a2m5Lmg5Zyo6LWE5rqQ6LCD5bqm5Lit55qE5oyR5oiY5by65YyW5a2m5Lmg5rOV566A5LuL6ams5bCU56eR5aSr5Yaz562W6L+H56iL77yIIO+8iTwvcD48cD7nrZbnlaXkuI7nirbmgIHlgLzlh73mlbDnrZbnlaXmoq/luqbms5XvvIgg77yJPC9wPjxwPuWtpuS5oOesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6pjwvcD48cD7nrKzkuInnq6Dlrp7pqoznjq/looM8L3A+PHA+5qih5Z6L6K6+6K6h6ZqU56a75oqA5pyv5pW05L2T5p625p6E5re35ZCI5omn5Lu75Yqh6YCJ5oup5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5om55aSE55CG5Lu75Yqh5Lu75Yqh6LWE5rqQ6ZyA5rGC5YiG5p6QPC9wPjxwPuesrOWbm+eroOWunumqjOS4jue7k+aenOWIhuaekDwvcD48cD7ln7rkuo7lvLrljJblrabkuaDnmoTotYTmupDosIPluqblmajnirbmgIHnqbrpl7TliqjkvZznqbrpl7TlpZbotY/kv6Hlj7fnu5PmnoQ8L3A+PHA+57uc6K6+6K6h5a6e6aqM57uT5p6cPC9wPjxwPuesrOS6lOeroOe7k+iuujwvcD48cD7lj4LogIPmlofnjK48L3A+PHA+6Ie06LCiPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puaPkuWbvue0ouW8lea3t+WQiOaJp+S4juacjeWKoei0qOmHj+S4i+mZjeaVsOaNruS4rembhue+pOe6p+S7u+WKoeiwg+W6pjwvcD48cD7ms6HmtYvor5Xms5XlkLXpl7nnmoTpgrvlsYXmnKvnuqfpgJ/nvJPlrZjkuIrnmoTnm7jkupLmibDmt7flkIjmiafml7bnmoTmgKfog73kuIvpmY3lvLrljJblrabkuaDmoYbmnrbpqazlsJTnp5HlpKvlhrPnrZbov4fnqIvkvovpgJrov4fmt7HluqbnpZ7nu4/nu5zov5HkvLznrZbnlaXlh73mlbDlrp7pqozns7vnu5/mnrbmnoTmibnlpITnkIbku7vliqHnmoTnvJPlrZjmnKrlkb3kuK3njofkuI7nvJPlrZjlrrnph4/lvJXmk47nmoTmnI3liqHotKjph4/kuI7otJ/ovb3lvLrluqblvJXmk47nmoTmnI3liqHotKjph4/kuI7mnI3liqHlmajotYTmupDliIbphY3lr7nosaHnvJPlrZjnmoTmnI3liqHotKjph4/kuI7mnI3liqHlmajotYTmupDliIbphY3lvLrljJblrabkuaDnu5zorq3nu4Pnu5PmnpznrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqbooajmoLzntKLlvJXmqKHmi5/miLfmgLvkvZPorr/pl67mqKHlvI/nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqbnrpfms5XntKLlvJXlvLrljJblrabkuaDnu5zorq3nu4Pnrpfms5XnrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+56ys5LiA56ug57uq6K66PC9wPjxwPumaj+edgOWFrOacieS6keWSjOengeacieS6keaetuaehOeahOWPkeWxle+8jOi2iuadpei2iuWkmueahOeahOe7nOW6lOWSjOiuoeeul+S7u+WKoeiiq+i/geenu+inhOaooeeahOaVsOaNruS4rTwvcD48cD7ku6Xlh4/lsJHljZXkvY3orqHnrpfmiJDmnKzvvIzmlbDmja7kuK3nmoTorqHnrpfog73kuZ/pmo/kuYvkuI3mlq3mianlsZXjgILov5nkupvmlbDmja7kuK3nlLHmlbDku6XkuIforqHnmoTmnI3liqHlmajnu4TmiJDvvIzlhbblu7rpgKDlkozov5DokKXpgJrluLjoirHotLnmlbDljYPkuIfnvo7lhYPku6XkuIrjgILlnKjnjrDku6PoioLog73lnovmlbDmja7kuK3nmoTmi6XmnInmiJDmnKzkuK3vvIzotK3kubDmnI3liqHlmajnmoToirHotLnljaDmnIAg77yM5Y+v6L6+IOOAgiDnm7Tku6XmnaXvvIzmkanlsJTlrprlvovkvb/lvpfmlrDku6PmnI3liqHlmajlnKjnm7jlkIzku7fmoLzkuIvpg73mnInmm7TnmoTorqHnrpfog70g77yM5pWw5o2u5Lit5Lmf5b6X5Lul5LiN5o+Q6Iqx6LS55ZCM5pe25oyB57ut5o+Q5Y2H6KeE5qih44CC54S26ZqP552A5pqX56GF77yIIO+8ieaXtuS7o+eahOWIsOadpSDvvIzov5nmoLfnmoTlop7plb/lsIbms5XmjIHnu63jgIIg56eN6Kej5Yaz5Yqe5rOV5piv6YCa6L+H5L2/5pu05L2O6IO96ICX55qE57uE5Lu2IO+8jOWmguenu+WKqOiuoeeul+aguOWSjOenu+WKqOiuvuWkh+S4reS9v+eahOWGheWtmCDjgILlj6bnp43lip7ms5XmmK/pgJrov4fmj5DmnI3liqHlmajnmoTliKnnjofmmL7nhLbmnI3liqHlmajnmoTkvY7liKnnjofkuI3kvYbkvb/lvpfluLjov5DokKXmiJDmnKzlgY8g77yM5Lmf5LiN5Yip5LqO5pS25Zue5a+56K6+5aSH55qE5oqV6LWE44CC5bC9566h5L2O6IO96ICX57uE5Lu26IO95aSf6ZmN5L2O5pyN5Yqh5Zmo5Yip546H5pe255qE6L+Q6JCl5oiQ5pysIO+8jOS9huS4uuS6huiAg+iZkeWIsOacjeWKoeWZqOeahOW3qOi1hOacrOW8gOmUgO+8jOeglOeptuaPkOaVsOaNruS4reeahOi1hOa6kOWIqeeOh+aYr+acgOacieaViOeahO+8jOS5n+aYr+azlemBv+W8gOeahOOAgjwvcD48cD7mnI3liqHotKjph4/vvIgg77yMIO+8iTwvcD48cD7mlbDmja7kuK3kuI3lkIznmoTku7vliqHlkJHkuI3lkIznmoTlupTlkozmiLfvvIzlm6DmraTlhbfmnInkuI3lkIznmoTmnI3liqHotKjph4/opoHmsYLjgILnm7TmjqXlkJHmiLfnmoTlupQg77yM5aaC56S+5Lqk5aqS5L2T77yM5pCc57Si5byV5pOO77yM6L2v5Lu25Y2z5pyN5Yqh77yM5Zyo57q/5Zyw5Zu+77yMIOmhtemCrueuse+8jOWcqOe6v+e/u+ivke+8jOe6v+S4iui0reeJqeWSjOWRiuetieetie+8jOmAmuW4uOaYr+W7tui/n+aVj+aEn+Wei++8jOWFt+acieW+iOS4peagvOeahOacjeWKoei0qOmHj+imgeaxguOAguW7tui/n+Wei+aVj+aEn+W6lOmAmui/h+WFtuWGhemDqOeahOacjeWKoeWfuuacrOimgeaxgjwvcD48cD7vvIgg77yJ5a6a5LmJ44CC5aaC5q2M5pCc57Si55qE5pyN5Yqh6LSo6YeP6YCa6L+H5p+l6K+i55qE5bu26L+f5ZKM5q+P56eS5aSE55CG55qE6K+35rGC5Liq5pWw5a6a5LmJ77ybIOWwhuWFtuWumuS5ieS4uui/lOWbnue7k+aenOeahOi0qOmHjyDjgII8L3A+PHA+5pWw5o2u5Lit6L+Y5pyJ5Y+m57G75om55aSE55CG5Lu75Yqh77yM5aaC5Lu25aSH5Lu977yM5Zu+5YOP56a757q/5aSE55CG5ZKM6KeG6aKR5Y6L57yp6L2s56CB562J562J44CC5LiO5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55u45Y+N77yM5LuW5Lus5LiN5ZCR5oi377yM5bu26L+f5Lmf5LiN5pWP5oSf77yM5Zug5q2k5LmO5rKh5pyJ5pyN5Yqh6LSo6YeP6KaB5rGC44CC5om56YeP5YiG5p6Q5qGG5p625Y+v5Lul5LqnPC9wPjxwPumHj+eahOaJueWkhOeQhuS7u+WKoe+8jOW5tuS4lOi/meS6m+S7u+WKoeWNs+S9v+WBtuWwlOiiq+aaguWBnOaIlumHjeWQr++8jOS7luS7rOS7jeeEtuWPr+S7peS6p+WPr+ingueahOS7t+WAvCDjgII8L3A+PHA+6LWE5rqQ5Yip55So546H6Zeu6aKY5aSa5Liq56CU56m26KGo5piO77yM5pWw5o2u5Lit55qE5pyN5Yqh5Zmo5bmz5Z2H5Yip546H6L6D5L2O77yM5LuL5LqO5LmL6Ze0IO+8jOS4lOmAmuW4uOS4jei2hei/hyDjgILpgKDmiJDotYTmupDkvY7liKnnjofnmoTkuLvopoHljp/lm6DmmK/lrZjlnKjph4/nmoTov5DlnKjkuKXmoLzmnI3liqHotKjph4/opoHmsYLkuIvnmoTlu7bov5/mlY/mhJ/lnovku7vliqHjgILov5nkupvnm7TmjqXlkJHmiLfnmoTmnI3liqHnmoTov5DnirbmgIHlkozmlbDmja7pgJrluLjliIbluIPlnKjlpJrkuKrmnI3liqHlmajnmoTlhoXlrZjlkozpl6rlrZjkuYvkuK3jgII8L3A+PHA+5ZCE5Liq5Lu75Yqh55qE5oi355qE6K6/6Zeu5qih5byP5a2Y5Zyo5beu5byC77yM5Zug5q+P5Liq5Lu75Yqh55qE6LSf6L2955u45beu6L6DIOOAgueEtiDvvIznlLHkuo7lu7bov5/mlY/mhJ/lnovku7vliqHmma7pgY3lt6jnmoTmlbDmja7ph4/lkozmmILnmoTnp7vliqjku6Pku7fvvIzov5nkupvmnI3liqHpmr7ku6Xooqvpm4bkuK3lnKjlsJHph4/mnI3liqHlmajkuK3vvIzlm6Dpmr7ku6XkvJjljJbku5bku6znmoTorqHnrpfotYTmupDliKnnjofjgII8L3A+PHA+5pWw5o2u5Lit55qE5pyN5Yqh5Zmo6YCa5bi45Yy65pyJ5Liq5aSE55CG5Zmo5o+SIO+8jOavj+S4quaPkuS4iuacieS4quaguCDjgILmoLjkuYvpl7TlhbHkuqvkupvotYTmupDvvIzlpoLmnKvnuqfpgJ/nvJPlrZjvvIgg77yMIO+8ie+8jOWKqOaAgemaj+acuuWtmOWCqOWZqO+8jOi+k+i+k+WHuumAmumBk++8jCDnu5zov57mjqXjgILov5nnp43lhbHkuqvkvb/lvpflkITkuKrmoLjkuYvpl7Tkuqfpmr7ku6XpooTmtYvnmoTmibDvvIwg5Y2z5L2/6L275b6u5omw5L6/5Y+v6IO95a+86Ie05bu26L+f5pWP5oSf5Z6L5Lu75Yqh6L+d5Y+N5pyN5Yqh6LSo6YeP6KaB5rGCIOOAguS4uuS6humBv+WFjei/neWPjeacjeWKoei0qOmHj+imgeaxgu+8jOmAmuW4uOemgeWcqOi/kOW7tui/n+aVj+aEn+S7u+WKoeeahOacjeWKoeWZqOS4iuaJp+WFtuS7luS7u+WKoeOAgui/meagt+i/h+W6pueahOmZkOWItuS9v+W+l+W7tui/n+aVj+aEn+Wei+S7u+WKoeeLrOWNoOacjeWKoeWZqO+8jOmDqOWIhuaguOepuumXsu+8jOezu+e7n+eahOi1hOa6kOWIqeeOh+mZjeS9juOAgjwvcD48cD7nrKzpobXlhbHpobU8L3A+PHA+5Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqmPC9wPjxwPmFwcDwvcD48cD5Rb1M8L3A+PHA+MTAwJTwvcD48cD45MCU8L3A+PHA+ODAlPC9wPjxwPjIgLi4uLi4xMDwvcD48cD5GaWd1cmUgMjogRXhhbXBsZSBzZW5zaXRpdml0eSBjdXJ2ZSBmb3IgQS4gQXNzdW0tPC9wPjxwPmluZyBC4oCZcyBwcmVzc3VyZSBzY29yZSBpcyAyIHdlIGNhbiBwcmVkaWN0IEEgd2lsbCBiZTwvcD48cD5wZXJmb3JtaW5nIGF0IDkwJSBvZiBmdWxsIHBlcmZvcm1hbmNlLjwvcD48cD53b3JrbG9hZHMgZG9lcyBub3QgdmlvbGF0ZSB0aGlzIFFvUyB0aHJlc2hvbGQgKGxpZ2h0IGJhcnMpLDwvcD48cD53aGlsZSBvdGhlcnMgdmlvbGF0ZSB0aGUgdGhyZXNob2xkIChkYXJrIGJhcnMpLiBBbiBpbmFiaWwtPC9wPjxwPml0eSB0byBwcmVjaXNlbHkgcHJlZGljdCB0aGUgcGVyZm9ybWFuY2UgaW1wYWN0IGZvciBhIGdpdmVuIGNvLWxvY2F0aW9uIGxlYWRzIHRvIHRoZSBoZWF2eSBoYW5kZWQgc29sdXRpb24gb2Ygc2ltcGx5IGRpc2FsbG93aW5nIGNvLWxvY2F0aW9uLiBPbiB0aGUgb3RoZXIgaGFuZCwgd2l0aG91dCBwcmUtPC9wPjxwPmRpY3Rpb24sIHByb2ZpbGluZyBhbGwgcG9zc2libGUgY28tbG9jYXRpb25z4oCZIHBlcmZvcm1hbmNlIGluLTwvcD48cD50ZXJmZXJlbmNlIGJlZm9yZWhhbmQgdG8gZ3VpZGUgY28tbG9jYXRpb24gZGVjaXNpb25zIGlzIHByby08L3A+PHA+aGliaXRpdmVseSBleHBlbnNpdmUuIFRoZSBwcm9maWxpbmcgY29tcGxleGl0eSBmb3IgYWxsIHBhaXItPC9wPjxwPndpc2UgY28tbG9jYXRpb25zIGlzIE8oTjwvcD48cD4yPC9wPjxwPikgKE4gYXMgdGhlIG51bWJlciBvZiBhcHBsaWNhLTwvcD48cD50aW9ucykuIFdpdGggaHVuZHJlZHMgdG8gdGhvdXNhbmRzIG9mIGFwcGxpY2F0aW9ucyBydW5uaW5nIGluIGEgZGF0YWNlbnRlciwgYW5kIHRoZSBmcmVxdWVudCBkZXZlbG9wbWVudCBhbmQgdXBkYXRpbmcgb2YgdGhlc2UgYXBwbGljYXRpb25zLCBhIGJydXRlLWZvcmNlIHByb2ZpbGluZyBhcHByb2FjaCBpcyBub3QgcHJhY3RpY2FsLjwvcD48cD5UaGUgZ29hbCBvZiB0aGlzIHdvcmsgaXMgdG8gZW5hYmxlIHRoZSBwcmVjaXNlIHByZWRpY3Rpb24gb2YgdGhlIHBlcmZvcm1hbmNlIGRlZ3JhZGF0aW9uIHRoYXQgcmVzdWx0cyBmcm9tIGNvbnRlbnRpb24gZm9yIHNoYXJlZCByZXNvdXJjZXMgaW4gdGhlIG1lbW9yeSBzdWJzeXN0ZW0uIEEgcHJlY2lzZSBwcmVkaWN0aW9uIGlzIG9uZSB0aGF0IHByb3ZpZGVzIGFuIGV4cGVjdGVkIGFtb3VudCBvZiBwZXItPC9wPjxwPmZvcm1hbmNlIGxvc3Qgd2hlbiBjby1sb2NhdGVkLiBXaXRoIHRoaXMgaW5mb3JtYXRpb24sIGNvLTwvcD48cD5sb2NhdGlvbnMgdGhhdCBkbyBub3QgdmlvbGF0ZSB0aGUgUW9TIHRocmVzaG9sZCBvZiBhbiBhcHBsaS08L3A+PHA+Y2F0aW9uIGNhbiBiZSBhbGxvd2VkLCByZXN1bHRpbmcgaW4gaW1wcm92ZWQgdXRpbGl6YXRpb24gaW4gdGhlIGRhdGFjZW50ZXIuPC9wPjxwPlRoaXMgaXMgYSBjaGFsbGVuZ2luZyBwcm9ibGVtLiBUaGUgbW9zdCByZWxldmFudCByZS08L3A+PHA+bGF0ZWQgd29yayBhaW1zIHRvIGNsYXNzaWZ5IGFwcGxpY2F0aW9ucyBiYXNlZCBvbiBob3cgYWctPC9wPjxwPmdyZXNzaXZlIHRoZXkgYXJlIGZvciB0aGUgc2hhcmVkIG1lbW9yeSByZXNvdXJjZXMgYW5kIGlkZW4tPC9wPjxwPnRpZnkgY28tbG9jYXRpb25zIHRvIHJlZHVjZSBjb250ZW50aW9uIGJhc2VkIG9uIHRoZSBjbGFzc2lmaS08L3A+PHA+Y2F0aW9uIFszLDE2LDE3LDIxLDIzLDI0LDM3LDM5LDQxXS4gSG93ZXZlciBwcmlvciB3b3JrIGhhczwvcD48cD5ub3QgcHJlc2VudGVkIGEgc29sdXRpb24gdG8gcHJlY2lzZWx5IHByZWRpY3QgdGhlIGFtb3VudCBvZiBwZXJmb3JtYW5jZSBkZWdyYWRhdGlvbiBzdWZmZXJlZCBieSBlYWNoIGFwcGxpY2F0aW9uIGR1ZSB0byBjby1sb2NhdGlvbiwgd2hpY2ggaXMgZXNzZW50aWFsIGZvciBjby1sb2NhdGlvbiBkZWNpc2lvbnMgb2YgbGF0ZW5jeS1zZW5zaXRpdmUgYXBwbGljYXRpb25zIGluIFdTQ3MuIEluIHRoaXMgd29yaywgd2UgcHJlc2VudCBzdWNoIGEgc29sdXRpb246IFRoZSBCdWJibGUtVXAgbWV0aG9kb2xvZ3kuPC9wPjxwPlRoZSBrZXkgaW5zaWdodCBvZiBCdWJibGUtVXAgaXMgdGhhdCBwcmVkaWN0aW5nIHRoZSBwZXJmb3ItPC9wPjxwPm1hbmNlIGludGVyZmVyZW5jZSBvZiBjby1ydW5uaW5nIGFwcGxpY2F0aW9ucyBjYW4gYmUgZGVjb3UtPC9wPjxwPnBsZWQgaW50byAxKSBtZWFzdXJpbmcgdGhlIHByZXNzdXJlIG9uIHRoZSBtZW1vcnkgc3Vic3lzLTwvcD48cD50ZW0gYW4gYXBwbGljYXRpb24gZ2VuZXJhdGVzLCBhbmQgMikgbWVhc3VyaW5nIGhvdyBtdWNoPC9wPjxwPmFuIGFwcGxpY2F0aW9uIHN1ZmZlcnMgZnJvbSBkaWZmZXJlbnQgbGV2ZWxzIG9mIHByZXNzdXJlLiBUaGUgdW5kZXJseWluZyBoeXBvdGhlc2lzIGlzIGJvdGggcHJlc3N1cmUgYW5kIHNlbnNpdGl2aXR5IGNhbiBiZSBxdWFudGlmaWVkIHVzaW5nIGEgY29tbW9uIHByZXNzdXJlIG1ldHJpYy4gSGF2aW5nIHN1Y2ggYSBtZXRyaWMgcmVkdWNlcyB0aGUgY29tcGxleGl0eSBvZiBjby1sb2NhdGlvbiBhbmFseXNpcy4gQXMgb3Bwb3NlZCB0byB0aGUgYnJ1dGUgZm9yY2UgYXBwcm9hY2ggb2YgcHJvZmlsaW5nIGFuZCBjaGFyYWMtPC9wPjxwPnRlcml6aW5nIGV2ZXJ5IHBvc3NpYmxlIHBhaXJ3aXNlIGNvLWxvY2F0aW9uLCBCdWJibGUtVXAgb25seSByZXF1aXJlcyBjaGFyYWN0ZXJpemluZyBlYWNoIGFwcGxpY2F0aW9uIG9uY2UgdG8gcHJvZHVjZSBwcmUtPC9wPjxwPmNpc2UgcGFpcndpc2UgaW50ZXJmZXJlbmNlIHByZWRpY3Rpb25zIChlLmcuIE8oTiApKS48L3A+PHA+bWVtb3J5IHN1YnN5c3RlbS4gVGhpcyBidWJibGUgaXMgcnVuIGFsb25nIHdpdGggdGggYXBwbGljYXRpb24gYmVpbmcgY2hhcmFjdGVyaXplZC4gQXMgdGhpcyBkaWFsIGlzIGluY3JlYXMgdG9tYXRpY2FsbHkgKGV4cGFuZGluZyB0aGUgYnViYmxlKSwgdGhlIGltcGFjdCBvbiB0aCBhcHBsaWNhdGlvbiBpcyByZWNvcmRlZCwgcHJvZHVjaW5nIGEgc2Vuc2l0aXZpdHkgY3VydmUgaG9zdCBhcHBsaWNhdGlvbiBzdWNoIGFzIHRoZSBvbmUgaWxsdXN0cmF0ZWQgaW4gRmlndXJlIHRoZSB5LWF4aXMsIHdlIGhhdmUgdGhlIG5vcm1hbGl6ZWQgUW9TIHBlcmZvcm1hbmNlIGFwcGxpY2F0aW9uIChsYXRlbmN5LCB0aHJvdWdocHV0LCBldGMpLCBhbmQgdGhlIHgtYXhpcyB0aGUgYnViYmxlIHByZXNzdXJlLiBJbiB0aGUgc2Vjb25kIHN0ZXAsIHdlIGlkZW50aWZ5IGEgc3VyZSBzY29yZSBmb3IgdGhlIGFwcGxpY2F0aW9uIHVzaW5nIGEgYnViYmxlIHByZXNzdXJlIHJlcG9ydGVyLiBBZnRlciB0aGVzZSB0d28gc3RlcHMgb2YgdGhlIEJ1YmJsZS1VcCBtIG9sb2d5IGlzIGFwcGxpZWQgdG8gZWFjaCBhcHBsaWNhdGlvbiwgd2UgaGF2ZSBhIHNlbnMgY3VydmUgYW5kIGEgcHJlc3N1cmUgc2NvcmUgZm9yIGVhY2ggYXBwbGljYXRpb24uIEdpdiBhcHBsaWNhdGlvbnMgQSBhbmQgQiwgd2UgY2FuIHRoZW4gcHJlZGljdCB0aGUgcGVyZm9yIGltcGFjdCBvZiBhcHBsaWNhdGlvbiBBIHdoZW4gY28tbG9jYXRlZCB3aXRoIGFwcGxpY2EgYnkgdXNpbmcgQeKAmXMgc2Vuc2l0aXZpdHkgY3VydmUgdG8gbG9vayB1cCB0aGUgcmVsYXRpdmUgcCBtYW5jZSBvZiBBLCBhdCBC4oCZcyBwcmVzc3VyZSBzY29yZS4gSW4gdGhlIGV4YW1wbGU8L3A+PHA+aW4gRmlndXJlIDIsIEIgaGFzIGEgcHJlc3N1cmUgc2NvcmUgb2YgMiwgYW5kIGFzIHc8L3A+PHA+c2VlIGZyb20gQeKAmXMgc2Vuc2l0aXZpdHkgY3VydmUsIEHigJlzIHByZWRpY3RlZCBRb1Mgd2l0PC9wPjxwPmNvLWxvY2F0aW9uIGlzIDkwJS48L3A+PHA+VGhlIHNwZWNpZmljIGNvbnRyaWJ1dGlvbnMgb2YgdGhpcyB3b3JrIGFyZSBhcyBmb2xsb3c8L3A+PHA+V2UgcHJlc2VudCB0aGUgZGVzaWduIG9mIEJ1YmJsZS1VcCwgYSBnZW5lcmEgYWN0ZXJpemF0aW9uIG1ldGhvZG9sb2d5IHRoYXQgZW5hYmxlcyB0aGUgcHJlY2lzIGRpY3Rpb24gb2YgdGhlIHBlcmZvcm1hbmNlIGRlZ3JhZGF0aW9uIHN1ZmZlcmVkIGJpdHJhcnkgYXBwbGljYXRpb25zIHdoZW4gY28tbG9jYXRlZC48L3A+PHA+V2UgaW50cm9kdWNlIDE3IHByb2R1Y3Rpb24gR29vZ2xlIHdvcmtsb2FkcyBhbjwvcD48cD5hY3Rlcml6ZSB0aGVpciBwcm9wZW5zaXR5IHRvIHBlcmZvcm1hbmNlIGludGVyZiB3aGVuIGNvLWxvY2F0ZWQgb24gcHJvZHVjdGlvbiBzZXJ2ZXJzLjwvcD48cD5JbiBhZGRpdGlvbiB0byBkZW1vbnN0cmF0aW5nIHRoZSBwcmVkaWN0aW9uIGFjIG9mIG91ciBCdWJibGUtVXAgbWV0aG9kb2xvZ3kgb24gdGhlIHNwZWN0ciBjb250ZW50aW91cyBrZXJuZWwgaW4gb3VyIFNtYXNoQmVuY2ggc3VpdGUsIHcgZXZhbHVhdGUgdGhlIHByZWRpY3Rpb24gYWNjdXJhY3kgYW5kIHRoZSBpbXByb3YgaW4gdXRpbGl6YXRpb24gd2hlbiBhcHBseWluZyB0aGUgQnViYmxlLVVwIG0gb2xvZ3kgdG8gc3RlZXIgcGFpcndpc2UgY28tbG9jYXRpb25zIG9mIEdvb2dsZSBhIHRpb25zIGluIGEgcHJvZHVjdGlvbiBkYXRhY2VudGVyIGVudmlyb25tZW50LjwvcD48cD5Vc2luZyBCdWJibGUtVXAsIHdlIGFyZSBhYmxlIHRvIHByZWNpc2VseSBwcmVkaSBwZXJmb3JtYW5jZSBkZWdyYWRhdGlvbiBkdWUgdG8gYXJiaXRyYXJ5IGNvLWxvY2F0aTwvcD48cD5Hb29nbGUgYXBwbGljYXRpb25zIHdpdGggYXQgbW9zdCBhIDIuMiUgZXJyb3IgYW5kPC9wPjxwPmxlc3MgdGhhbiAxJS4gVG8gZXZhbHVhdGUgdXNpbmcgQnViYmxlLVVwIHRvIHN0ZWU8L3A+PHA+ZW5mb3JjZWQgY28tbG9jYXRpb25zIG9mIHByb2R1Y3Rpb24gd29ya2xvYWRzLCB3ZSBwPC9wPjxwPmEgc3R1ZHkgaW4gYSA1MDAtbWFjaGluZSBjbHVzdGVyIGFuZCBhcmUgYWJsZSB0byBpbmNyZWE8L3A+PHA+bWFjaGluZSB1dGlsaXphdGlvbiBpbiB0aGUgY2x1c3RlciBieSA1MCXigJM5MCUsIGRlcDwvcD48cD5vbiB0aGUgbGF0ZW5jeS1zZW5zaXRpdmUgYXBwbGljYXRpb25z4oCZIGFsbG93YWJsZSBRb1MgdDwvcD48cD5vbGQuPC9wPjxwPjIuIEJBQ0tHUk9VTkQgSW4gdGhpcyBzZWN0aW9uLCB3ZSBkZXNjcmliZSBob3cgbGFyZ2Utc2NhbGUgd2ViLXMgYXJlIHJ1biBpbiBtb2Rlcm4gZGF0YWNlbnRlcnMuIFdlIHRoZW4gZGlzY3VzcyBRbzwvcD48cD5jby1sb2NhdGlvbnMgaW4gcHJvZHVjdGlvbiBkYXRhY2VudGVycy48L3A+PHA+Mi4xIERhdGFjZW50ZXIgVGFzayBQbGFjZW1lbnQ8L3A+PHA+SW4gbW9kZXJuIHdhcmVob3VzZSBzY2FsZSBjb21wdXRlcnMsIGVhY2ggd2ViLXNlciBjb21wb3NlZCBvZiBvbmUgdG8gaHVuZHJlZHMgb2YgYXBwbGljYXRpb24gdGFza3MsIGFuIHRhc2sgcnVucyBvbiBhIHNpbmdsZSBtYWNoaW5lLiBBIHRhc2sgaXMgY29tcG9zZWQgYXBwbGljYXRpb24gYmluYXJ5LCBhc3NvY2lhdGVkIGRhdGEsIGFuZCBhIGNvbmZpZ3VyYXRpIHRoYXQgc3BlY2lmaWVzIHRoZSBtYWNoaW5lIGxldmVsIHJlc291cmNlcyByZXF1aXJlZC48L3A+PHA+SW5mZXJlbmNlPC9wPjxwPuW7tui/n+aVj+aEn+Wei+S7u+WKoeacjeWKoei0qOmHj+maj+aJsOW8uuW6pueahOWPmOWMluaQnOe0ouS7u+WKoeWcqOa3t+WQiOaJp+aXtueahOacjeWKoei0qOmHj+S4i+aetuWbvua3t+WQiOaJp+S4juacjeWKoei0qOmHj+S4i+mZjeS+i+Wmgu+8jCDku6Xov5DpobXmkJzntKLmnI3liqHnmoTmnI3liqHlmajml7blhoXnmoTlubPlnYfnqbrpl7LnjofkuLog44CC5a+55bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE6L+H5bqm5L+d5oqk5Luj5Lu35piC77yM5ZCM5pe25Lmf5piv5LiN5b+F6KaB55qE44CC5Yi25a6a5ZCI55CG55qE5re35ZCI5omn562W55Wl5Y+v5Lul5pyJ5pWI5o+Q5pyN5Yqh5Zmo6LWE5rqQ5Yip546HIOOAgjwvcD48cD7mt7flkIjmiafooYzmlbDmja7kuK3nmoTlupTpgJrluLjnlLHmlbDnmb7kuKrku7vliqHnu4TmiJDvvIzmr4/kuKrku7vliqHmnInlhbbljZXni6znmoTov5vliLbnqIvluo/vvIznm7jlhbPmlbDmja7vvIzku6U8L3A+PHA+5Y+K5Liq5aOw5piO5YW25omA6ZyA5rGC6LWE5rqQ55qE6YWN572u5Lu2IOOAgumFjee9ruS7tuiIrOWMheaLrOWFtumcgOimgeeahOaguOaVsOmHj++8jOWGheWtmCDvvIznoaznm5jnqbo8L3A+PHA+6Ze05ZKM5piv5ZCm6ZyA6KaB56aB5LiO5YW25LuW5Lu75Yqh5re35ZCI5omnIOOAgiDkuKrku7vliqHosIPluqbnmoTnroDljJbniYjmnKzlj6/op4Eg44CC6ZuG576k57qn5Yir55qE5Lu75Yqh6LCD5bqm5Zmo5pS25Yiw5Lu75Yqh5pe277yM6YCa6L+H57G75Ly86KOF566x6Zeu6aKY55qE566X5rOV5bCG5ZCE5Liq5Lu75Yqh5YiG6YWN6ZuG576k5YaF55qE5pyN5Yqh5Zmo5LiK6L+QIOOAguW9k+S7u+WKoeWIsOi+vuaMh+WumuacjeWKoeWZqOS4iuaXtu+8jOacjeWKoeWZqOe6p+WIq+eahOi1hOa6kOiwg+W6puWZqOWwhuS8muaOp+WItuS7u+WKoeeahOaJpyDjgILku7vliqHnmoTotYTmupDpnIDmsYLpgJrluLjnlLHnrqHnkIblkZjnsr48L3A+PHA+6YWN572u5Lul5ruh5YW25pyN5Yqh6LSo6YeP6KaB5rGC44CC56aB5re35ZCI5omn55qE5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5LiN5Y+v6YG/5YWN55qE5Lya5Y2g5pu05aSa55qE5pyN5Yqh5Zmo6LWE5rqQ77yM6L+b5a+86Ie06LWE5rqQ5Yip546H5LiL6ZmN44CC5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5Lil5qC855qE5pyN5Yqh6LSo6YeP6KaB5rGC77yM5L2/5b6X5oiR5Lus5Ly85LmO5b+F6aG75Zyo5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh6LSo6YeP5ZKM6LWE5rqQ5Yip546H5LmL6Ze05YGa5Ye66YCJ5oup44CC5LqL5a6e5piv77yM5bu26L+f5pWP5oSf5Z6L5Lu75Yqh54us5Y2g5pyN5Yqh5Zmo55qE562W55Wl6YCa5bi45piv5LiN5b+F6KaB55qE5bC9566h5YW25LuW5Lu75Yqh55qE5omn5Lya6ZmN5L2O5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh5oCn6IO977yM5L2G5bm25a6a5a+86Ie05YW26L+d5Y+N5pyN5Yqh6LSo6YeP6KaB5rGC44CC5Zu+IO+8iCDvvInooajkuKrmnaXmrYzmkJzntKLnmoTlhbPplK7nu4Tku7bnmoTmgKfog73vvIjku6Xlk43lupTlu7bov5/nmoTlgJLmlbDooagg77yJ6ZqP5ZCM5aSE55CG5Zmo5LiK5re35ZCI5omn55qE5YW25LuW5Lu75Yqh55qE5b2x5ZON55qE5Y+Y5YyW77yM5Y+v5Lul55yL5Ye65b2T5p2l5re35ZCI5omn5Lu75Yqh55qE5omw6L6D5L2O5pe277yM5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5oCn6IO95L6d54S25Y+v5ruh5pyN5Yqh6LSo6YeP6KaB5rGCIOOAguWbviDvvIgg77yJ5pi+5LqG6K+l5pCc57Si57uE5Lu25LiO5aSa56eN5YW35L2T5Lu75Yqh5re35ZCI5omnPC9wPjxwPuaXtuS6p+eahOaAp+iDveS4i+mZje+8jOWPr+S7peeci+WIsOivpeaQnOe0oue7hOS7tuS4juWcsOWbvuetieS7u+WKoea3t+WQiOaJp+aXtuS7jeiDvei+vuWIsOinhOWumueahOacjeWKoei0qOmHj++8mzwvcD48cD7lhbbkuI7lkYrnrYnku7vliqHmt7flkIjmiafml7bvvIzlsIbkuqfmmL7okZfnmoTmgKfog73kuIvpmY3vvIzkuJTov53lj43mnI3liqHotKjph4/opoHmsYLjgII8L3A+PHA+5ZCI55CG5Zyw5re35ZCI5omn5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5LiO5om55aSE55CG5Lu75Yqh77yM5L2/5om55aSE55CG5Lu75Yqh5pyJ5py65Lya5Yip5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5rKh5pyJPC9wPjxwPuWkn+WIqeeahOi1hOa6kO+8jOacieWIqeS6juaPkOaVtOS9k+i1hOa6kOWIqeeOh+OAgua3t+WQiOaJp+eahOS4quS4u+imgeaMkeaImOWcqOS6jumavuS7peehruWumuaJueWkhOeQhuS7u+WKoeWvueWFseS6q+i1hOa6kOS6p+W9seWTje+8jOWFtuWvueW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOaJsOabtOaYr+mavuS7pemihOa1i+OAguato+WboOS4uuWmguatpO+8jOWFs+S6jua3t+WQiOaJp+eahOeglOeptumAmuW4uOWFs+azqOWQnuWQkOmHj+eahOS7u+WKoeWSjOaJueWkhOeQhuS7u+WKoeeahOa3t+WQiCDjgII8L3A+PHA+5rCU5rOh5rWL6K+V77yIIO+8iTwvcD48cD7noa7lrprlu7bov5/mlY/mhJ/lnovku7vliqHlkozmibnlpITnkIbku7vliqHnmoTmt7flkIjmiafnrZbnlaXmmK/lm7Dpmr7nmoTjgILmibnlpITnkIbku7vliqHlr7nlu7bov5/mlY/mhJ/lnovku7vliqHkuqc8L3A+PHA+55qE5oCn6IO95b2x5ZON5b6I6Zq+5YeG56Gu6aKE5rWL77yM6L+Z5a+86Ie05LqG6YOo5YiG5bu26L+f5pWP5oSf5Z6L5bqU55u05o6l56aB5re35ZCI5omnIOOAguiLpeazleWvueWFtuW9seWTjeesrOmhteWFsemhtTwvcD48cD7ln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+Y2x1c3RlcjwvcD48cD5tYW5hZ2VyPC9wPjxwPi4uLjwvcD48cD5jb3JlMzwvcD48cD5zZXJ2ZXI8L3A+PHA+Y29yZTEgY29yZTJjb3JlNDwvcD48cD5sYXRlbmN5LXNlbnNpdGl2ZSBjb3JlMzwvcD48cD5zZXJ2ZXI8L3A+PHA+Y29yZTEgY29yZTJjb3JlNDwvcD48cD5iYXRjaCBiYXRjaCBjb3JlMzwvcD48cD5zZXJ2ZXI8L3A+PHA+Y29yZTEgY29yZTJjb3JlNDwvcD48cD5iYXRjaCBiYXRjaCBjb3JlMzwvcD48cD5zZXJ2ZXI8L3A+PHA+Y29yZTEgY29yZTJjb3JlNDwvcD48cD5iYXRjaCBiYXRjaCBjb3JlMzwvcD48cD5zZXJ2ZXI8L3A+PHA+Y29yZTEgY29yZTJjb3JlNDwvcD48cD5iYXRjaCBiYXRjaDwvcD48cD50YXNrczwvcD48cD4uLi48L3A+PHA+bGF0ZW5jeS1zZW5zaXRpdmU8L3A+PHA+Li4uPC9wPjxwPkZpZ3VyZSAzOiBUYXNrIHBsYWNlbWVudCBpbiBhIGNsdXN0ZXIuIFRoZSBjbHVzdGVyPC9wPjxwPm1hbmFnZXIgZG9lcyBub3QgY28tbG9jYXRlIGxhdGVuY3ktc2Vuc2l0aXZlIGFwcGxpLTwvcD48cD5jYXRpb25zIHdpdGggb3RoZXJzIHRvIHByb3RlY3QgdGhlaXIgUW9TIGZyb20gcGVyZm9yLTwvcD48cD5tYW5jZSBpbnRlcmZlcmVuY2UsIGNhdXNpbmcgbG93IG1hY2hpbmUgdXRpbGl6YXRpb24uPC9wPjxwPlRhc2sgcGxhY2VtZW50IGlzIGNvbmR1Y3RlZCBieSBhIGNsdXN0ZXItbGV2ZWwgbWFuYWdlciB0aGF0IGlzIHJlc3BvbnNpYmxlIGZvciBhIG51bWJlciBvZiBzZXJ2ZXJzLiBCYXNlZCBvbiB0aGUgcmUtPC9wPjxwPnNvdXJjZSByZXF1aXJlbWVudCwgdGhlIGNsdXN0ZXIgbWFuYWdlciB1c2VzIGFuIGFsZ29yaXRobSBzaW1pbGFyIHRvIGJpbi1wYWNraW5nIHRvIHBsYWNlIGVhY2ggdGFzayBpbiBhIGNsdXN0ZXIgb2YgbWEtPC9wPjxwPmNoaW5lcyBbMjVdLiBBZnRlciBhIHRhc2sgaXMgYXNzaWduZWQgYSBtYWNoaW5lLCBhIG1hY2hpbmU8L3A+PHA+bGV2ZWwgbWFuYWdlciAoaW4gdGhlIGZvcm0gb2YgYSBkZWFtb24gcnVubmluZyBpbiB1c2VyLTwvcD48cD5tb2RlKSB1c2VzIHJlc291cmNlIGNvbnRhaW5lcnMgWzFdIHRvIGFsbG9jYXRlIGFuZCBtYW5hZ2U8L3A+PHA+dGhlIHJlc291cmNlcyBiZWxvbmdpbmcgdG8gdGhlIHRhc2suIEZvciB0aGUgcmVtYWluZGVyIG9mIHRoaXMgd29yaywgd2UgdXNlIHRoZSB0ZXJtIGFwcGxpY2F0aW9uIHRvIHJlcHJlc2VudCB0aGUgcHJvLTwvcD48cD5ncmFtIGJpbmFyeSBmb3IgYSBnaXZlbiBjb21wb25lbnQgb2YgYSB3ZWItc2VydmljZSwgYW5kIGFwcGxpY2F0aW9uIHRhc2sgYXMgdGhpcyBiaW5hcnkgY291cGxlZCB3aXRoIGl0cyBleGVjdXRpb248L3A+PHA+Y29uZmlndXJhdGlvbiBmaWxlLjwvcD48cD4yLjIgUW9TIGFuZCBDby1sb2NhdGlvbjwvcD48cD4yLjIuMSBBcHBsaWNhdGlvbiBRb1M8L3A+PHA+QXMgbXVsdGljb3JlcyBiZWNvbWUgd2lkZWx5IGFkb3B0ZWQgaW4gZGF0YWNlbnRlcnMsIHRoZSBjbHVzdGVyIG1hbmFnZXIgY29uc29saWRhdGVzIG11bHRpcGxlIGRpc3BhcmF0ZSB0YXNrcyBvbiBhIHNpbmdsZSBzZXJ2ZXIgdG8gaW1wcm92ZSB0aGUgbWFjaGluZSB1dGlsaXphdGlvbi4gSG93ZXZlciw8L3A+PHA+dmFyaW91cyBhcHBsaWNhdGlvbiB0YXNrcyBpbiBhIGRhdGFjZW50ZXIgb2Z0ZW4gaGF2ZSBkaWZmZXJlbnQgcXVhbGl0eS1vZi1zZXJ2aWNlIChRb1MpIHByaW9yaXRpZXMuIFVzZXItZmFjaW5nIGFwcGxpY2F0aW9ucyBmb3Igd2ViIHNlYXJjaCwgbWFwcywgZW1haWwgYW5kIG90aGVyIGludGVybmV0IHNlcnZpY2VzIGFyZSBsYXRlbmN5LXNlbnNpdGl2ZSwgYW5kIGhhdmUgaGlnaCBRb1MgcHJpb3JpdGllcy4gQXBwbGljYS08L3A+PHA+dGlvbnMgc3VjaCBhcyBmaWxlIGJhY2t1cCwgb2ZmbGluZSBpbWFnZSBwcm9jZXNzaW5nLCBhbmQgdmlkZW8gY29tcHJlc3Npb24gYXJlIGJhdGNoIGFwcGxpY2F0aW9ucyB0aGF0IG9mdGVuIGhhdmUgbm8gUW9TIGNvbnN0cmFpbnRzLiBGb3IgdGhlc2UsIGxhdGVuY3kgaXMgbm90IGFzIGltcG9ydGFudC4gV2UgZGUtPC9wPjxwPmZpbmUgdGhlIFFvUyBvZiBhIGxhdGVuY3ktc2Vuc2l0aXZlIGFwcGxpY2F0aW9uIGluIHRlcm1zIG9mIHRoZSByZWxldmFudCBwZXJmb3JtYW5jZSBtZXRyaWMgc3BlY2lmaWVkIGluIGl0cyBpbnRlcm5hbCBzZXItPC9wPjxwPnZpY2UgbGV2ZWwgcmVxdWlyZW1lbnRzIChTTEFzKS4gRm9yIGV4YW1wbGUsIHRoZSBRb1Mgb2YgR29vZ2xl4oCZcyB3ZWIgc2VhcmNoIGlzIG1lYXN1cmVkIHVzaW5nIHF1ZXJ5IGxhdGVuY3kgYW5kPC9wPjxwPnF1ZXJpZXMtcGVyLXNlY29uZCwgaW4gY29udHJhc3QgdG8gQmluZ+KAmXMgWzE1LCAxOF0sIHdoaWNoIHVzZXM8L3A+PHA+dGhlIHF1YWxpdHkgb2Ygc2VhcmNoIHJlc3VsdHMgcHJvdmlkZWQuIE1vcmUgZGV0YWlscyBhbmQgZXgtPC9wPjxwPmFtcGxlcyBhcmUgcHJlc2VudGVkIGluIFNlY3Rpb24gNC48L3A+PHA+Mi4yLjIgUW9TIEZsZXhpYmlsaXR5PC9wPjxwPnRvbGVyYWJsZSBhbW91bnQgb2YgUW9TPC9wPjxwPmV4YW1wbGUsIGEgOTUlIFFvUyBwb2w8L3A+PHA+dG8gc2FjcmlmaWNlIDUlIG9mIHRoZSBRb1M8L3A+PHA+dXRpbGl6YXRpb24uIFRvIGVuZm9yY2UgdGg8L3A+PHA+ZGljdGlvbiBmb3IgUW9TIGRlZ3JhZGF0aTwvcD48cD4yLjIuMyBDby1sb2NhdGlvbjwvcD48cD5BIHNpbXBsaWZpZWQgaWxsdXN0cmF0aW9uIHNob3duIGluIEZpZ3VyZSAzLiBUaGUgYSBvcnkgcmVzb3VyY2VzIHNwZWNpZmllZCBpbiBjYXJlZnVsbHkgdHVuZWQgYnkgdGhlIGRldiBRb1MgcmVxdWlyZW1lbnRzLiBMYXRlbmMgbG9jYXRpb24gaW5hZHZlcnRlbnRseSBvY2MgbGVhZGluZyB0byB1bm5lY2Vzc2FyeSBvdjwvcD48cD51dGlsaXphdGlvbi48L3A+PHA+My4gVEhFIEJVQkJMRS08L3A+PHA+VGhlIGtleSBpbnNpZ2h0IG9mIEJ1YiBmb3JtYW5jZSBpbnRlcmZlcmVuY2Ugb2YgYzwvcD48cD5jb3VwbGVkIGludG8gdHdvIHN0ZXBzLCAxKTwvcD48cD50aW9uIHN1ZmZlcnMgZnJvbSBkaWZmZXJlbnQgbWVtb3J5IHN1YnN5c3RlbTsgYW5kPC9wPjxwPm1lbW9yeSBzdWJzeXN0ZW0gYW4gYXA8L3A+PHA+My4xIFR3byBTdGVwIE1ldGg8L3A+PHA+RmlndXJlIDQgaWxsdXN0cmF0ZXMgdGhlPC9wPjxwPnN0ZXBzIHRvIEJ1YmJsZS1VcCBhcmUsPC9wPjxwPjEuIEluIFN0ZXAgMSwgd2UgY2hhcmFjPC9wPjxwPmNhdGlvbiB0YXNrIHRvIHByZXNzIHRoaXMgc3RlcCwgd2UgdXNlIGEgY2EgdGhlIGJ1YmJsZSB0byBpdGVyYXRpIHN1cmUgYXBwbGllZCB0byB0aGUgbSBpbiB0aGUgc3Vic3lzdGVtKS48L3A+PHA+cHJlc3N1cmUg4oCcZGlhbOKAnSwgd2UgcCBjdXJ2ZSBmb3IgdGhlIGFwcGxpYyBwcmVzc3VyZSBvbiB0aGUgeC1hIGhvdyBlYWNoIGFwcGxpY2F0aW88L3A+PHA+Y3JlYXNlcy48L3A+PHA+Mi4gSW4gU3RlcCAyLCB3ZSBjaGFyYWM8L3A+PHA+YXBwbGljYXRpb24gdGFzayBpbiB0ZSBzdWJzeXN0ZW0uIFdlIGNhbGwgYnViYmxlIHNjb3JlLiBUbyBpZGVuIGNhdGlvbiwgd2UgdXNlIGEgcmVwIHBlcmZvcm1hbmNlIGlzIGFmZmVjIGEgc2NvcmUgZm9yIHRoZSBhcHBsaSBXaXRoIHRoZSBzZW5zaXRpdml0eSBjdXIgcGxpY2F0aW9uIHdlIGFyZSBhYmxlIHRvIGRlZ3JhZGF0aW9uIGZyb20gYXJiaXRyYXIgbm90ZSB0aGF0IHN0ZXAgb25lIG5lZWRzIHdob3NlIFFvUyBuZWVkcyB0byBiZSBlbiBhcHBsaWVkIHRvIHRoZSBhcHBsaWNhdGlvbjwvcD48cD50aW9u4oCZcyBRb1MuPC9wPjxwPjMuMiBNb2RlbGluZyBCdWI8L3A+PHA+5Zu+5pWw5o2u5Lit6ZuG576k57qn5Lu75Yqh6LCD5bqmPC9wPjxwPuWHhuehrumihOa1i++8jOaMh+Wumua3t+WQiOaJp+etlueVpeeahOWUr+mAlOW+hOWImeWPquiDveaYr+a1i+ivleS4jeWQjOeahOS7u+WKoea3t+WQiOaJp+eahOaViOaenOOAguWvuU48L3A+PHA+5Liq5Lu7PC9wPjxwPuWKoei/m+a1i+ivle+8jOWImemcgOimgU8oTjwvcD48cD4yPC9wPjxwPik8L3A+PHA+5qyh5a6e6aqM44CC5a+55LqO5pWw5o2u5Lit5oiQ55m+5LiK5Y2D55qE5bqU56iL5bqP5ZKM5YW26aKR57mB55qE5Y2H57qn5pu05paw77yM6L+Z56eN6Juu5rWL6K+V55qE5Luj5Lu35pi+54S25piv5rOV5o6l5Y+X55qE44CCPC9wPjxwPuetieaPkOWHuuS6huazoea1i+ivleeahOazleadpemihOa1i+a3t+WQiOaJp+S7u+WKoeS5i+mXtOebuOS6kueahOaAp+iDveW9seWTjSDjgIIg5rOh5rWL6K+V5bCG6aKE5rWL5re35ZCI5omn55qE5Lu75Yqh5LmL6Ze055qE55u45LqS5omw5YiG5Li65Lik6YOo5YiG77yMIOmDqOWIhuaYr+S7u+WKoeWPl+WFseS6q+WGheWtmOezu+e7n+WOi+WvvOiHtOeahOaAp+iDveS4i+mZje+8jDwvcD48cD7lj6bpg6jliIbkuLrlhbbmnKzlr7nlhbHkuqvlhoXlrZjns7vnu5/pgKDmiJDnmoTljosg77yM5aaC5Zu+5omAIOOAguesrOatpe+8jOmAmui/h+eyvuiuvuiuoeeahOazoe+8iOa1i+ivleS7u+WKoe+8ieadpea1i+ivleagh+S7u+WKoeWvueWGheWtmOezu+e7n+WOi+eahOeahOaVj+aEn+eoi+W6pu+8m+esrOatpemAmui/h+a1i+ivleagh+S7u+WKoeWvueazoemAoOaIkOeahOW9seWTjeadpemihOa1i+WFtuezu+e7n+mAoOaIkOeahOWOiyDjgILlvZPmt7flkIjmiaflr7zoh7TnmoTmgKfog73kuIvpmY3lj6/ku6XkvY7lu4nku6Pku7flh4bnoa7pooTmtYvml7bvvIzljbPlj6/pgJrov4fnsbvkvLzoo4XnrrHnmoTnrpfms5Xmib7liLDlhYXliIbliKnmnI3liqHlmajotYTmupDkuI3kuo7kvb/lu7bov5/mlY/mhJ/lnovku7vliqHov53lj43mnI3liqHotKjph4/ku6Pku7fnmoTmt7flkIjnrZbnlaXjgII8L3A+PHA+5rOh5rWL6K+V5Y+v5Lul5YeG56Gu55qE6aKE5rWL5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5Zyo5LiN5ZCM56iL5bqm6LWE5rqQ56ue5LqJ5p2h5Lu255qE5oCn6IO95LiL6ZmN77yM5bm25Lul5q2k5oiQ5Lu75Yqh5re35ZCI562W55Wl44CC5Lu75Yqh55qE5re35ZCI5omn5L2/5b6X5pyN5Yqh5Zmo55qE6LWE5rqQ5Yip546H5o+QIO+8jOeEtuWcqOaIkOa3t+WQiOetlueVpeaXtuW/hemhu+iAg+iZkeWIsOW7tui/n+aVj+aEn+Wei+S7u+WKoeacgOeahOi1hOa6kOmcgOaxguOAguW7tui/n+aVj+aEn+Wei+S7u+WKoemAmuW4uOWQkeaIt++8jOWFtui0n+i9veiZveWFt+acieWbuuWumueahOiuv+mXruaooeW8j++8jOS9huWFt+acieazlemihOa1i+eahOiuv+mXruWzsOOAgui/meagt+eahOW3ruW8guaEj+WRs+edgOW7tui/n+aVj+aEn+Wei+S7u+WKoeWcqOebuOW9k+aXtumXtOWGheW5tuayoeacieWFqOmDqOWIqemihOeVmeeahOi1hOa6kOOAguS7u+S9lemdmeaAgeeahOa3t+WQiOaJp+etlueVpeimgeS5iOi/h+S6juS/neWuiOKAlOKAlOWvvOiHtOi1hOa6kOWIqeeOh+S4jSDvvJvopoHkuYjov4fkuo7kuZDop4LigJTigJTlr7zoh7Tlu7bov5/mlY/mhJ/lnovku7vliqHov53lj43lhbbmnI3liqHotKjph4/opoHmsYIg44CCPC9wPjxwPuino+WGs+atpOmXrumimOeahOS4quWKnuazleaYr+S9v+WKqOaAgeeahOa3t+WQiOaJp+etlueVpe+8jOWcqOW6lOeoi+W6j+WzsOS4juS9juaXtuaJp+S4jeWQjOeahOa3t+WQiOetlueVpeOAguW9k+W7tui/n+aVj+aEn+Wei+S7u+WKoeWkhOS6juS9jui0n+i9veaXtu+8jOWwhuWFtuS4jui+g+WkmuWNoOWFseS6q+i1hOa6kOeahOaJueWkhOeQhuS7u+WKoea3t+WQiOaJpyDvvJvlvZPlu7bov5/mlY/mhJ/lnovku7vliqHnmoTotJ/ovb3kuIrljYfml7bvvIzlsIblhbHkuqvotYTmupDljaDnmoTmibnlpITnkIbku7vliqHov4Hnp7vlhbbku5bmnI3liqHlmajvvIzlubbosIPluqbovoPkvY7lhbHkuqvotYTmupDljaDnmoTmibnlpITnkIbku7vliqHlvZPliY3mnI3liqHlmajjgILlu7bov5/mlY/mhJ/lnovku7vliqHotJ/ovb3nmoTls7DpgJrluLjpmr7ku6XpooTmtYvvvIzkuJTmlbDmja7kuK3ku7vliqHovoM8L3A+PHA+55qE6L+Q5pe25pWw5o2u5oSP5ZGz552A5piC5pyN5Yqh5Zmo6Ze06L+B56e75Lu75Yqh55qE5Luj5Lu344CC5ZCM5pe277yM6L+B56e75Lu75Yqh5omA6ZyA55qE6K6h566X6IO9IOOAgee8k+WtmOWNoCDjgIE8L3A+PHA+57uc5bim5a695L2/5Lmf5Lya5a+56LWE5rqQ5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh6LSo6YeP6YCg5oiQ5Y6LIOOAguWPpuWklu+8jOWKqOaAgea3t+WQiOetlueVpei/mOWPr+iDveWtmOWcqOW3sui/m+iuoeeul+eahOi/m+W6pumavuS7peS/neWtmOeahOmXrumimOOAguWboOatpOmAmui/h+WKqOaAgeeahOa3t+WQiOaJp+etlueVpeadpeaPkOacjeWKoeWZqOi1hOa6kOWIqeeOh+W5tuS4jeWunumZheOAgjwvcD5kAgMPFgIeB1Zpc2libGVoZAIFDxYCHwEC/////w9kAgEPZBYKZg8VBQ0xMjA0MTY1MjBfMDAxOOWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4reW/g+i1hOa6kOiwg+W6pl/nrKwy6YOo5YiGATABMAQ4NTQwZAIBDxYCHwFmZAICDxUB7MMBPHA+PC9wPjxwPuWPpuS4quino+WGs+mdmeaAgea3t+WQiOaJp+etlueVpeeahOWKnuazleWImeaYr+aMieW7tui/n+aVj+aEn+Wei+WkhOWcqOS9juW8uuW6pui0n+i9veaXtueahOaAp+iDvemcgOaxguadpeehruWumuiDveS4juS5i+W5tuaJp+eahOaJueWkhOeQhuS7u+WKoeOAgui/meagt+eahOaJueWkhOeQhuS7u+WKoeWFt+acieabtOeahOi1hOa6kOmcgOaxgu+8jOWPr+S7peWcqOW7tui/n+aVj+aEn+Wei+S7u+WKoeS9jui0n+esrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puWbvuazoea1i+ivleazlei9veaXtuWFheWIhuWIqeacjeWKoeWZqOi1hOa6kO+8m+WcqOW7tui/n+aVj+aEn+Wei+S7u+WKoeW8uuW6pui0n+i9veaXtuW5tumcgOimgeeahOmHj+eahOacjeWKoeWZqOi1hOa6kOaXtu+8jOmAmui/h+i1hOa6kOmalOemu+eahOacuuWItuS/neivgeWFtuaAp+iDveOAgjwvcD48cD7otYTmupDpmpTnprvmioDmnK/mlY/mhJ/lnovku7vliqHkuI7mibnlpITnkIbku7vliqHmt7flkIjmiafml7bvvIzlhbHkuqvotYTmupDnmoTnm7jkupLmibDkvb/lvpfmiJHku6zpmr7ku6XmjqfliLbmibnlpITnkIbku7vliqHlr7nlu7bov5/mlY/mhJ/lnovku7vliqHnmoTlvbHlk43vvIzov5vpmr7ku6Xkv53or4HkuI3ov53lj43lu7bov5/mlY/mhJ/lnovku7vliqHnmoTmnI3liqHotKjph4/opoHmsYLjgIIg5Liq5YW45Z6L55qE5re35ZCI5omn55qE5Lu75Yqh5LmL6Ze05Zyo5YWx5Lqr6LWE5rqQ5LiK55u45LqS5omw55qE5L6L5piv5ZC16Ze555qE6YK75bGF6Zeu6aKYIO+8jOWNs+a3t+WQiOaJp+eahOS7u+WKoeWcqOafkOS4quaIluWkmuS4quWFseS6q+i1hOa6kOS4iui/m+S6hui/h+WkmueahOWNoCDjgILlm77kuK3vvIzok53nur/ooajlu7bov5/mlY/mhJ/lnovku7vliqHnmoTmgKfog73vvIznuqLnur/ooajmibnlpITnkIbku7vliqHnmoTmgKfog73jgILlj6/ku6XnnIvliLDvvIzlvZPmibnlpITnkIbku7vliqHkuI3lj5fpmZDliLblnLDljaDlhbHkuqvotYTmupDml7bvvIzlu7bov5/mlY/mhJ/lnovku7vliqHnmoTmgKfog73lsIblm6DmraTlh7rnjrDmmL7okZfkuIvpmY3jgILmibnlpITnkIbku7vliqHkuI3lhazlubPlkozkuI3lj5fmjqfliLbnmoTljaDlhbHkuqvotYTmupDlj6/og73mnaXlpJrkuKog44CCPC9wPjxwPuaJueWkhOeQhuS7u+WKoeWFt+acieW+iOeahOW5tuaAp++8jOWboOatpOS6p+S6humHj+eahOi/m+eoi+aIlue6v+eoi+W5tuaJp+W5tueUseatpOaKouWNoOmHj+eahOWkhOeQhuWZqOi/kOaXtumXtO+8mzwvcD48cD7mibnlpITnkIbku7vliqHkvb/op4TmqKHmlbDmja7pm4bkuJTpopHnuYHor7vlhpnvvIznlLHmraTljaDpg6jliIbnmoTlhbHkuqvnvJPlrZjlkozliqjmgIHpmo/mnLrlrZjlgqjorr/pl67luKblrr3vvIzkvb/lvpfmibnlpITnkIbku7vliqHnmoTnvJPlrZjlkb3kuK3njofpmY3kvY7lkozliqjmgIHpmo/mnLrlrZjlgqjlmajnmoTorr/pl67lu7bov5/kuIrljYfvvJs8L3A+PHA+5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5L2/55qE5Y2P6K6u5Zyo5qOA5rWL5Yiw57uc6Zi75aGe5pe25Lya5Li75Yqo6ZmN5L2O5bim5a695Y2gIO+8jOW9k+aJueWkhOeQhuS7u+WKoeS9vzwvcD48cD7nrYnmsqHmnInmtYHph4/mjqfliLbnmoTljY/orq7vvIzmibnlpITnkIbku7vliqHnmoTmtYHph4/kuI3lj5fpmZDliLbnmoTmjKTljovlu7bov5/mlY/mhJ/lnovku7vliqHnmoTnu5zluKblrr3jgII8L3A+PHA+5re35ZCI5omn5Lu75Yqh5Zyo5YWx5Lqr6LWE5rqQ5LiK55u45LqS5omw55qE6Zeu6aKY77yM5L2/5b6X5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5oCn6IO95LiL6ZmN5ZKM5Ye6546w5LiN56iz5a6a77yM5L+d6K+B5YW25pyN5Yqh6LSo6YeP5oiQ5Li66Zq+6aKY44CC5paw5Ye6546w55qE5Lqb6LWE5rqQ6ZqU56a75oqA5pyv5Y+v5Lul6K6p5oiR5Lus5Zyo5Y2V5Liq5pyN5Yqh5Zmo5Lit5Yqo5oCB5YiG6YWN5YWx5Lqr6LWE5rqQ5L2/5b6X5oiR5Lus6IO95aSf6YCa6L+H5ZCM5pe25Y2P6LCD5aSa56eN6LWE5rqQ55qE5YiG6YWN77yM5Zyo6YeH5pu05r+A6L+b55qE5re35ZCI5omn562W55Wl55qE5ZCM5pe277yM5pS55ZaE5re35ZCI5omn5a+55bu26L+f5pWP5oSf5Z6L5Lu75Yqh5pyN5Yqh6LSo6YeP55qE5b2x5ZON44CCPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puWbvuWQtemXueeahOmCu+Wxheiuoeeul+aguOW/g+aguOeahOWFseS6q+WvueW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoei0qOmHj+W9seWTjeW3qCDvvIzoi7HnibnlsJTlpITnkIblmajnmoTotoXnur/nqIvmioDmnK/kvb/lvpfpl67popjmm7TliqDlpI3mnYLljJbjgILmiJHku6zpgJrluLjkuI3lhYHorrjlu7bov5/mlY/mhJ/lnovku7vliqHlkozmibnlpITnkIbku7vliqHlhbHkuqvkuKrpgLvovpHmoLgg77yIIOS4qui2hee6v+eoi++8ie+8jOWboOS4uuWcqOWFseS6q+mAu+i+keaguOaXtu+8jOaTjeS9nOezu+e7n+WGheaguOeahOiwg+W6puS8muWinuWKoOWNs+S9v+avq+enkueahOW7tui/nyDjgILlj6blpJblvZPlkIzlsZ7kuKrniannkIbmoLjnmoTkuKTkuKrotoXnur/nqIvlkIzml7bmiaflu7bov5/mlY/mhJ/lnovku7vliqHlkozmibnlpITnkIbku7vliqHvvIzku5bku6zlsIblhbHkuqvmjIfku6TluKblrr3vvIwg57qn6YCf57yT5a2Y5ZKM6aG16KGo57yT5a2Y44CC5a6e6aqM6KGo5piO77yM5b2T5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5LiO5YW25LuW6K6h566X5a+G6ZuG5oiW6K6/5a2Y5a+G6ZuG55qE5Lu75Yqh5YWx5Lqr5ZCM54mp55CG5qC45pe277yI6L+Q5Zyo5LiN5ZCM6YC76L6R5YaF5qC45LiK77yJ77yM5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh6LSo6YeP5Lya5Ye6546w5pi+6JGX5LiL6ZmNIOOAgjwvcD48cD7pgJrov4fnmoTmoYbmnrbmiJHku6zlj6/ku6XlsIblu7bov5/mlY/mhJ/lnovku7vliqHlkozmibnlpITnkIbku7vliqHpmpTnprvlnKjkuI3lkIznmoTpgLvovpHmoLg8L3A+PHA+6ZuG5LiK44CC6ZqP552A5pyN5Yqh5Zmo55qE6YC76L6R6K6h566X5qC45pWw5aKe5aSa77yM6L+Z5qC355qE6LWE5rqQ6LCD5bqm5Lmf5pu05Li657uG57KS5bqm44CC6K6h566X5qC455qE5YiG6YWN5Y+v5Lul5Yqo5oCB6LCD6IqC77yM6LCD6IqC55qE6YCf5bqm5Y+W5Yaz5LqO5YaF5qC45Y+v5Lul5Zyo5aSa5b+r5pe26Ze05YaF5bCG5Lu75Yqh5LuO5Liq5qC46L+B56e75Yiw5Y+m5aSW5Liq5qC4PC9wPjxwPu+8jOi/memAmuW4uOWcqOavq+enkuW3puWPs+OAgjwvcD48cD7mnKvnuqfpq5jpgJ/nvJPlrZjlkIzlpITnkIblmajmjqXkuIrnmoTmoLjlhbHkuqvmnKvnuqfpgJ/nvJPlrZjjgILlpJrkuKrnoJTnqbbooajmmI7lhbHkuqvmnKvnuqfpgJ/nvJPlrZjkuK3kuI3lj5fmjqfliLbnmoTmibDkvJrkuKXph43lvbHlk43mt7flkIjmiafku7vliqHnmoTmgKfog70g44CC5re35ZCI5omn5Lu75Yqh5Zyo5pyr57qn6YCf57yT5a2Y5LiK5LiN5Y+X5o6n5Yi255qE5omw5piv5Liq5YW45Z6L55qE5ZC16Ze555qE6YK75bGF6Zeu6aKY77yM5aaC5Zu+IOOAguWbviDvvIgg77yJ5Lit77yM5om55aSE55CG5Lu75Yqh5pyJ6aKR546H55qE5pWw5o2u6K+75Y+W6ZyA5rGC77yM5Zyo5rKh5pyJ5pyr57qn6YCf57yT5a2Y6ZqU56a75pe277yM5om55aSE55CG5Lu75Yqh5Y2g5LqG6YeP55qE57yT5a2Y5a656YeP44CC5a+55bu26L+f5pWP5oSf5Z6L5Lu75Yqh5p2l6K+077yM5bC9566h6YCa6L+H6K6h566X5qC46ZqU56a75oqA5pyv6I635b6X5LqG6L6D55qE6K6h566X5qC46LWE5rqQ77yM5YW25a6e6ZmF5Y+v55qE57yT5a2Y5Y205Lil6YeN5L2O5LqO6ZyA5rGC77yM5byV6LW357yT5a2Y5ZG95Lit546H55qE5bCG5LiL6ZmN77yM5pW05L2T5oCn6IO95Lmf5bCG5LiL6ZmN44CC5b2T5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5aSE5LqO6LSf6L2954q25oCB5pe277yM6L275b6u55qE55u45LqS5omw5Lya5byV6LW35beo55qE5bu26L+fIO+8jOWboOatpOacq+e6p+mAn+e8k+WtmOeahOaJsOWPr+iDvemAoOaIkOW7tui/n+aVj+aEn+Wei+S7u+WKoei/neWPjeacjeWKoei0qOmHj+imgeaxguOAgjwvcD48cD7mt7flkIjmiafku7vliqHmiqLljaDmnKvnuqfpgJ/nvJPlrZjnmoTpl67popjnm7Tms5XmnInmlYjop6PlhrPvvIznm7TliLDov5HmnJ/noazku7bmjIHnmoTotYTmupDnrqHnkIbmioDmnK/nmoTlh7rnjrDjgILoi7HnibnlsJTlvJXnmoTnvJPlrZjliIbphY3mioDmnK/vvIgg77yJ5Z+65LqO56Gs5Lu25a6e546w5LqG56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5om55aSE55CG5Lu75Yqh6L+H5aSa5Y2g57yT5a2Y57yT5a2Y5YiG6YWN5oqA5pyv6ZqU56a757yT5a2Y5L2/5Zu+5pyr57qn6YCf57yT5a2Y5LiK55qE55u45LqS5omw5pyr57qn6YCf57yT5a2Y5oyJ6Lev5YiG6YWN566h55CGIOOAgue8k+WtmOWIhumFjeaKgOacr+Wwhuacq+e6p+e8k+WtmOaMiee7hOWFs+iBlOi3r+aVsOWIkuWIhuaIkOabtOeahOe8k+WtmOmbhuOAguW9k+aguOiiq+WIhumFjee7meafkOe8k+WtmOmbhuWQju+8jOWPr+S7peWcqOe8k+WtmOS7u+S9leS9jee9ruWRveS4re+8jOS9huaWsOivu+WPlueahOaVsOaNruWPquiDveWGmeWFtuiiq+WIhumFjeeahOmbhuS5i+S4reOAgumAmui/h+e8k+WtmOWIhumFjeaIkeS7rOWPr+S7peS4uuW7tui/n+aVj+aEn+Wei+S7u+WKoeWSjOaJueWkhOeQhuS7u+WKoeWIhumFjeS4jeebuOmHjeWPoOeahOacq+e6p+mAn+e8k+WtmOS7pemZkOWItuaJueWkhOeQhuS7u+WKoeWcqOacq+e6p+e8k+WtmOWkhOWvueW7tui/n+aVj+aEn+Wei+S7u+WKoeS6p+eahOWOiyDjgILljbPkvb/mmK/lsIbmibnlpITnkIbku7vliqHkuI7lj6rlhbPms6jlkJ7lkJDph4/nmoTku7vliqHmt7flkIjmiafml7bvvIzpgJrov4fnoazku7bmiJbova/ku7bmioDmnK/liqjmgIHliIbphY3mnKvnuqfpgJ/nvJPlrZjkuZ/mmK/ooqvmma7pgY3lgY/lpb3nmoTlgZrms5Ug44CCPC9wPjxwPuaUueWPmOe8k+WtmOWIhumFjeWPr+S7pemAmui/h+WGmeeJueWumuWvhOWtmOWZqO+8iCDvvInliqjmgIHlrp7njrDlubblnKjlnKjmlbDmr6vnp5LlhoXmlYjvvIw8L3A+PHA+5YW257KS5bqm6YCa5bi45Zyo5pyr57qn6YCf57yT5a2Y55qE5bem5Y+zIOOAgiDlhoXmoLjotbfpgJrov4fomZrmi5/ku7bns7vnu5/kuZ/lrp7njrDkuoblr7nnvJPlrZjliIbphY3mioDmnK/nmoTmjIHjgII8L3A+PHA+6YCa6L+H57yT5a2Y5YiG6YWN5oqA5pyv77yM5oiR5Lus5Y+v5Lul5a6e546w5re35ZCI5omn5Lu75Yqh6Ze05pyr57qn6YCf57yT5a2Y6LWE5rqQ55qE6ZqU56a744CC5Zu+IO+8iCDvvInkuK3vvIzpgJrov4fnvJPlrZjliIbphY3mioDmnK/vvIzlu7bov5/mlY/mhJ/lnovku7vliqHooqvliIbphY3kuI7kuYvorqHnrpfmoLjotYTmupDmiJDkvovnmoTmnKvnuqfpgJ/nvJPlrZjlrrnph4/vvIzpgb/lhY3kuobmnaU8L3A+PHA+5om55aSE55CG5Lu75Yqh55qE5omw5Lul6I635b6X56iz5a6a55qE5pyN5Yqh5oCn6IO944CC5Zu+5pi+5Y6L57yp5Lu75Yqh5LiO5ZCE56eN5Lu75Yqh5re35ZCI5omn5pe277yM57yT5a2Y5YiG6YWN5oqA5pyv77yIIO+8ieeahOS9v+WvueWFtuaAp+iDveeahOeos+WumuS9nCDjgILlj6/ku6XnnIvliLDlr7nmnaXpg6jliIbkuqfovoPnvJPlrZjljovnmoTlupTnmoTmibDmlY/mhJ/vvJvlkIzml7bov5jog73nnIvliLDvvIzlkIjnkIbnmoTpmpTnprvkuI3lkIzku7vliqHlr7nmnKvnuqfpgJ/nvJPlrZjnmoTlhbHkuqvvvIjlrp7pqozkuK3kuLrliIbphY3nmoTmnKvnuqfpgJ/nvJPlrZjvvInvvIzkvb/lvpfku7vliqHlnKjmt7flkIjmiafmnaHku7bkuIvln7rmnKzkv53mjIHkuI7ljZXni6zmiafml7boh7TnmoTmgKfog73jgII8L3A+PHA+5Yqo5oCB6ZqP5py65a2Y5YKo5Zmo6K6/6Zeu5bim5a695pWw5o2u5Lit55qE6YOo5YiG55qE5Lu75Yqh77yMIOiuuuaYr+W7tui/n+aVj+aEn+S7u+WKoeaIluaJueWkhOeQhuS7u+WKoe+8jOmDvei/kOWcqOi+g+eahOaVsOaNrumbhuS5i+S4iu+8jDwvcD48cD7ms5Xovb3kuIrpgJ/nvJPlrZjjgILlm6DmraTvvIzov5nkupvku7vliqHlnKjmiafml7bpg73lsIbljaDliqjmgIHpmo/mnLrlrZjlgqjlmajnmoTorr/pl67luKblrr3vvIzkuJTlr7nmt7flkIjmiac8L3A+PHA+55qE5Lu75Yqh6K6/6Zeu5Yqo5oCB6ZqP5py65a2Y5YKo5Lqn5omw44CC5b2T5om55aSE55CG5Lu75Yqh55qE5pyr57qn6YCf57yT5a2Y5L2/5Y+X6ZmQ5ZCO77yM5YW25pyr57qn57yT5a2Y55qE5ZG95Lit546H5Lmf5Lya6ZmN5L2O77yM5a+86Ie05YW25a+55Yqo5oCB6ZqP5py65a2Y5YKo55qE6K6/6Zeu5aKe5Yqg5bm25Y2g5pu05aSa55qE6K6/5a2Y5bim5a6944CC5om55aSE55CG5Lu75Yqh5Y2g5pu055qE5Yqo5oCB6ZqP5py65a2Y5YKo5Zmo6K6/6Zeu5bim5a695oSP5ZGz552A5b2T5bu26L+f5pWP5oSf5Z6L5bqU5YaF5a2Y6K+75YaZ55qE5Luj5Lu35Y2HIO+8jOi/m+WPr+iDveWvvOiHtOWFtui/neWPjeacjeWKoei0qOmHj+imgeaxguOAguWboOatpOWKqOaAgeaOp+WItuaJueWkhOeQhuS7u+WKoeeahOWKqOaAgemaj+acuuWtmOWCqOWZqOW4puWuveWNoOacieWIqeS6juWHj+i1hOa6kOaVj+aEn+Wei+S7u+WKoeivu+WGmeWGheesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puWbvua3t+WQiOaJp+aXtueahOaAp+iDveS4i+mZjeWtmOaAp+iDveWPl+WIsOeahOaJsOOAgjwvcD48cD7lt7LmnInph4/nmoTnoJTnqbboh7Tkuo7op6PlhrPmt7flkIjmiafku7vliqHnmoTliqjmgIHpmo/mnLrlrZjlgqjorr/pl67kuIrnmoTnm7jkupLmibAg44CC5pyA5paw55qE6Iux54m55bCU5aSE55CG5Zmo5byV5LqG5YaF5a2Y5bim5a695YiG6YWN77yIIO+8ieaKgOacr+WSjOWGheWtmOW4puWuveebkeaOpzwvcD48cD7vvIgg77yJ5oqA5pyvIOOAguWGheWtmOWIhumFjeaKgOacr+S7heWcqOmDqOWIhuaWsOWkhOeQhuWZqOWPryDvvIwg6YOo5YiG5aSE55CG5Zmo56Gs5Lu25LuF5oyB5YaF5a2Y5bim5a6955uR5o6nIOOAguW5uOi/kOeahOaYr++8jOWfuuS6juehrOS7tuS4lOeykuW6puS4uuWNleS4quaguOeahOWGheWtmOW4puWuveebkeaOp+mFjeWQiOWKqOaAgeeahOiuoeeul+aguOWIhumFjeaKgOacr++8jOaIkeS7rOiDveWkn+eyl+eykuW6pueahOiwg+aOp+aJueWkhOeQhuS7u+WKoeWvueWKqOaAgemaj+acuuWtmOWCqOWZqOiuv+mXruW4puWuvSDjgILlvZPnm5HmtYvliLDmibnlpITnkIbku7vliqHov4flpJrljaDlhoXlrZjorr/pl67luKblrr3lu7bov5/mlY/mhJ/lnovku7vliqHlj5fpmZDkuI7mraTml7bvvIzlj6/ku6XpgJrov4flh4/lsJHkuLrlhbbliIbphY3nmoTorqHnrpfmoLjku6XpmY3kvY7lhbbluKblrr3ljaAg44CC5bC9566h5aaC5q2k77yM57y65bCR56Gs5Lu25oyB55qE5a+55Yqo5oCB6ZqP5py65a2Y5Y+W5Zmo6K6/6Zeu5bim5a6955qE55u05o6l6LCD5o6n6ZmQ5Yi25LqG5Zyo5re35ZCI5omnPC9wPjxwPuaXtuS/neivgeW7tui/n+aVj+aEn+Wei+S7u+WKoeacjeWKoei0qOmHj+eahOiDveWSjOaViOeOh+OAgjwvcD48cD7nvZHnu5zluKblrr3mlbDmja7kuK3lkJHlpJbmianlsZXvvIgg77yJ55qE5bqU56iL5bqP5Lya5Lqn57uc5rWB6YeP44CC6K645aSa5pWw5o2u5Lit5L2/5Liw5a+M55qE5ouT5omR5ZKMPC9wPjxwPuWkn+eahOetieWIhuW4puWuveadpemBv+WFjee7k+aehOS4reeahOi3r+eUseaLpeWhniDjgILpgJrluLjlu7bov5/mlY/mhJ/lnovku7vliqHlj5Hlh7rnmoTmlbDmja7ljIXovoMg77yM5om55aSE55CG5Lu75Yqh5Y+R5Ye655qE5pWw5o2u5YyF55u45b6I5aSa44CC5Z+65LqO5q2k54m55b6B77yM5Lmf5pyJ57uc5Y2P6K6u6YCa6L+H5LyY5YWI5aSE55CG5pWw5o2u5YyF5p2l5o+Q5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE57uc5oCn6IO9IOOAgjwvcD48cD7lnKjljZXmnI3liqHlmajlhoXpg6jvvIzmibnlpITnkIbku7vliqHlnKjlj5Hlh7rlkozmlLblj5bmlbDmja7ljIXml7bpg73lj6/og73lvbHlk43lu7bov5/mlY/mhJ/lnovku7vliqHjgILlpoLmnpzmibnlpITnrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqbnkIbku7vliqHlvJXotbfnu5zov57mjqXmjqXmlLbmi6XloZ7vvIzliJnlj6/ku6XpgJrov4flhoXmoLjpmLvloZ7lhbbmiacg77yM55u05Yiw57uc5Y2P6K6u55qE5rWB6YeP5o6n5Yi25Y+R5oyl5L2cIOOAgjwvcD48cD7lvZPnu5zov57mjqXnmoTlj5Hlh7rnq6/mi6XloZ7ml7bvvIzlj6/ku6XpgJrov4fns7vnu5/mj5DkvpvnmoTmtYHph4/mjqfliLbvvIwg5aaC5Lit55qE5bim5a695pyN5Yqh6LSo6YeP5L+d6K+BPC9wPjxwPu+8iCDvvInvvIzmnaXkvJjlhYjlpITnkIblu7bov5/mlY/mhJ/lnovku7vliqHkuqfnmoTmtYHph48g44CCPC9wPjxwPueDreWKn+eOh+eDreWKn+eOh+aYr+S7u+WKoeWcqOa3t+WQiOaJp+aXtuebuOS6kuW9seWTjeeahOWPpuWboOe0oOOAgiDkuY7miYDmnInnjrDlnKjlpJrmoLjlpITnkIblmajpg73lrZjlnKjmn5Dnp43mnLrliLbnmoTotoXpopHvvIzkvovlpoLoi7HnibnlsJTnmoTnnb/popHliqDpgJ/mioDmnK/vvIgg77yJ5ZKM55qE5Yqo5oCB6LaF6aKR5oqA5pyv77yIIO+8ieOAgui/meS6m+aKgOacr+S9v+W+l+WkhOeQhuWZqOWcqOS4jei2heWHuuaAu+S9k+iuvuiuoeeDreWKn+eOh+aXtuS9v+afkOS6m+iuoeeul+aguOi/kOWcqOabtOeahOmikeeOh+S7peWMuemFjeeerOaXtuWinueahOiuoeeul+WOizwvcD48cD7jgILlj5fmgLvkvZPorr7orqHng63lip/njofnmoTpmZDliLbvvIzlu7bov5/mlY/mhJ/lnovku7vliqHmiYDlnKjnmoTmoLjnmoTml7bpkp/popHnjoflubbkuI3lj6rlj5blhrPkuo7lu7bov5/mlY/mhJ/lnovku7vliqHnmoTotJ/ovb3lvLrluqbvvIzlkIzml7bkuZ/lj5blhrPkuo7lkIzlpITnkIblmajmjqXkuIrnmoTov5DmibnlpITnkIbku7vliqHnmoTlvLrluqbjgILlvZPmt7flkIjmiafnmoTmibnlpITnkIbku7vliqHnmoTlvLrluqbov5Dkvb/lvpflhbborqHnrpfmoLjplb/ml7bpl7TlpITkuo7og73ogJfnirbmgIHml7bvvIzlpITnkIblmajlsIbkuI3lvpfkuI3pmY3kvY7lhbbku5bmoLjnmoTml7bpkp/popHnjofku6Xkv53or4HmgLvnmoTng63lip/njofkuI3otoXov4forr7orqHpmZDliLbjgILlj6/ku6Xmg7PosaHvvIzov5nmoLfnmoTlvbHlk43mnInlj6/og73lr7zoh7TlkIzmjqXkuIrov5Dlu7bov5/mlY/mhJ/lnovku7vliqHnmoTmoLjmgKfog73nqoHnhLbkuIvpmY3jgII8L3A+PHA+6L+Z56eN5omw5Y+v5Lul6YCa6L+H5a+55q+P5qC46L+b5Yqo5oCB55S15Y6L5ZKM5pe26ZKf6aKR546H6LCD5pW077yIPC9wPjxwPu+8ieadpemZjeS9juOAgumAmui/h+aOp+WItui/kOaJueWkhOeQhuS7u+WKoeeahOaguOeahOeUteWOi+WSjOaXtumSn+mikeeOh++8jOaIkeS7rOWPr+S7peacieaViOS/neivgei/kOW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOaguOS/neaMgeeos+WumueahOaAp+iDve+8jOeUmuS/neivgeWcqOi0n+i9veeqgeeEtuS4iuWNh+aXtu+8jOaciei2hemikeS7peaPkOaAp+iDveeahOepuumXtOOAgjwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+56ys5LqM56ug5by65YyW5a2m5Lmg5pa55rOVPC9wPjxwPuW7tui/n+aVj+aEn+Wei+S7u+WKoeWSjOaJueWkhOeQhuS7u+WKoeeahOa3t+WQiOaJp+iDveaYvuiRl+aPkOacjeWKoeWZqOeahOi1hOa6kOWIqeeOh+OAgiDms6HmtYvor5XnrYnms5XkuZ/kvb/lvpfmiJHku6zog73lpJ/ku6Xlj6/mjqXlj5fnmoTku6Pku7fnoa7lrprlkIjpgILnmoTmt7flkIjnrZbnlaXjgILlgJ/liqnkuIrmj5DliLDnmoTln7rkuo7noazku7bmiJbova/ku7bnmoTotYTmupDpmpTnprvms5XvvIzlu7bov5/mlY/mhJ/lnovku7vliqHnmoTmnI3liqHotKjph4/lj6/ku6XlvpfliLDmnInmlYjkv53or4HjgILnhLYg77yM5a+55re35ZCI5omn5Lu75Yqh5L2/6Z2Z5oCB55qE6LWE5rqQ5YiG6YWN5qGI5rOV5YWF5YiG5b6X5Yip5pyN5Yqh5Zmo6LWE5rqQ5Lu75L2V55qE6Z2Z5oCB55qE6LWE5rqQ5YiG6YWN6KaB5LmI6L+H5LqO5L+d5a6I77yM5a+86Ie06LWE5rqQ5Yip546H5LiNIO+8m+imgeS5iOi/h+S6juS5kOingu+8jOWvvOiHtOW7tui/n+aVj+aEn+Wei+S7u+WKoei/neWPjeWFtuacjeWKoei0qOmHj+imgeaxguWKqOaAgei1hOa6kOiwg+W6pueahOWKqOacuuW9k+S4pOS4quaIluWkmuS4quS7u+WKoeW5tuaJp+aXtu+8jOS7u+WKoeS5i+mXtOernuS6ieWFseS6q+eahOi1hOa6kOOAguehrOS7tuWSjOi9r+S7tuS4iueahOi1hOa6kOmalOemu+aKgOacr+S9v+W+l+aIkeS7rOiDveWkn+WcqOWumueoi+W6puS4iuaOp+WItui/meenjeernuS6ie+8jOS7peWHj+WwkeS4jeWQjOS7u+WKoeS5i+mXtOeahOebuOS6kuW9seWTjeOAguacrOiKguWIhuaekOa3t+WQiOaJp+S4reWtmOWcqOeahOS4u+imgei1hOa6kOernuS6ie+8jOS7peWPiui/m+WKqOaAgei1hOa6kOeuoeeQhueahOWKqOacuuOAgjwvcD48cD7lpITnkIblmajmoLjlv4PljZXkuKrmnI3liqHlmajkuK3mnIDkuLvopoHnmoTlhbHkuqvotYTmupDmmK/kuKrmiJblpJrkuKrlpITnkIblmajmjqXkuK3nmoTlpITnkIblmajmoLgg44CC5oiR5Lus5LiN6IO9566A5Y2V55qE6YCa6L+H562J5YW35bCG6K6h566X5qC45oyJ57uf6K6h5a2m5oyH5qCH6Z2Z5oCB5Zyw5YiG6YWN57uZ5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5ZKM5om55aSE55CG5Lu75Yqh44CC5b2T5bu26L+f5pWP5oSf5Z6L5Lu75Yqh77yM5L6L5aaC5pCc57Si5byV5pOO77yM6L6+5Yiw5ZCe5ZCQ6YeP5bOw5pe277yM6ZyA6KaB5omA5pyJ5Y+v55qE5qC45p2l5ruh6LSf6L296ZyA5rGC5Lul6YG/5YWN6L+d5Y+N5pyN5Yqh6LSo6YeP6KaB5rGC44CC5LuF5LuF57uZ5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5YiG6YWN5pu055qE6L+b56iL6LCD5bqm5LyY5YWI57qn5bm25LiN6IO96Kej5Yaz6Zeu6aKY44CC5L6L5aaC57O757uf55qE5a6M5YWo5YWs5bmz6LCD5bqm5Zmo77yIIO+8ieWcqOWGheeahOW4uOingeiwg+W6puWZqOeUseS6jueul+azleeahOe8uumZt++8jOWcqOW7tui/n+aVj+aEn+Wei+S7u+WKoeWSjOaJueWkhOeQhuS7u+WKoea3t+WQiOaJp+aXtuW4uOW4uOWvvOiHtOW7tui/n+aVj+aEn+Wei+S7u+WKoei/neWPjeacjeWKoei0qOmHj+imgeaxgiDjgILlrp7ml7bosIPluqbnrpfms5XvvIzkvovlpoLnmoTlubbkuI3kv53lrZjlt7LlrozmiJDnmoTov5DnrpfvvIzlr7zoh7Tns7vnu5/otYTmupDlrp7pmYXliKnnjofkuIvpmY3jgII8L3A+PHA+5pyr57qn6auY6YCf57yT5a2Y5b2T5re35ZCI5omn55qE5Lu75Yqh5Lit5ZCr5pyJ5ZCR5oi355qE5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5pe277yM5pyr57qn6YCf57yT5a2Y55qE5Yqo5oCB566h55CG5pu05Yqg6YeN6KaB44CCPC9wPjxwPuW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOe8k+WtmOWNoOmaj+edgOWFtui0n+i9veW8uuW6pueahOWPmOWMluS6p+aUueWPmCDvvIzkuI7mraTlkIzml7bvvIzlhbblr7nmibnlpITnkIbku7vliqHpgJrov4flhbHkuqvmnKvnuqfpgJ/nvJPlrZjlvJXotbfnmoTmibDnmoTmlY/mhJ/nqIvluqbvvIzkuZ/lm6DnmoTotJ/ovb3lvLrluqbkuZ/mnInmiYDkuI3lkIzjgILlvZPlu7bov5/mlY/mhJ/lnovku7vliqHlpITkuo7otJ/ovb3nirbmgIHml7bvvIzovbvlvq7nmoTnm7jkupLmibDkvJrlvJXotbflt6jnmoTlu7bov58g77yM5L6L5aaC55qE5py65Zmo5a2m5Lmg5Lit55qE6IGa57G75Lu75YqhPC9wPjxwPu+8iCDvvInlnKjotJ/ovb3lt6blj7Pml7bln7rmnKzkuI3lj5fmnaXmnKvnuqfpgJ/nvJPlrZjljovnmoTlvbHlk43vvIzkvYblnKjmm7TnmoTotJ/ovb3lvLrluqbml7blr7nlhbbmibDliIbmlY/mhJ8g44CCPC9wPjxwPui/h+mHj+mZkOWItuaJueWkhOeQhuS7u+WKoeWIqeacq+e6p+mAn+e8k+WtmOW5tuS4jeiDveacieaViOS/neivgeW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoeaJpyDvvIzkuZ/kuI3lrprliKnkuo7mj5DmnI3liqHlmajnmoTotYTmupDliKnnjofjgIIg5Lqb5om55aSE55CG5Lu75Yqh5a+55pyr57qn6YCf57yT5a2Y5Y+Y5YyW5pWP5oSf77yM5b2T5Y+v57yT5a2Y5YeP5bCR77yM5YW257yT5a2Y5LiN5ZG95Lit546H5Y+v6IO96L+F6YCf5Y2HIO+8jOWvvOiHtOWFtuWvueWKqOaAgemaj+acuuWtmOWCqOeahOiuv+mXruasoeaVsOS4iuWNh++8jOWkhOeQhuWZqOWwhuiKsei0ueabtOWkmuaXtumXtOetieW+heaVsOaNrueahOi+k+i+k+WHuu+8jOWvvOiHtOaJueWkhOeQhuS7u+WKoeaAp+iDvemZjeS9ju+8jOacjeWKoeWZqOi1hOa6kOWunumZheWIqeeOh+mZjeS9juOAguabtOezn+ezleeahOaYr++8jOaJueWkhOeQhuS7u+WKoeeahOe8k+WtmOS4jeWRveS4reeOh+S4iuWNh+WQjOaXtui/mOWwhuS9v+WFtuWNoOabtOWkmuiuv+WtmOW4puWuve+8jOmZjeS9juW7tui/n+aVj+aEn+Wei+S7u+WKoeiuv+mXruWKqOaAgemaj+acuuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puWtmOWCqOWZqOeahOaAp+iDve+8jOS7juW9seWTjeWFtuacjeWKoei0qOmHj+OAgumAmui/h+iLseeJueWwlOaPkOS+m+eahOWGheWtmOW4puWuveebkeaOp+aKgOacr++8iCDvvInlkozlhoXlrZjluKblrr3liIbphY3mioDmnK/vvIgg77yJ5Y+v5Lul5YeP6L275q2k6Zeu6aKY55qE5b2x5ZON77yM54S25YmN5LuF5pyJ5bCR6YeP5pyA5paw55qE5aSE55CG5Zmo56Gs5Lu25oyB5q2k5oqA5pyv44CCPC9wPjxwPuW9k+a3t+WQiOaJp+eahOS7u+WKoeS4reWMheWQq+WQkeaIt+eahOW7tui/n+aVj+aEn+Wei+S7u+WKoeaXtu+8jOW7tui/n+aVj+aEn+Wei+S7u+WKoeWvueacq+e6p+mAn+e8k+WtmOWNoOmaj+i0n+i9veW8uuW6pueahOWKqOaAgeWPmOWMlu+8jOWFtuWkhOS6jui0n+i9veeKtuaAgeaXtuWvueacq+e6p+mAn+e8k+WtmOWOi+eahOaVj+aEn+eoi+W6puWSjOWkmuenjeWFseS6q+i1hOa6kOWNoOeahOebuOS6kuaJsO+8jOS9k+eOsOWHuuWKqOaAgeWIhumFjeacq+e6p+mAn+e8k+WtmOS7pea7oeS4jeWQjOi0n+i9veaXtueahOi1hOa6kOmcgOaxgueahOW/heimgeaAp+S4juehruWumuWQiOeQhuWKqOaAgeWIhumFjeacq+e6p+mAn+e8k+WtmOetlueVpeeahOmavuW6puOAgjwvcD48cD7nvZHnu5zluKblrr3mlbDmja7kuK3nmoTlnovlupTnqIvluo/kuLvopoHmmK/pgJrov4flkJHlpJbmianlsZXvvIgg77yJ6L6+5Yiw5YW26KeE5qih77yM5Zug5q2k5pyN5Yqh5Zmo5LmL6Ze055qE57uc6L+e5o6l5oCn6IO95Lmf5YWz6YeN6KaB44CC5Zug5Li65bu26L+f5pWP5oSf5Z6L5Lu75Yqh5Lqn55qE57uc5rWB6YeP6ZqP6LSf6L295by65bqm5Y+Y5YyW77yMIOe7nOW4puWuveeahOeuoeeQhuS5n+W6lOWKqOaAgei/myDjgILpnZnmgIHnmoTkvJjlhYjnuqforr7nva7kvJrlr7zoh7Tnu5zov57mjqXnmoTkvY7liKnnjoflkozmibnlpITnkIbku7vliqHnmoTppaXppb/vvIgg77yJIOOAguWvuTwvcD48cD7nu5zluKblrr3nmoTliqjmgIHnrqHnkIbkuZ/lj6/ku6Xlu7bkvLjlr7nlm7rmgIHlrZjlgqjlmajvvIgg77yJ6K6/6Zeu5bim5a6955qE566h55CG5LiKIOOAgjwvcD48cD7ng63lip/njoflm6DlpITnkIblmajmgLvkvZPng63orr7orqHlip/ogJfvvIgg77yJ6ZmQ5Yi277yM5ZCM5aSE55CG5Zmo5o6l5LiK55qE5qC45LmL6Ze05Lya55u45LqS5b2x5ZON5YW25pyA5pe26ZKf6aKR546H77yM6L+b5b2x5ZON6K6h566X5oCn6IO944CC5Li65L+d6K+B6L+Q5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5qC45LiN5Lya5Zug5Li66L+Q5om55aSE55CG5Lu75Yqh5qC46L+H5bqm6IO96ICX5L2/5a+86Ie05pe26ZKf6aKR546H55qE56qB54S25LiL6ZmN77yM5b+F6aG76ZmQ5Yi26L+Q5om55aSE55CG5Lu75Yqh5qC455qE5pe26ZKf6aKR546H44CC6Z2Z5oCB5bCG6L+Q5om55aSE55CG5Lu75Yqh55qE5qC46K6+572u5Zyo5pyA5L2O5pe26ZKf6aKR546H5Y+v5Lul6YG/5YWN6L+Q5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5qC45Zug6IO96ICX6KKr6ZmQ5Yi25oCn6IO944CC54S25L2/6Z2Z5oCB55qE6K6+572u5Lil6YeN5b2x5ZON5LqG5om55aSE55CG5Lu75Yqh6L+Q55qE5oCn6IO944CCIOmDqOWIhueahOaJueWkhOeQhuS7u+WKoeW5tuS4jeaAu+aYr+S8muS9v+aguOWkhOS6juiDveiAl+eKtuaAge+8jOW5tuS4lOW7tui/n+aVj+aEn+Wei+S7u+WKoeS5n+S7heS7heWcqOi0n+i9veW8uuW6puaXtuaJjemcgOimgeaPkOWNh+aguOmikeeOh+adpeiOt+W+l+mineWklueahOaAp+iDveaPkOWNh+OAguS4uuS6huWcqOS/neivgeW7tui/n+aVj+aEn+Wei+S7u+WKoeWcqOi0n+i9veaXtuiOt+W+l+WQiOeQhueahOaXtumSn+mikeeOh+eahOWQjOaXtu+8jOWwveWPr+iDvemBv+WFjei/h+WIhumZkOWItuaJueWkhOeQhuS7u+WKoeeahOaAp+iDve+8jOWKqOaAgeeahOaguOeDreWKn+eOh+aOp+WItuaYr+W/heimgeeahOOAgjwvcD48cD7liqjmgIHotYTmupDosIPluqbkuo7lvLrljJblrabkuaDmt7flkIjmiaflu7bov5/mlY/mhJ/lnovku7vliqHlkozmibnlpITnkIbku7vliqHnmoTmm7TmjJHmiJjlnKjkuo7mjqfliLbkuKTnp43ku7vliqHlkIzml7blnKjkuIrov7DlpJrnp43otYTmupDkuIrlpI3mnYLnmoTnm7jkupLmibDjgILmibnlpITnkIbku7vliqHkvJrlkIzml7blnKjlkITnp43lhbHkuqvotYTmupDkuIrlr7nlu7bov5/mlY/mhJ/lnovku7vliqHkuqfmibDvvIwg5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5a+55p2l5ZCE56eN5YWx5Lqr6LWE5rqQ5LiK55qE5omw6YO95YiG5pWP5oSf44CC5Zug5q2k77yM5LuF5LuF5o6n5Yi25aW956eN5YWx5Lqr6LWE5rqQ5LiK55qE55u45LqS5omw5piv5LiN5Lul5L+d6K+B5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh6LSo6YeP55qE77yb5omA5pyJ5YWx5Lqr6LWE5rqQ6YO95bqU5bC95Y+v6IO955qE55uR5o6n5bm25pyJ5pWI55qE5a6e5pa95omw6ZqU56a744CC6Zmk5q2k5LmL5aSW77yM5ZCE56eN5YWx5Lqr6LWE5rqQ5LiK55qE5omw6L+Y5Lya55u45LqS5b2x5ZON44CC5L6L5aaC77yM5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5ZKM5om55aSE55CG5Lu75Yqh5Zyo57yT5a2Y5LiK55qE56ue5LqJ5Lya5a+86Ie05p+Q5Lu75Yqh5a+55Yqo5oCB6ZqP5py65a2Y5YKo6K6/6Zeu5bim5a6955qE6KaB5rGC5o+QIO+8jOaIkOS4uua9nOWcqOeahOaAp+iDveeTtumiiO+8m+WPiOS+i+WmguW9k+S7u+WKoeajgOa1i+WIsOe7nOi/nuaOpeaLpeWhnu+8jOWwhuWPr+iDveS8mumHh+WPluabtOa/gOi/m+eahOWOi+e8qeeul+azle+8jOWvvOiHtOiuoeeul+i1hOa6kOWSjOiDveiAl+eahOernuS6ieOAguWQhOenjei1hOa6kOeahOebuOS6kuernuS6ieWvvOiHtOmavuS7peWcqOS/neivgeW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoei0qOmHj+eahOWQjOaXtu+8jOmAmui/h+WKqOaAgei1hOa6kOiwg+W6puaPkOWNh+acjeWKoeWZqOi1hOa6kOWIqeeOh+OAgjwvcD48cD7lvLrljJblrabkuaDlnKjkupvmnoHlhbfmjJHmiJjmgKfnmoTlhrPnrZbnsbvkvJjljJbpl67popjkuK3ooajnjrDlh7rlhbblt6jmvZwg44CC5by65YyW5a2m5Lmg5Lit77yM5pm66IO95L2TPC9wPjxwPu+8iCDvvInku47ov4flvoDnmoTnu4/pqozlrabkuaDku6XlgZrlh7rmm7Tlpb3nmoTlhrPnrZbjgILlm74g77yIIO+8ieWxleS6huaZuuiDveS9k+WmguS9leS4jueOr+Wig+S6pOS6kuOAguS6pOS6kui/h+eoizwvcD48cD7ooqvnprvmlaPljJbmiJDkuLrov57kuLLmraXpqqTvvIzmr4/mraXmmbrog73kvZPlhYjmhJ/nn6Xnjq/looPnmoTnirbmgIHvvIgg77yJ5Li6IHM8L3A+PHA+dDwvcD48cD7vvIznhLblkI7pgInmi6nlubbmiafkuKrliqg8L3A+PHA+5L2c77yIIO+8ieOAgui/meatpemqpOWwhuWvvOiHtOeOr+Wig+eahOeKtuaAgeWPkeWPmOWMlu+8jOi9rOenuyBzPC9wPjxwPnQrMTwvcD48cD7vvIzmmbrog73kvZPlnKjlkI7nu63mraXpqqTkuK3kuZ/lsIbog73lpJ/mhJ88L3A+PHA+55+l77yM5q2k54q25oCB55qE5Y+Y5YyW6L+Y5bCG5oiQ5Liq5aWW5Yqx5L+h5Y+377yIIO+8iXI8L3A+PHA+dDwvcD48cD7jgILmmbrog73kvZPlr7nku7vliqHmnKzlkozop4TliJnmiYDnn6XvvIzku4Xku4XpgJrnrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqblm77lvLrljJblrabkuaDmoYbmnrbov4fnjq/looPov5Tlm57nmoTlpZblirHkv6Hlj7fmnaXnmoTlvpfnn6Xku5blvZPliY3lrabkuaDliLDnrZbnlaXnmoTlpb3lnY8g44CC5pm66IO95L2T5a2m5Lmg55qE5qCH5pe26YCa6L+H5LyY5YyW6YCJ5oup5Yqo5L2c55qE562W55Wl77yM5Lul5pyA5YyW5YW257Sv56ev5aWW6LWP44CC5by65YyW5a2m5Lmg5pyA6L+R55qE56CU56m25bCG5YW25ZKM5rex5bqm5a2m5Lmg55u457uT5ZCI77yM5L2/5b6X5by65YyW5a2m5Lmg5Zyo5b6I5aSa5bqU5LiK5Y+W5b6X56qB56C05oCn55qE5oiQ57up77yMIOWmgueOqeeUtea4uOaIjyDvvIzmjqfliLbmlbDmja7kuK3nmoTlhrfljbTns7vnu5/nrYnnrYnjgII8L3A+PHA+5Zue6aG+5LyY5YyW5pWw5o2u5Lit6LWE5rqQ6LCD5bqm55qE6Zeu6aKY77yM5oiR5Lus55u45L+h5by65YyW5a2m5Lmg5bi46YCC5ZCI6Kej5Yaz5q2k57G76Zeu6aKY44CCIOWFiO+8jOi1hOa6kOiwg+W6pueoi+W6j+WBmuWHuueahOWGs+etlumAmuW4uOacieW+iOeahOmHjeWkjeaAp++8jOWboOatpOWPr+S7peS6p+mHj+aVsOaNruS6juW8uuWMluWtpuS5oOiuree7g+OAguWFtuasoe+8jOato+WmguaIkeS7rOWcqOW8uuWMluWtpuS5oOeul+azleW6lOWcqOa4uOaIj+aXtueci+WIsOeahO+8jOW8uuWMluWtpuS5oOeul+azleWPr+S7pemAmui/h+a3seW6puelnue7j+e7nO+8iDwvcD48cD7vvInmqKHmi5/lpI3mnYLnmoTmqKHlnovlkozlhrPnrZbov4fnqIvjgILkuI3lkIznmoTkv6Hlj7flkoznjq/looPlj6/og73lrZjlnKjnmoTovbvlvq7mibDliqjpg73lj6/ku6XmlbTlkIjotbfmnaXlkIzml7bovpPnpZ7nu4/nu5zvvIzkuqfkuKrlhrPnrZbmqKHlnovjgILlj6blpJbvvIzpgJrov4flvLrljJblrabkuaDvvIzmiJHku6zog73lpJ/pgJrov4fkuKrnm7jlhbPnmoTlpZblirHkv6Hlj7fmnaXkvJjljJbkupvpmr7ku6Xnm7TmjqXkvJjljJbnmoTmoIfjgILmnIDlkI7vvIzpgJrov4fmjIHnu63nmoTlrabkuaDvvIzlvLrljJblrabkuaDlj6/ku6Xku47ph4/nu4/pqozkuK3lrabliLDkuI3lkIzmg4XlhrXkuIvnmoTkvJjljJbnrZbnlaXjgII8L3A+PHA+5Zu+IO+8iCDvvInlsZXkuoblpoLkvZXlnKjlvLrljJblrabkuaDnmoTmoYbmnrblhoXkvJjljJbmlbDmja7kuK3nmoTotYTmupDosIPluqbku6Xmj5DmnI3liqHlmajliKnnjofjgILmmbrog73kvZPlnKjov5nlhYXlvZPotYTmupDosIPluqblmajvvIwg546v5aKD5YiZ5YyF5ZCr5LqG5re35ZCI5omn55qE5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5ZKM5om55aSE55CG5Lu75Yqh77yMIOaMgei/meS6m+S7u+WKoeeahOaJp+eahOaJgOacieacjeWKoeWZqOi1hOa6kO+8jOS7peWPiuaMieWumuaooeW8j+WPmOWMlueahOW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOi0n+i9veOAguW8uuWMluWtpuS5oOeahOavj+atpemqpOWvueW6lOi1hOa6kOiwg+W6puWZqOeahOasoeWGs+etlu+8jOaZuuiDveS9k+WwhuWcqOatpOaXtuiOt+W+l+eOr+Wig+eahOeKtuaAgeW5tuWBmuWHuuWKqOS9nOOAgueOr+Wig+ebuOWFs+eahOS/oeaBr+WMheaLrOW9k+WJjeW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOi0n+i9veW8uuW6pu+8jOiuoeeul+aguCDvvIzmnKvnuqfnvJPlrZjlkozpmo/mnLrlrZjlgqjorr/lrZjluKblrr3nrYnnrYnotYTmupDnmoTliKnnjofvvIzku6Xlj4rlu7bov5/mlY/mhJ/lnovku7vliqHnmoTmnI3liqHotKjph4/jgILmmbrog73kvZPlj6/lgZrnmoTpgInmi6nliJnkuLrlop7liqDliIbphY3nu5nlu7bov5/mlY/mhJ/lnovku7vliqHnmoTmn5DnsbvmnI3liqHlmajotYTmupDvvIzku6Xmj5DlhbbmnI3liqHotKjph4/lubbpgb/lhY3ov53lj43mnI3liqHotKjph4/opoHmsYLvvIzmiJbmmK/lh4/lsJHliIbphY3nu5nlu7bov5/mlY/mhJ/lnovku7vliqHnmoTmn5DnsbvotYTmupDku6Xmj5A8L3A+PHA+5om55aSE55CG5Lu75Yqh5oCn6IO95bm25o+Q6LWE5rqQ5Yip546H44CC546v5aKD5Lqn55qE5aWW5Yqx5L+h5Y+35pyJ5aSa56eN6K6+6K6h5qCH44CC6Iul5q2k5Yqo5L2c55qE5omn5a+86Ie06LWE5rqQ5pWP5oSf5Z6L5Lu75Yqh6L+d5Y+N5YW25pyN5Yqh6LSo6YeP6KaB5rGC77yM5pm66IO95L2T5bCG57uZ5LqI5oOp572a77yI6LSf55qE5aWW5Yqx77yJ77yb5Zyo5LiN6L+d5Y+N5pyN5Yqh6LSo6YeP6KaB5rGC5pe277yMPC9wPjxwPuW7tui/n+aVj+aEn+Wei+S7u+WKoeWNoOeahOi1hOa6kOi2iuWwke+8jOaZuuiDveS9k+aUtuWIsOeahOWlluWKsei2iiDvvJvmiYDmnInnmoTliqjkvZzlubbkuI3pg73lrprlj6/ku6XlnKjku7vmhI/njq/looPnirbmgIHkuIvmiacg77yM5L6L5aaC5p+Q57G76LWE5rqQ5YiG6YWN5rOV5aKe5Yqg5oiW5YeP5bCR77yM5pm66IO95L2T6Iul5YGa5Ye65rOV5Yqo5L2c5bCG5Lya5Y+X5Yiw5oOp572a44CCPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puWbvumprOWwlOenkeWkq+WGs+etlui/h+eoi+ekuuS+i+W8uuWMluWtpuS5oOWcqOi1hOa6kOiwg+W6puS4reeahOaMkeaImOWwhuW8uuWMluWtpuS5oOW6lOWcqOaVsOaNruS4reeahOi1hOa6kOiwg+W6puS4iuaXtu+8jOWQjOagt+S4tOaMkeaImOOAgiDlhYjmmK/lip/lirPliIbphY3pl67popjvvIg8L3A+PHA+77yJ77yM5pm66IO95L2T6ZyA6KaB5a2m5Lmg5aaC5L2V5LuO55u05o6l6KeC5a+f5Yiw55qE5aWW5Yqx5L+h5Y+35Lit5YiG5p6Q5Lul5YmN5omA5omn55qE5Yqo5L2c5ZOq5Lqb5pyJ5q2j55qE6LSh54yu77yM5ZOq5Lqb5Lqn5LqG6LSf55qE5b2x5ZON77yM5Lul5Y+K6L+Z5Lqb6LSf55qE6LSh54yu5ZKM5b2x5ZON5ZCE5pyJ5aSaIOOAguWcqOS6m+aDheWGteS4re+8jCDkupvog73ljbPkuqfpop3lpZblirHnmoTliqjkvZzlj6/og73lsIbkvb/ns7vnu5/ov5vkuI3nkIbmg7PnmoTnirbmgIHvvIzpmr7ku6Xkuqfmm7TlpJrnmoTlpZblirHvvJsg5Y+m5Lqb5oOF5Ya15Lit77yMIOS4quWKqOS9nOWPr+iDveazleS6p+WNs+eahOWlluWKse+8jOS9huWPr+iDveWvueezu+e7n+i/m+S4queQhuaDs+eKtuaAgeWFs+mHjeimgeOAguWboOatpOacgOS8mOeahOetlueVpemcgOimgeS6p+mVv+i/nOeahOinhOWIku+8jOaZuuiDveS9k+mcgOimgeiDveWkn+mihOingeacquadpeeahOWPr+iDveaDheWGteaJjeiDvemHh+WPluebuOW6lOeahOWKqOS7peacgOWMluaAu+eahOWlluWKseOAguWFtuasoeaYr+aOoue0oueOr+Wig+eahOenr+aegeaAp+OAguaZuuiDveS9k+mcgOimgeaOoue0oueOr+Wig++8jOWtpuS5oOS4jeWQjOeKtuaAgeS4i+aJp+S4jeWQjOWKqOS9nOaJgOW4puadpeeahOWQjuaenOOAgjwvcD48cD7vvIznp6/mnoHnmoTmjqLntKLnjq/looPorqnmmbrog73kvZPlj6/og73lrabkvJrmm7TmlYjnmoTmjqfliLbnrZbnlaXvvJvlj6Yg77yM5pm66IO95L2T5Zyo5Lu75L2V5pe25Yi75Lmf5bqU6K+l5bC96YeP5omn5bey57uP5om+5Yiw55qE5pyA5LyY562W55Wl44CC5a+5546v5aKD55qE5o6i57Si5aSq5bCR5bCG5a+86Ie05pm66IO95L2T5aeL57uI5omn5rKh5pyJ5aSf5LyY5YyW55qE562W55Wl77ybPC9wPjxwPui/h+WkmueahOaOoue0ouWwhuS9v+aZuuiDveS9k+mVv+aXtumXtOaJp+S4jeWkn+S8mOWMlueahOetlueVpe+8jOaLiemVv+iuree7g+aXtumXtO+8jOS4lOmZjeS9juWFtuaAp+iDveihqOeOsOOAguacgOWQjuaYr+azm+WMlumXrumimO+8jOeOr+Wig+eahOeKtuaAgeepuumXtOmaj+iAg+iZkeeahOWboOe0oOaMh+aVsOWinumVv++8jOihqOeOr+Wig+eKtuaAgeeahOWPmOmHj+WPr+iDveebuOW9kyDjgILlnKjov5nnp43mg4XlhrXkuIvvvIw8L3A+PHA+5pm66IO95L2T5b6I5Y+v6IO95qC55pys5rOV5Zyo5q2k6YGH5Yiw5Lul5YmN57uP5Y6G6L+H55qE546v5aKD54q25oCB44CC5Zug5q2k77yM5LuO5pm66IO95L2T55qE57uP6aqM5Lit5a2m5Lmg5bm25rOb5YyW5piv5ZSvPC9wPjxwPuWPr+WKnuazleOAgjwvcD48cD7lvLrljJblrabkuaDmlrnms5XnroDku4vpqazlsJTnp5HlpKvlhrPnrZbov4fnqIvvvIgg77yJPC9wPjxwPuiAg+iZkeiIrOeahOW8uuWMluWtpuS5oOWcuuaZr++8jOWmguWbviDvvIgg77yJ5omAIO+8jOWcqOavj+atpemqpHQg6IO96KeC5a+f5Yiw546v5aKD54q25oCBPC9wPjxwPnM8L3A+PHA+dDwvcD48cD7jgILlvZPmmbrog73kvZPmiac8L3A+PHA+5Yqo5L2cPC9wPjxwPmE8L3A+PHA+dCDlkI7vvIznjq/looPnirbmgIHlj5jkuLo8L3A+PHA+czwvcD48cD50KzE8L3A+PHA+77yM5LiU5pm66IO95L2T5pS25Yiw5aWW5YqxPC9wPjxwPnI8L3A+PHA+dDwvcD48cD7jgILnjq/looPnirbmgIHnmoTovazlj5jlkozmmbrog73kvZPmlLbliLDnmoTlpZblirHpg73mmK/pmo/mnLrnmoTvvIzlubbooqvlgYforr7lhbfmnInpqazlsJTnp5HlpKvmgKfotKjvvIgg77yJ44CC5Zug5q2k77yM5pm66IO95L2T5omA5aSE55qE546v5aKD6KKr5oq96LGh5Li66ams5Y+v5aSr5Yaz562W6L+H56iL77yIIO+8jCDvvInjgIIg5Liq6ams5bCU56eR5aSr5Yaz562W6L+H56iL5YyF5ZCr5LqG5Liq54q25oCB6ZuG5ZCIIFPvvIwg5Liq5YqoPC9wPjxwPuS9nOmbhuWQiCBB77yMIOS4queKtuaAgemXtOi9rOaNoueahOWFs+S6juWKqOS9nOeahOadoeS7tuamgueOh+WIhuW4gyBUID0gUChzPC9wPjxwPnQrMTwvcD48cD49IHM8L3A+PHA+4oCyPC9wPjxwPnM8L3A+PHA+dDwvcD48cD49IHMgYTwvcD48cD50PC9wPjxwPj0gYSnvvIzku6Xlj4rlnKjmr4/kuKrnirbmgIE8L3A+PHA+5LiL5omn5Liq5Yqo5L2c5L2/5b6X546v5aKD54q25oCB5pS55Y+Y5Y+m5Liq54q25oCB55qE5aWW5Yqx55qE5pyf5pybPC9wPjxwPlIgPSBFW3I8L3A+PHA+dDwvcD48cD4rIDEgczwvcD48cD50PC9wPjxwPj0gcyBhPC9wPjxwPnQ8L3A+PHA+PSBhIHM8L3A+PHA+dDwvcD48cD4rIDEgPSBzPC9wPjxwPuKAsjwvcD48cD5dPC9wPjxwPuOAgjwvcD48cD7lm77mmK/kuKrpqazlsJTnp5HlpKvlhrPnrZbov4fnqIvnmoTkvovjgIIg5L6L55qE6ams5bCU56eR5aSr5Yaz562W6L+H56iL5a6a5LmJ5LqG5Lik5Liq546v5aKD54q25oCBIFMw5ZKMIFMx77yMPC9wPjxwPuWSjOaZuuiDveS9k+WcqOS4pOS4queKtuaAgeS4i+mDveWPr+mAieaLqeaJp+eahOS4pOS4quWKqOS9nCBBMCDlkowgQTHjgILmmbrog73kvZPlnKjnirbmgIEgUzAg5LiL5omn5Yqo5L2cIEEw77yM5pyJIDAgMTwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+55qE5Y+v6IO95oCn55WZ5Zyo54q25oCBIFMwIOW5tuiOt+W+lyAzIOeahOWlluWKse+8m+WQjOaXtuaciSAwIDkg55qE5Y+v6IO95oCn6L2s56e754q25oCBIFMxIOW5tuiOt+W+lyAxNSDnmoTlpZblirHjgILmmbo8L3A+PHA+6IO95L2T6IO95o6n5Yi255qE5LuF5LuF5piv6YCJ5oup5LiL5Liq5omn55qE5Yqo5L2c77yM5bm25LiU5a+5546v5aKD5Y+v6IO955qE5Y+N5bqU5rKh5pyJ5Lu75L2V5YWI6aqM55qE55+l6K+G44CC5Zug5q2k5pm66IO95L2T55qE5qCH5Zyo5LqO5LyY5YyW6YCJ5oup5Yqo5L2c55qE562W55Wl5Lul6I635b6X5pyA55qE57Sv56ev5aWW6LWP44CC5YC85b6X5rOo5oSP55qE5piv77yM5a+55LqO5pm66IO95L2T5p2l6K+077yMPC9wPjxwPuaJp+afkOWKqOS9nOWQjueahOeKtuaAgei9rOWPmOW5tuS4jeaAu+aYr+ehruWumueahO+8jOacieaXtuaYr+aMieamgueOh+i3s+i9rOeahOOAgueOr+Wig+eKtuaAgeWmguS9leWPmOWMluS4jeWcqOaZuuiDveS9k+eahOaOp+WItuiMg+WbtOWGhe+8jOS9huaZuuiDveS9k+iDvemAmui/h+mHj+eahOe7j+mqjOWtpuS5oOWIsOWFtuWPmOWMlueahOinhOW+i+OAgjwvcD48cD7lvLrljJblrabkuaDmoYbmnrbop6PlhrPotYTmupDosIPluqbpl67popjml7bvvIzlvojnhLbkvJrlsIbmgLvnmoTmraXpqqTorr7kuLrpmZDmraXpqqTvvIzlnKjpmZDplb/nmoTml7bpl7Tmmbrog73kvZPpgJrov4flkIjnkIbliIbphY3mnI3liqHlmajotYTmupDnu5nlu7bov5/mlY/mhJ/lnovku7vliqHku6Xkv53or4HlhbbmnI3liqHotKjph4/opoHmsYLlkIzml7blsL3ph4/mj5DmnI3liqHlmajotYTmupDliKnnjofjgILpmo/nnYDmmbrog73kvZPogIPomZHnmoTml7bpl7TnlLHmnInpmZDlj5jkuLrpmZDvvIwg5Liq5r2c5Zyo55qE6Zeu6aKY5piv5Yqj6LSo55qE562W55Wl5Lmf6IO95bim5p2l6ZmQ55qE5oC75pWIIO+8jOWvvOiHtOaZuuiDveS9k+azleWumuS5ieS4quacieaViOeahOS8mOWMluagh+OAguWboOatpO+8jOWcqOmZkOaXtumXtOatpemqpOaXtu+8jOS8mOWMluaKmOeOsOWQjueahOe0r+iuoeWllui1j++8iCDvvInmm7TkuLrlkIjpgILvvIzov5nlj6/ku6XnkIbop6PkuLrlpoLmnpzog73mi7/liLDlpZbotY/vvIzmmbrog73kvZPlgL7lkJHkuo7lsL3ml6nmi7/liLDlpZbotY/jgILlkIzml7bvvIznlLHkuo7mmbrog73kvZPnmoTkvJjljJbmoIfku43nhLbmmK/ntK/np6/lpZbotY/vvIzlm6DmraTmmbrog73kvZPku43nhLbmnInlj5HnjrDov5zmnJ/mm7Tku7flgLzlpZbotY88L3A+PHA+55qE5r2cIOOAguaKmOeOsOe0r+enr+Wllui1j+WPr+ihqOS4uiDvvIzlhbbmhI/kuYnkuLrlvZPliY3mraXpqqTlkI7miacgaSDmrKHliqjkvZzlkI7lvpfliLDlpZbotY/nmoTmnJ/mnJsgcjwvcD48cD50K2k8L3A+PHA+5Zyo5b2TPC9wPjxwPuWJjeWGs+etluS4reeahOS7t+WAvOS4ujwvcD48cD5pIHI8L3A+PHA+dCtpPC9wPjxwPu+8jOWFtuS4reS4uuaKmOeOsOeOh+OAgjwvcD48cD5SID0gRSg8L3A+PHA+4oiRPC9wPjxwPmk9MTwvcD48cD5pIHI8L3A+PHA+dCtpPC9wPjxwPik8L3A+PHA+562W55Wl5LiO54q25oCB5YC85Ye95pWw5by65YyW5a2m5Lmg5Lit5pm66IO95L2T5qC55o2u5YW25a2m5Lmg5Yiw55qE562W55Wl5ZKM6KeC5a+f5Yiw55qE546v5aKD54q25oCB6YCJ5oup5LiL5omn5Yqo5L2c44CC562W55Wl5piv5Liq5YWz5LqO5Yqo5L2c55qE5p2h5Lu25qaC546HPC9wPjxwPjogKHMgYSkgWzAgMV08L3A+PHA+44CCPC9wPjxwPihzIGEpPC9wPjxwPuihqOS6huaZuuiDveS9k+WcqOeOr+Wig+eKtuaAgeS4uiBzIOaXtumAieaLqeaJp+WKqOS9nCBh44CC5b2T6ICD6JmR55qE546v5aKD5Zug57Sg5aKe5Yqg5pe277yM546v5aKD54q25oCB55qE5Y+v6IO95oOF5Ya15ZGI5oyH5pWw5LiK5Y2H44CCIOiIrOWFt+acieaXtumXtOeglOeptuaEj+S5ieeahOmXrumimOmDveiAg+iZkei+g+WkmueahOeOr+Wig+WPmOmHj+WvvOiHtOeOr+Wig+eKtuaAgeepuumXtOW3qCDjgILov5nnp43mg4XlhrXkuIvvvIzmmbrog73kvZPlrabkuaDnmoTnrZbnlaXms5XkvKDnu5/nmoTooajmoLzlvI/ooagg77yMPC9wPjxwPumcgOimgeS4quWHveaVsOadpei/keS8vCDjgILpgJrov4flh73mlbDov5HkvLzvvIzmiJHku6zlj6/ku6Xlj6/mjqXlj5fmlbDnmoTlj4LmlbDmnaXov5HkvLznrZbnlaU8L3A+PHA+KHMgYSk8L3A+PHA+77yMPC9wPjxwPuaIkeS7rOWwhumAmui/h+WPguaVsOadpeWPguaVsOWMlui/keS8vOihqOeahOetlueVpeiusOS4us64PC9wPjxwPihzIGEpPC9wPjxwPuOAguWHveaVsOi/keS8vOWPr+S7peino+WGs+mXrumimOeahOS4queQhueUseaYr+WvueS6juebuOS8vOeahOeKtuaAge+8jOaIkeS7rOiupOS4uuaZuuiDveS9k+acrOadpeS5n+W6lOivpemHh+WPluebuOWQjOeahOWKqOS9nOS7peS8mOWMluWFtuagh+OAgjwvcD48cD7lvojlpJrlh73mlbDov5HkvLzms5Xpg73lj6/ku6XmnaXlrp7njrDov5HkvLzlvLrljJblrabkuaDkuK3nmoTnrZbnlaXlh73mlbDvvIzkvovlpoLpgJrov4fnjq/looPnirbmgIHlkozliqjkvZznqbrpl7TnmoTnibnlvoHov5vnur/mgKfnu4TlkIjmnaXov5HkvLznrZbnlaU8L3A+PHA+KHMgYSk8L3A+PHA+zrg8L3A+PHA+KHMgYSkgPTwvcD48cD5UPC9wPjxwPihzIGEp44CC5rex5bqm56We57uP57uc5Zyo5pyA6L+R55qE56CU56m25Lit6KKr5L2c5Ye95pWw6L+R5Ly85p2l6KGo562W55Wl5Ye95pWw77yM5bm25Zyo5Lqb6KeE5qih55qE5by65YyW5a2m5Lmg5Zy65pmv5Lit5Y+W5b6X5b6I5aW95pWI5p6c44CC5L2/5rex5bqm56We57uP57uc5LiN5piv5YmN5o+Q5Yiw55qE54m55b6B55qE57q/5oCn57uE5ZCI55qE5Liq5LyY54K55piv5LiN6ZyA6KaB57mB55CQ55qE54m55b6B56iL5p2l6YCJ5Y+W546v5aKD54q25oCB5ZKM5Yqo5L2c5Lit55qE54m55b6B44CC5Zu+6KGo5LqG5aaC5L2V5L2/5rex5bqm56We57uP57uc5p2l6L+R5Ly8562W55Wl5Ye95pWw5pe26L+b5by65YyW5a2m5Lmg44CCPC9wPjxwPuW9k+aZuuiDveS9k+aMieeFp+S4que7meWumueahOetlueVpemAieaLqeWKqOS9nOW5tuaJp+aXtuS8muS6p+ezu+WIl+eahOeOr+Wig+eKtuaAge+8jOaJp+WKqOS9nOWSjOWllui1j+S/oeWPt+eahOW6j+WIl++8jOWmgiBzPC9wPjxwPjA8L3A+PHA+YTwvcD48cD4wPC9wPjxwPnI8L3A+PHA+MDwvcD48cD5zPC9wPjxwPjE8L3A+PHA+YTwvcD48cD4xPC9wPjxwPnI8L3A+PHA+MTwvcD48cD7jgILnirbmgIHlgLzlh73mlbDvvIgg77yJ77yM6KeB5byPIO+8jFY8L3A+PHA+z4DOuDwvcD48cD4ocyk8L3A+PHA+6KGo5LqG5LuO5oyH5a6a55qE546v5aKD54q25oCBIHMg5byA5aeL77yM5omn5oyJ54Wn562W55WlzrjkuqfnmoTliqjkvZzluo/liJfvvIzlj6/ojrflvpfnmoTmipjnjrDlkI7ntK/np6/lpZbotY/nmoTmnJ/mnJvjgII8L3A+ZAIDDxYCHwJoZAIFDxYCHwEC/////w9kAgIPZBYKZg8VBQ0xMjA0MTY1MjBfMDAyOOWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4reW/g+i1hOa6kOiwg+W6pl/nrKwz6YOo5YiGATABMAQ5MDEyZAIBDxYCHwFmZAICDxUB98gBPHA+5oiR5Lus5bCG54q25oCB5YC8PC9wPjxwPuWHveaVsO+8jOS9nOS4uuWIpOaWreS4queOr+Wig+eKtuaAgeWlveWdj+eahOagh+WHhuOAgjwvcD48cD5WPC9wPjxwPs+Azrg8L3A+PHA+KHMpID0gRTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+4oiRPC9wPjxwPnQ9MDwvcD48cD50IHIgdDwvcD48cD5zPC9wPjxwPjA8L3A+PHA+PSBzPC9wPjxwPl08L3A+PHA+6L+b5q2l55qE77yM5oiR5Lus6L+Y5a6a5LmJ5YC85Ye95pWw77yIIO+8ieadpeS9nOS4uuWIpOaWreS4queOr+Wig+eKtuaAgeWKqOS9nOWvueeahOWlveWdj+eahOagh+WHhu+8jOingeW8jyDjgIIg5YC85Ye95pWwIFE8L3A+PHA+z4DOuDwvcD48cD4ocyBhKTwvcD48cD7ku47mjIflrprnmoTnjq/looPnirbmgIEgcyDlvIDlp4vvvIzlnKjmiafliqjkvZwgYSDlkI7vvIzmiYDmnInnmoTlkI7nu63liqjkvZzlroznrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqblm77pgJrov4fmt7HluqbnpZ7nu4/nu5zov5HkvLznrZbnlaXlh73mlbDlhajmjInnhafnrZbnlaXOuOS6p+eahOWKqOS9nOaJpyDvvIzlj6/ku6XlvpfliLDnmoTmipjnjrDlkI7ntK/np6/lpZbotY/nmoTmnJ/mnJvjgIIg5YC85Ye95pWw5Y+v5Lul5p2l6Kej5Yaz5YmN5omA5o+Q5Yiw55qE5Yqf5Yqz5YiG6YWN6Zeu6aKYIO+8jOS7juS4i+iKguetlueVpeair+W6puazleS4reeahOW8j+WPr+S7peeci+WIsOWAvOWHveaVsOS4juWAvOWHveaVsOS5i+mXtOWvhuWIhzwvcD48cD7nmoTlhbPns7vjgII8L3A+PHA+UTwvcD48cD7PgM64PC9wPjxwPihzIGEpID0gRTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+4oiRPC9wPjxwPnQ9MDwvcD48cD50IHIgdDwvcD48cD5zPC9wPjxwPjA8L3A+PHA+PSBzIGE8L3A+PHA+MDwvcD48cD49IGE8L3A+PHA+XTwvcD48cD7lnKjop4TmqKHnmoTpl67popjkuK3vvIznjq/looPnirbmgIHnmoTnqbrpl7Tov5zov5zkuo7miJHku6zlj6/ku6XooajmoLzlgLzmnaXnsr7noa7ooajnmoTop4TmqKHjgII8L3A+PHA+562W55Wl5qKv5bqm5pa55rOV77yIIO+8iTwvcD48cD7mmbrog73kvZPkvJjljJbnrZbnlaXnmoTkuKrnrpfms5XmmK/pgJrov4forqHnrpflgLzlh73mlbDnmoTnrZbnlaXmoq/luqbvvIzlubbmjInorqHnrpfnmoTmoq/luqbosIPmlbTnrZbnlaXlrp7njrDmnIDljJblgLzlh73mlbDvvIzkuZ/lsLHmmK/mnIDljJbku47lvZPliY3nirbmgIHlvIDlp4vnmoTmipjnjrDntK/np6/lpZbotY/nmoTmnJ/mnJvjgILmiJHku6znmoTkvJjljJbmoIfmmK/lvI/nu5nlh7rnmoTmipjnjrDntK/np6/lpZbotY/vvIzlhbbmoq/luqbooajkuLrlvI8g44CCPC9wPjxwPs64RTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+4oiRPC9wPjxwPnQ9MDwvcD48cD50IHI8L3A+PHA+dDwvcD48cD5dPC9wPjxwPj0gRTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+zrhsb2c8L3A+PHA+zrg8L3A+PHA+KHMgYSlRPC9wPjxwPs+Azrg8L3A+PHA+KHMgYSk8L3A+PHA+XTwvcD48cD7lhbbkuK0gUTwvcD48cD7PgM64PC9wPjxwPihzIGEpPC9wPjxwPuaYr+WcqOeKtuaAgSBzIOaYr+aJp+WKqOS9nCBhIOW5tuWcqOWQjue7reWdh+aMic6455qE562W55Wl6YCJ5oup5omA5pyJ5Yqo5L2c5pe25b6X5Yiw55qE5oqY546w5ZCO57Sv56ev5aWW6LWP44CC562W55Wl5qKv5bqm55qE5Li76KaB5oCd5oOz5piv6YCa6L+H5oyJ54Wn562W55Wl5omn5Yqo5L2c5bm26KeC5rWL546v5aKD55qE5Y+Y5YyW5p2l5Lyw6K6h546v5aKD5Y+Y5YyW6ZqP562W55Wl55qE5Y+Y5YyW77yM5bm255Sx5q2k6K6h566X562W55Wl5qKv5bqm44CC6L+Z5pys6LSo5LiK5piv5Liq566A5Y2V55qE6JKZ54m55Y2h572X5rOVIOKAlOKAlOaZuuiDveS9k+mAmui/h+mHh+agt+WkmuenjeWKqDwvcD48cD7kvZzmiafnmoTluo/liJflkoznjq/looPnirbmgIHnmoTlj5jljJbluo/liJfojrflvpfnu4/pqozvvIznhLblkI7moLnmja7ov5nkupvnu4/pqozmnaXorqHnrpfmipjnjrDntK/np6/lpZbotY8gdjwvcD48cD50PC9wPjxwPu+8jOW5tuWwhuWFtuS9nOS4uuWvuSBRPC9wPjxwPs+Azrg8L3A+PHA+KHMgYSk8L3A+PHA+55qE5YGP5Lyw6K6h77yM5Y2zIHY8L3A+PHA+dDwvcD48cD49PC9wPjxwPlE8L3A+PHA+z4DOuDwvcD48cD4ocyBhKTwvcD48cD7jgILnhLblkI7vvIzmmbrog73kvZPmoLnmja7kvLDorqHlh7rnmoTnrZbnlaXmoq/luqbmnaXmm7TmlrDnjrDmnInnrZbnlaXku6XmsYLkvJjljJbmipjnjrDntK/np6/lpZbotY8g77yM6KeB5byPIOOAguWFtuS4reaYr+WtpuS5oOeOh+OAgjwvcD48cD4rPC9wPjxwPuKIkTwvcD48cD50IM64bG9nPC9wPjxwPs64PC9wPjxwPihzIHQgYTwvcD48cD50PC9wPjxwPik8L3A+PHA+dDwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqbmoq/luqY8L3A+PHA+zrhsb2c8L3A+PHA+zrg8L3A+PHA+KHMgdCBhPC9wPjxwPnQ8L3A+PHA+KTwvcD48cD7nu5nlh7rkuobpgJrov4fmlLnlj5jov5HkvLznrZbnlaXnmoTlj4LmlbDmnaXlop7liqDOuDwvcD48cD4ocyB0IGE8L3A+PHA+dDwvcD48cD4pPC9wPjxwPu+8iOWNs+WcqOeKtuaAgSBzPC9wPjxwPnQ8L3A+PHA+5LiL77yM562W55WlPC9wPjxwPumAieaLqeaJp+WKqOS9nCBhPC9wPjxwPnQ8L3A+PHA+55qE5qaC546H77yJ55qE5ZCR44CCIOW6lOivpeWkmueoi+W6puWcsOWwhuetlueVpeWQkeatpOWQkeiwg+aVtO+8iOWNs+Wkmueoi+W6puWcsOWinuWKoOetlueVpTwvcD48cD7lnKjnirbmgIEgczwvcD48cD50IOS4i++8jOetlueVpemAieaLqeaJp+WKqOS9nCBhPC9wPjxwPnQ8L3A+PHA+55qE5qaC546H77yJ77yM5Y+W5Yaz5LqO5pm66IO95L2T5b2T5YmN5a+55LqOIFE8L3A+PHA+z4DOuDwvcD48cD4ocyBhKTwvcD48cD7nmoTlgY/kvLDorqEgdjwvcD48cD50PC9wPjxwPuOAguWmguaenDwvcD48cD7lvZPliY3mmbrog73kvZPpgJrov4fnu4/pqozkvLDorqHliLDnmoQgdjwvcD48cD50PC9wPjxwPui2iiDvvIzljbPmmbrog73kvZPorqTkuLrlnKjlkI7ojrflvpfnmoTntK/np6/mipjnjrDlpZbotY/otoog77yM5pm66IO95L2T5bCx5bCG6LaKPC9wPjxwPuenr+aegeeahOiwg+aVtOetlueVpe+8jOS9v+W+l+WtpuS5oOWIsOeahOetlueVpeWcqOeKtuaAgSBzPC9wPjxwPnQg5LiL5pyJ5pu055qE5Y+v6IO95oCn5omn5Yqo5L2cIGE8L3A+PHA+dDwvcD48cD7jgILoi6Xmmbrog73kvZPpgJrov4fnu4/pqozkvLA8L3A+PHA+6K6h5Yiw55qEIHY8L3A+PHA+dCDotoog77yM5YiZ5pm66IO95L2T5bCG5Lya6LaK5LiN5oS/5oSP5Zyo54q25oCBIHM8L3A+PHA+dCDkuIvmiafliqjkvZwgYTwvcD48cD50PC9wPjxwPu+8jOWboOatpOabtOaWsOWQjueahOetlueVpeWcqOeKtuaAgSBzPC9wPjxwPnQ8L3A+PHA+5LiL6YCJPC9wPjxwPuaLqeWKqOS9nCBhPC9wPjxwPnQg55qE5Y+v6IO95oCn5aKe5Yqg5bCG5Lya6L6D5bCR77yb5ZyoIHY8L3A+PHA+dCDkuLrotJ/lgLznmoTmg4XlhrXkuIvvvIznrZbnlaXlnKjnirbmgIEgczwvcD48cD50IOS4i+mAieaLqeWKqOS9nCBhPC9wPjxwPnQ8L3A+PHA+55qE5Y+v6IO95oCn6L+Y5bCG6ZmN5L2O44CCPC9wPjxwPuWtpuS5oOacgOS8mOeahOWAvOWHveaVsCBRIChzIGEpIOaYr+mAmui/h+aUueWPmOetlueVpeWPguaVsCDvvIzku47mjIflrprnmoTnjq/looPnirbmgIEgc++8jOaJp+WKqOS9nCBhIOWQju+8jOaMieeFp+etlueVpc64PC9wPjxwPuS6p+eahOWKqOS9nOW6j+WIl+aJpyDvvIzlj6/ojrflvpfmnIDmnJ/mnJvmipjnjrDlkI7ntK/np6/lpZbotY/jgII8L3A+PHA+USAocyBhKSA9IG1heCDOuFE8L3A+PHA+z4DOuDwvcD48cD4ocyBhKSA9IG1heCDOuEU8L3A+PHA+z4DOuDwvcD48cD5bPC9wPjxwPuKIkTwvcD48cD50PTA8L3A+PHA+dCByIHQ8L3A+PHA+czwvcD48cD4wPC9wPjxwPj0gcyBhPC9wPjxwPjA8L3A+PHA+PSBhPC9wPjxwPl08L3A+PHA+5pyA5LyY5YC85Ye95pWw5ruh5Lul5LiL55qE562J5byPIOOAguebtOinieS4iuWuueaYk+eQhuino++8jOWmguaenOW3suefpeacgOS8mOWAvOWHveaVsO+8jOmCo+S5iDwvcD48cD7lj6rpnIDopoHlnKjkuIvnirbmgIHpgInmi6npgInmi6nmiafkvb/lgLzlh73mlbDmnIDnmoTliqjkvZzljbPlj6/mnIDljJbmipjnjrDnmoTntK/orqHlpZbotY/nmoTmnJ/mnJvjgII8L3A+PHA+USAocyBhKSA9IEU8L3A+PHA+czwvcD48cD7igLI8L3A+PHA+UDwvcD48cD5bPC9wPjxwPnIgKHMgYSBzPC9wPjxwPuKAsjwvcD48cD4pICsgbWF4PC9wPjxwPmE8L3A+PHA+4oCyPC9wPjxwPlEgKHM8L3A+PHA+4oCyPC9wPjxwPmE8L3A+PHA+4oCyPC9wPjxwPikgczwvcD48cD4wPC9wPjxwPj0gcyBhPC9wPjxwPjA8L3A+PHA+PSBhPC9wPjxwPl08L3A+PHA+5a2m5Lmg5pyA5LyY55qE5YC85Ye95pWwIFEgKHMgYSnvvIzliJnnrYnlkIzkuo7lrabkuaDmnIDkvJjnmoTnrZbnlaXOuDwvcD48cD4ocyBhKTwvcD48cD7vvIwg5a2m5Lmg6YCa6L+H5Yqo5oCB6KeE5YiS77yM5aSa5qyh6L+t5LujPC9wPjxwPuadpeWtpuS5oOacgOS8mOWAvOWHveaVsO+8jOWmguW8jyDjgILlrrnmmJPnnIvliLDvvIw8L3A+PHA+bGltIGkgUTwvcD48cD5pPC9wPjxwPj0gUSDjgII8L3A+PHA+UTwvcD48cD5pKzE8L3A+PHA+KHMgYSkgPSBFPC9wPjxwPnM8L3A+PHA+4oCyPC9wPjxwPlA8L3A+PHA+WzwvcD48cD5yIChzIGEgczwvcD48cD7igLI8L3A+PHA+KSArIG1heDwvcD48cD5hPC9wPjxwPuKAsjwvcD48cD5RPC9wPjxwPmk8L3A+PHA+KHM8L3A+PHA+4oCyPC9wPjxwPmE8L3A+PHA+4oCyPC9wPjxwPikgczwvcD48cD4wPC9wPjxwPj0gcyBhPC9wPjxwPjA8L3A+PHA+PSBhPC9wPjxwPl08L3A+PHA+5LiO562W55Wl55qE56We57uP57uc5Y+C5pWw5YyW6KGo55u45ZCM77yM5oiR5Lus5ZCM5qC35Y+v5Lul6YCa6L+H5rex5bqm56We57uP57uc5p2l6L+R5Ly85YC85Ye95pWw44CCPC9wPjxwPuetlueVpeair+W6puazleWtmOWcqOeahOS4qumXrumimOaYr+WFtuiuree7g+e7k+aenOeahOW3rui/hyDjgILlpoLmnpzmiJHku6zpgJrov4forr7nva7ln7rlh4YgYiDmnaXlh4/mqKHlnovnmoTlt67vvIzlpoIg44CCPC9wPjxwPs64RTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+4oiRPC9wPjxwPnQ9MDwvcD48cD50IHI8L3A+PHA+dDwvcD48cD5dPC9wPjxwPj0gRTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+zrhsb2c8L3A+PHA+zrg8L3A+PHA+KHMgYSkgKFE8L3A+PHA+z4DOuDwvcD48cD4ocyBhKSBiKTwvcD48cD5dPC9wPjxwPuabtOi/m+atpe+8jOW9k+S9v+eKtuaAgeWAvOWHveaVsOS9nOS4uuWfuuWHhuaXtu+8jOetlueVpeair+W6puS4uuWwhuWPmOS4uiDjgII8L3A+PHA+zrhFPC9wPjxwPs+Azrg8L3A+PHA+WzwvcD48cD7iiJE8L3A+PHA+dD0wPC9wPjxwPnQgcjwvcD48cD50PC9wPjxwPl08L3A+PHA+PSBFPC9wPjxwPs+Azrg8L3A+PHA+WzwvcD48cD7OuGxvZzwvcD48cD7OuDwvcD48cD4ocyBhKSAoUTwvcD48cD7PgM64PC9wPjxwPihzIGEpIFY8L3A+PHA+z4DOuDwvcD48cD4ocykpPC9wPjxwPl08L3A+PHA+5YW25LitIFE8L3A+PHA+z4DOuDwvcD48cD4ocyBhKSBWIChzKSk8L3A+PHA+6KKr56ew5Li65Yqo5L2c5LyY5Yq/5Ye95pWwIEEocyB0Ke+8iCDvvInjgILlpoLmnpzkuI3ogIPomZHnirbmgIHovaznp7vnmoTmpoI8L3A+PHA+546H77yM5L2/6YeH5qC355qE5byP5p2l5Lyw6K6h54q25oCB6L2s56e777yM5YiZ5Zyo5b2T5YmN55qE562W55Wl5Y+C5pWw5LiL5YC85Ye95pWw5Y+v5Lul6L+R5Ly85Li65byPIO+8mjwvcD48cD5RPC9wPjxwPs+Azrg8L3A+PHA+KHMgdCBhPC9wPjxwPnQ8L3A+PHA+KSByPC9wPjxwPs+Azrg8L3A+PHA+KHMgdCBhPC9wPjxwPnQ8L3A+PHA+KSArIFY8L3A+PHA+z4DOuDwvcD48cD4oczwvcD48cD50KzE8L3A+PHA+KTwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqbmoLnmja7mraTov5HkvLzvvIzlvI/nroDljJbkuLrlvI8g77yM6YCa6L+H5q2k6L+R5Ly86L+b562W55Wl5qKv5bqm5a2m5Lmg6ZyA6KaB6YCa6L+H6YeH5qC35a+554q25oCB5YC85Ye95pWw6L+b5Lyw6K6h44CC5LiO562W55Wl5qC377yM54q25oCB5YC85Ye95pWw5ZCM5qC35Y+v5Lul5L2/5rex5bqm56We57uP6Lev6L+R5Ly844CC5q2k5pe277yM6YCJ5oup5Yqo5L2c55qE562W55Wl57uc6KKr56ew5Li65Yqo5L2c5omn6ICF77yIIO+8ie+8jCDlr7nnirbmgIHov5vor4Tku7fnmoTnirbmgIHlgLzlh73mlbDooqvnp7DkuLror4Tlp5TvvIgg77yJ44CC6K6t57uD566X5rOV5Y+v5Lul566A5Y2V5o+P6L+w5Li677yMIOaJp+WkmuS4quWKqOS9nO+8jCDpgJrov4fop4Llr5/lkITkuKrliqjkvZzlkoznjq/looPnmoTlj5jljJbmnaXmlLnlj5jlr7nnjq/looPnirbmgIHnmoTor4Tku7fvvJvlkIzml7bmoLnmja7lr7nnjq/looPnirbmgIHnmoTor4Tku7fmnaXkuqfnrZbnlaXmoq/luqbvvIznlLHmraTmlLnlj5jliqjkvZzpgInmi6nnmoTnrZbnlaXjgII8L3A+PHA+zrhFPC9wPjxwPs+Azrg8L3A+PHA+WzwvcD48cD7iiJE8L3A+PHA+dD0wPC9wPjxwPnQgcjwvcD48cD50PC9wPjxwPl08L3A+PHA+PSBFPC9wPjxwPs+Azrg8L3A+PHA+WzwvcD48cD7OuGxvZzwvcD48cD7OuDwvcD48cD4ocyBhKSAocjwvcD48cD7PgM64PC9wPjxwPihzIHQgYTwvcD48cD50PC9wPjxwPikgKyBWPC9wPjxwPs+Azrg8L3A+PHA+KHM8L3A+PHA+dCsxPC9wPjxwPikgVjwvcD48cD7PgM64PC9wPjxwPihzKSk8L3A+PHA+XTwvcD48cD7nrYnku7fnmoTvvIzmoLnmja7lvI/kuK3miYDlgZrnmoTov5HkvLzvvIzlvI/lkIzmoLflj6/ku6XnroDljJbkuLrlvI8g77yM5q2k5pe25Y+v5Lul6YCa6L+H5Lyw6K6h5YC85Ye95pWw5pu/5Luj5Lyw6K6h54q25oCB5YC85Ye95pWw44CCPC9wPjxwPs64RTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+4oiRPC9wPjxwPnQ9MDwvcD48cD50IHI8L3A+PHA+dDwvcD48cD5dPC9wPjxwPj0gRTwvcD48cD7PgM64PC9wPjxwPls8L3A+PHA+zrhsb2c8L3A+PHA+zrg8L3A+PHA+KHMgYSkgKHI8L3A+PHA+z4DOuDwvcD48cD4ocyB0IGE8L3A+PHA+dDwvcD48cD4pICsgUTwvcD48cD7PgM64PC9wPjxwPihzIHQgYTwvcD48cD50PC9wPjxwPikgUTwvcD48cD7PgM64PC9wPjxwPihzIHQgMTwvcD48cD5hPC9wPjxwPnQgMTwvcD48cD4pKTwvcD48cD5dPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6pjwvcD48cD7nrKzkuInnq6Dlrp7pqoznjq/looM8L3A+PHA+5qih5Z6L6K6+6K6h6ICD6JmR5Zyo5YW35pyJ5aSa56eN5Y+v6LCD5bqm6LWE5rqQ55qE5Y2V5Liq5pyN5Yqh5Zmo5LiK5re35ZCI5omn5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5ZKM5om55aSE55CG5Lu75Yqh55qE6Zeu6aKY44CC5pm66IO95L2T5omn6LCD5bqm55qE5ZGo5pyf5Y+v6K6+572u5Li65aSfIO+8jOS7peS6juWcqOavj+S4quaXtumXtOatpemqpOWGhe+8jOW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOi0n+i9veWPr+inhuS4uuWfuuacrOS4jeWPkeWPmOWMluOAgumAmui/h+iwg+W6puWGs+etluW8gOWni+aXtuWIsOW7tui/n+aVj+aEn+Wei+W6lOeahOivt+axguaVsOmHj++8jOWPr+S7pemihOiuoeatpOauteaXtumXtOatpemqpOWGheW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOi0n+i9veW8uuW6puOAguagueaNrumihOiuoeeahOi0n+i9veW8uuW6puWSjOW9k+WJjeacjeWKoeWZqOeahOWQhOexu+i1hOa6kOWIqeeOh++8iOeOr+Wig+eKtuaAge+8ie+8jOaZuuiDveS9k+mAieaLqeWKqOS9nOi/m+i1hOa6kOiwg+W6puOAguWcqOW9k+WJjeWRqOacn+e7k+adn+WQju+8jOaZuuiDveS9k+WwhuaUtuWIsOaWsOeahOmihOiuoei0n+i9veW8uuW6puWSjOaWsOeahOacjeWKoeWZqOi1hOa6kOWIqTwvcD48cD7njofjgILlkIzml7bvvIzmmbrog73kvZPov5jkvJrmlLbliLDlj43mmKDkuIrkuKrliqjkvZzotKjph4/nmoTlpZblirHkv6Hlj7fjgII8L3A+PHA+5pm66IO95L2T55qE5LyY5YyW5qCH5piv5Zyo5LiN6L+d5Y+N5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh6LSo6YeP6KaB5rGC55qE5ZCM5pe277yM5LyY5YyW5pyN5Yqh5Zmo55qE6LWE5rqQ5Yip546H44CC5b2T5oiR5Lus5YGH6K6+5om55aSE55CG5Lu75Yqh5Y+v5Lul5YWF5YiG5Yip6KKr5YiG6YWN55qE6LWE5rqQ5pe277yMIOS4quebuOWFs+eahOS4lOWuueaYk+mHj+WMlueahOS8mOWMluagh+S4uuWIhumFjee7meW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOi1hOa6kOWwvemHj+WwkeOAguS4iui/sOWBh+iuvumAmuW4uOaYr+aIkOeahOOAgjwvcD48cD7pmpTnprvmioDmnK/orqHnrpfmoLjlv4PotYTmupDnm7TmjqXlvbHlk43ku7vliqHojrflvpfnmoTorqHnrpfpgJ/luqblkozlubborqHnrpfog70g44CC6YCa6L+H57O757uf5o+Q5L6b55qEIO+8jDwvcD48cD7miJHku6zlj6/ku6Xku7vmhI/kuLrlu7bov5/mlY/mhJ/lnovku7vliqHlkozmibnlpITnkIbku7vliqHliIbphY3orqHnrpfmoLgg44CC5a6e6aqM5Zyo6Iux54m55bCU5LiK6L+bPC9wPjxwPuOAguivpeWkhOeQhuWZqOWFt+acieS4queJqeeQhuiuoeeul+aguCDvvIwg5Liq6YC76L6R6K6h566X5qC4IOOAguiLseeJueWwlOeahOi2hee6v+eoi+aKgOacr+S9v+W+l+WFseWQjOS4queJqeeQhuiuoeeul+aguOeahOi2hee6v+eoi+WwhuWFsee6p+mAn+e8k+WtmOOAgiDlr7nkuo7mnKvnuqfpgJ/nvJPlrZjnmoTorr/pl67liY3msqHmnInlip7ms5Xov5vpmpTnprvvvIzlm6DmraTmiJHku6zlsIbotYTmupDliIbphY3nmoTnspLluqborr7nva7kuLrliIbphY3niannkIbmoLjku6XpmLLmibnlpITnkIbku7vliqHkuI7lu7bov5/mlY/mhJ/lnovku7vliqHlnKjlkIzniannkIbmoLjkuIrov5Dml7blnKjnuqfpgJ/nvJPlrZjkuIrkuqfmibDjgILmnKvnuqfpq5jpgJ/nvJPlrZjkuIrmibnlpITnkIbku7vliqHlr7nlu7bov5/mlY/mhJ/lnovku7vliqHlnKjlu7bov5/mlY/mhJ/lnovku7vliqHotJ/ovb3lvLrluqbml7bkuqflt6jnmoTmibDjgILlm6DmraTpmpTnprvku7vliqHlr7nmnKvnuqfpgJ/nvJPlrZjnmoTkvb/og73mnInmlYjkv53or4Hlu7bov5/mlY/mhJ/lnovku7vliqHlnKjotJ/ovb3lvLrluqbml7bnmoTmnI3liqHotKjph4/jgILlpITnkIblmajnoazku7bmj5DkvpvnuqfnmoTnvJPlrZjliIbphY3vvIzkuLrnroDljJbpl67popjvvIzmiJHku6zlsIbnvJPlrZjliIbphY3orr7nva7kuLrnuqfvvIzljbPotYTmupDliIbphY3nmoTnspLluqbkuLrmnKvnuqfpgJ/nvJPlrZjmgLvnmoTliIbkuYsg44CCIOS6juaOp+WItuWKqOaAgemaj+acuuWtmOWCqOiuv+mXruW4puWuveeahOWGheWtmOW4puWuveWIhumFjeaKgOacr++8iCDvvInlnKjlrp7pqoznjq/looPnmoTmnI3liqHlmajkuIrnvLrkuY/noazku7bmjIHvvIzlm6DmraTms5Xnm7TmjqXmjqfliLbmt7flkIjmiafku7vliqHlr7nliqjmgIHpmo/mnLrlrZjlgqjlmajnmoTorr/pl67jgIIg5LqO5pu/5Luj5YaF5a2Y5bim5a695YiG6YWN5oqA5pyv77yM5oiR5Lus6Iis6YCa6L+H5YaF5a2Y5bim5a6955uR5o6n5oqA5pyv77yIIO+8ieajgOa1i+avj+S4quiuoeeul+aguOS6p+eahOWKqOaAgemaj+acuuWtmOWCqOiuv+mXrua1gemHj++8jOW9k+aJueWkhOeQhuS7u+WKoeWvueWKqOaAgemaj+acuuWtmOWCqOiuv+mXruW4puWuveS6p+i/h+WOi+aXtu+8jOWHj+WwkeWIhumFjee7meaJueWkhOeQhuS7u+WKoeeahOiuoeeul+aguOS7pemZjeS9juWFtuWvueWKqOaAgemaj+acuuWtmOWCqOeahOiuv+mXru+8jOeEtuS7juWQjue7reiKguS7u+WKoei1hOa6kOmcgOaxguWIhuaekOS4reWPkeeOsO+8jOi/meenjeeyl+eykuW6pueahOiwg+iKguW5tuS4jeiDveWPluW+l+W+iOWlveaViOaenOOAgjwvcD48cD7mlbTkvZPmnrbmnoTkuLrpgb/lhY3otYTmupDosIPluqbnrpfms5XkuI7lu7bov5/mlY/mhJ/lnovnqIvluo/miqLlpLrotYTmupDvvIzotYTmupDosIPluqbnqIvluo/lsIblnKjljZXni6znmoTnoazku7bkuIrov5Ag77yM5bm26YCa6L+H5LiO5bu26L+f5pWP5oSf5Z6L56iL5bqP5re35ZCI5omn55qE5Liq6L276YeP5o6n5Yi256iL5bqP55uR5o6n6LWE5rqQ5Yip5ZKM6L+b6LWE5rqQ6LCD5bqm44CC57O757uf55qE5pW05L2T5p625p6E5aaC5Zu+5omAIOOAgjwvcD48cD7lhYXlvZPotYTmupDosIPluqbnqIvluo/nmoTmmbrog73kvZPpgJrov4fkuI7lhbbov5DlnKjlkIzmnI3liqHlmajkuIrnmoTmjqfliLblmajkuI7njq/looPkuqTkupLjgILlvZPlj6rog73kvZPlgZrlh7rliqjkvZzml7bvvIzmjqfliLblmajmjqXlj5fmmbrog73kvZPnmoTliqjkvZzvvIzlubblsIblhbbkvKDpgJLooqvosIPluqbmnI3liqHlmajkuIrmiacg44CC6KKr6LCD5bqm55qE5pyN5Yqh5Zmo5LiK6L+Q55qE56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5Zu+5a6e6aqM57O757uf5p625p6E6L276YeP5o6n5Yi25Zmo5bCG5Zyo5oyH5a6a55qE5pe26Ze05YaF5Y+W5qC35pyN5Yqh5Zmo55qE6LWE5rqQ5Yip546H5bm26L+U5Zue57uZ6LCD5bqm56iL5bqP56uv55qE5o6n5Yi25Zmo44CC6Zmk5LqG5omn5p2lPC9wPjxwPuaZuuiDveS9k+eahOWKqOS9nO+8jOaOp+WItuWZqOi/mOWwhuiwg+WKqOi0n+i9veaooeaLn+eoi+W6j+WQkeW7tui/n+aVj+aEn+Wei+S7u+WKoeaWveWKoOi0n+i9veW5tuaUtuWbnuatpOauteaXtumXtOWGheeahOacjeWKoei0qOmHj+aKpeWRiuOAguS4uuS6huiOt+W+l+WFt+aciee7n+iuoeWtpuaEj+S5ieeahOaVsOaNru+8jOS7peS4iuaWveWKoOi0n+i9veWSjOmHh+agt+i1hOa6kOWIqeeOh+eahOi/h+eoi+mDveiiq+iuvuWumuS4ujwvcD48cD7lpJ/plb/ku6XlhYHorrjlu7bov5/mlY/mhJ/lnovku7vliqHmnI3liqHlpJ/lpJrnmoTor7fmsYLjgILmiYDmnInmkJzpm4bliLDnmoTmlbDmja7vvIzljIXmi6zotYTmupDliKnnjofmiqXlkYrlkozmnI3liqHotKjph4/miqXlkYrvvIzlsIbkvZzkuLrnjq/looPnirbmgIHlkozorqHnrpflh7rnmoTmraTmraXpqqTlpZblirHotbfov5Tlm57nu5notYTmupDosIPluqbmmbrog73kvZPjgII8L3A+PHA+5re35ZCI5omn6KGM5Lu75Yqh6YCJ5oup5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5pWw5o2u5Lit5bi46KeB55qE5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5YyF5ous56S+5Lqk57uc77yM5pCc57Si5byV5pOO77yM6L2v5Lu25Y2z5pyN5Yqh77yM5Zyo57q/5Zyw5Zu+77yMIOmhtemCrueuse+8jDwvcD48cD7mnLrlmajnv7vor5HvvIzlnKjnur/otK3nianlkozlkYrnrYnnrYnjgII8L3A+PHA+56S+5Lqk5pyN5Yqh5byV5pOO56S+5Lqk57uc5bqU5LiO5pmu6YCa56uZ5pyN5Yqh5LiN5ZCM77yM5YW25pu05aSa5piv5Liq5bmz5Y+w44CC5L6L5aaC6IS45Lmm77yIIO+8ieWwsee7meaIt+aPkOS+m+S6huS4quekvuS6pOW5s+WPsOOAguekvuS6pOe7nOS4iueahOmDqOWIhuaVsOaNruaYr+eUseaIt++8iCDkuI3mmK/lvIDlj5HogIXvvInkuqcg44CC6L+Z5Lqb5pWw5o2u55Sx5YW25LuW5oi355qE5Li677yM5oiW5aSW5p2l6LWE5rqQ55qE5Y+Y5YyW5byV6LW35Yqo5oCB5pu05paw77yM5bm26KKr5o6o6YCB57uZ5oi344CC5q2j5Zug5Li65aaC5q2k77yM56S+5Lqk57uc5bqU5YyF5ZCr6aKR57mB55qE5ZCO56uv5pWw5o2u5bqT5YaZIO+8jOS4lOWGmeeahOaVsOaNruWwhuWcqOWQjuadpeaOqOmAgee7meaIt+OAgjwvcD48cD7npL7kuqTmnI3liqHlvJXmk47mmK/kuKrln7rkuo7lrp7njrDnmoTlvIDmupDnpL7kuqTnu5zlupQg77yM5bm26KKr5YyF5ous5r6z5Yip5Lqa5pS/5bqc77yM5paw6KW/5YWw5pWZ6IKy6YOo77yMIOWHuueJiOekvu+8jOW8l+e9l+i+vuWtpuWcqOWGheeahOacuuaehOS9vyDjgIIg56S+5Lqk5pyN5Yqh5byV5pOO5o+Q5L6b5LiO5rWB55qE56S+5Lqk5pyN5Yqh6IS45Lmm5o+Q5L6b55u45Ly855qE5Yqf6IO977yM5YWB6K645oi35Zyo5YW25Lit5bu65Liq5Liq5aW95Y+L57uc77yM5bm25Zyo57uc5Lit5LqS55u45YiG5Lqr5YaF5a6544CCIOekvuS6pOW8leaTjui/mOWMheaLrOS4qui/t+S9oOWNmuWuoiDvvIzlj6/kuo7kuI7lhbbku5bmiLfliIbkuqvlrZfvvIzlm77lkozop4bpopHlhoXlrrnjgILlnKjkuK3liIbkuqvnmoTlhoXlrrnooqvlhbbku5bmiLflj6/op4HvvIznsbvkvLzkuI7ohLjkuabkuK3lj5HkuIrlopnnmoTlip/og73jgILmr4/kuKrmiLfpg73mnInnmoTlrp7ml7bkuI7lpb3lj4s8L3A+PHA+57uc5YWx5Lqr55qE5L+h5oGv5rWB77yM6KKr56ew5Li6IOOAgumAmui/hyDvvIwg5oi35Y+v5Lul5a6e546w5aSa56eN5pON5L2c77yMIOWmguWPkemAgeWSjOaOpeaUtuiBiuWkqeS/oeaBr++8jOWcqOS4iuWPkemAgeWKqOaAge+8jOS7peWPiuaOpeaUtuWFtuS7luaIt+acgOaWsOWIhuS6q+eahOWGheWuueOAguaJgOacieeahOaTjeS9nOmDveacieWPkemAgeWSjOaOpeWPl+eugOefrea2iOaBr+WunueOsO+8jOWboOatpOeahOS4u+imgei0n+i9vemDveaYr+i/meS6m+adpeeahOeugOefreivt+axguOAgjwvcD48cD7nmoTlkI7nq6/pgJrov4fmnI3liqHlmajohJrmnKzor63lkozmlbDmja7lupPlrp7njrDjgILohLjkuabnmoTmnI3liqHlmajlkI7nq6/nm7jkvLwg77yM5oiR56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5Lus6L+Y6YCa6L+H5Yqg6YCf5pWw5o2u5bqT6K6/6Zeu44CC5Li65LqG566A5YyW6Zeu6aKY77yMIOeahOmhteacjeWKoeWZqOWSjOWQjuerr++8jOWMheaLrOWSjOmDvei/kOWcqOWQjOacjeWKoeWZqOS4iu+8jOW5tuS9nOS4uuW7tui/n+aVj+aEn+Wei+S7u+WKoeWIhumFjei1hOa6kOOAgjwvcD48cD7miJHku6zkvb/moYbmnrbmnaXlrp7njrDnpL7kuqTlvJXmk47nmoTmnI3liqHotKjph4/mtYvor5XjgIIg5piv5Liq5Z+65LqO55qE5Z+65YeG5rWL6K+V5byA5Y+R5ZKM5omn5qGG5p6277yM5o+Q5L6b5LqG5LqO5b+r6YCf5byA5Y+R5Z+65YeG5rWL6K+V56iL5bqP44CC6YCa6L+H5a6a5LmJ5rWL6K+V55qE5pON5L2c5ZKM5ZCE56eN5pON5L2c55qE5omn5qaC546H77yM5Y+v5Lul5b+r6YCf5byA5Y+R57uc5bqU55qE5Z+65YeG5rWL6K+V44CC5Zyo5Z+65YeG5rWL6K+V5a6M5oiQ5ZCO77yMIOWwhui+k+WHuuWQhOS4quaTjeS9nOaJp+aDheWGteeahOe7n+iuoeaVsOaNru+8jOS+i+WmguaJp+a1i+ivle+8jOebuOW6lOaXtumXtOWSjOi/neWPjeacjeWKoei0qOmHj+imgeaxgueahOaDheWGteOAgjwvcD48cD7mj5DkvpvkuoblpJrnp43lip/og73vvIzlm6DmraTmiLflj6/ku6Xov5vlpJrnp43mk43kvZzvvIzkvovlpoLnmbvlvZXnmbvlh7rvvIzmt7vliqDlpb3lj4vvvIzlj5HpgIHmjqXmlLbmtojmga/lkozliIbkuqvliqjmgIHnrYnjgILogIPomZHliLDnnJ/lrp7miLfmiafkuI3lkIzmk43kvZzlhbfmnInkuI3lkIzpopHnjofvvIzkuJTmr4/kuKrmk43kvZzkuI7liY3kuKrmk43kvZzlhbfmnInlrprlhbPogZTvvIzmiJHku6zpgJrov4fkuKrpqazlsJTnp5HlpKvov4fnqIvvvIgg77yJ5qih5ouf5oi355qE5Li644CCIOeahOacjeWKoei0qOmHj+iiq+WumuS5ieS4uuauteaXtumXtOWGheaJgOacieivpeaTjeS9nOeahOWTjeW6lOaXtumXtOeahOS5neWIhuS9jeeCueOAguS7juacjeWKoeWZqOadpeeci++8jOaooeaLn+aIt+aAu+S9k+eahOS6p+eahOWQhOS4quaTjeS9nOeahDwvcD48cD7kvovlkITkuKrmk43kvZzlkozlhbbmnI3liqHotKjph4/opoHmsYLlpoLooajmiYAg44CC5a+55LqO5byV5pOO5pyN5Yqh6LSo6YeP55qE6K6+572u5Y+C6ICD5LqO5ZCE5pON5L2c55qE5bmz5Z2H5bu26L+fIO+8jOWvueS6juazqOWGjOOAgeeZu+W9leWSjOmAgOWHuuetieaIt+S4jemikee5geS9v+eahOeahOaTjeS9nO+8jOiuvue9ruS6hui+g+S9jueahOacjeWKoei0qOmHj+imgeaxguOAgjwvcD48cD7ooajmqKHmi5/nlKjmiLfmgLvkvZPorr/pl67mqKHlvI/mk43kvZzljaDmnI3liqHotKjph4/opoHmsYLmk43kvZzljaDmnI3liqHotKjph4/opoHmsYLmk43kvZzljaDmnI3liqHotKjph4/opoHmsYLms6jlhozpobXlj5Hmtojmga/nmbvlvZXliqjmgIHmlLbmtojmga/pgIDlh7rlpb3lj4vliLfmlrDkuLvpobXlr7nosaHnvJPlrZjmnI3liqHkuLrkuobmj5DmgKfog73vvIwg57uc5bqU6YCa5bi45L2/5a+56LGh57yT5a2Y5pyN5Yqh77yIIO+8ieadpee8k+WtmOS6m+S7o+S7t+aYgui0teeahOaTjeS9nOeahOiuoeeul+e7k+aenO+8jOWboOatpOWvueixoee8k+WtmOacjeWKoeWtmOWCqOWSjOivu+WPlueahOmAn+W6puWwhuaegeW9seWTjeaVtOS4quacjeWKoeeahOaAp+iDveOAgiDmmK/kuKrluLjnmoTku6XplK7igJTlgLzlvaLlvI/lrZjlgqjnmoTlr7nosaHnvJPlrZjns7vnu5/vvIzpgJrluLjmnaXnvJPlrZjkupvml7bovoPplb/nmoTmlbDmja7lupPor7fmsYLnmoTnu5PmnpzjgILlr7npobXmnI3liqHlmajnmoTkuKror7fmsYLoiKzkvJrkvb/nu5zmnI3liqHlmajkuqflpJrkuKrlr7nlr7nosaHnvJPlrZjmnI3liqHnmoTor7fmsYLjgILkuLrkuobpgb/lhY3pobXliqDovb3nmoTlu7bov5/vvIzlr7nosaHlrZjlgqjmnI3liqHlv4Xpobvku6XkvY7lu7bov5/ov5Tlm57or7fmsYLnu5PmnpzvvIzlm6DmraTlhbbmnI3liqHotKjph4/vvIjkuZ3liIbkvY3lu7bov5/vvInpgJrluLjorr7nva7lnKjmr6vnp5LjgII8L3A+PHA+5Lit5o+Q5L6b5LqG55qE5Z+65YeG5rWL6K+V56iL5bqPIOOAgueUseS6juWvueixoee8k+WtmOacjeWKoeeahOivt+axguWfuuacrOmcgOmineWklueahOWkhOeQhu+8jOWboOatpOWvueixoee8k+WtmOacjeWKoeWZqOmZpOS6huS9juW7tui/n+Wklu+8jOi/mOWFt+acieW+iOWQnuWQkOmHj+OAgiDlr7nmraTkvJjljJbkuobln7rlh4bmtYvor5XnqIvluo/nu5PmnoTjgILmtYvor5XnqIvluo/pgJrov4flrp7njrDku6Xmj5DmgKfog73vvIzlnKjlhbbkuqfnmoTlpJrkuKrmtYvor5Xnur/nqIvkuK3vvIwg5Y2K55qE57q/56iL6L+bPC9wPjxwPuivt+axgu+8jOWPpui+ueeahOe6v+eoi+mqjOivgee8k+WtmOacjeWKoei/lOWbnueahOS/oeaBr+OAguS4pOenjee6v+eoi+eahOWIhuWHj+WwkeS6huivt+axguWSjOWkhOeQhumXtOeahOaJsO+8jOacieWIqeS6juWHhuehruiuoeaXtuWSjOS6p+e7n+iuoeS/oeaBr+OAgueUseS6juW3suefpeeahOinhOaooeaJqeWxlemXrumimO+8jOWNs+W9k+WFtuS6p+i2hei/h+Wbm+S4que6v+eoi+aXtuS8mueUseaYvuiRl+aAp+iDveS4i+mZje+8jOWboOatpOWunui3teS4reiIrOWcqOS4quacjeWKoeWZqOS4iui/kOWkmuS4quWunuS+i+OAgiDlj6/ku6XlnKjlpJrkuKrnvJPlrZjmnI3liqHlmajkuYvpl7TlubPooaHotJ/ovb3jgILmtYvor5Xnu5PmnZ/lkI7vvIzln7rlh4bmtYvor5Xlj6/ku6XmiqXlkYrlubPlnYfnmoTor7fmsYLlu7bov5/vvIzkuZ3liIbkvY3lu7bov5/lkoznvJPlrZjlkb3kuK3njofnrYnmlbDmja7jgII8L3A+PHA+55qE5ZCe5ZCQ6YeP5L2/5b6X57yT5a2Y5pyN5Yqh5Zmo5ZKM6L+Q5Z+65YeG5rWL6K+V55qE5pyN5Yqh5Zmo5LmL6Ze055qE57uc6L+e5o6l5oiQ5Li65oCn6IO955O26aKI77yM6YCa5bi46KaB5rGC5YW26Ze055qE6L+e5o6l5bim5a695Zyo5Lul5LiK44CC5a6e6aqM546v5aKD5Lit5LiN5YW35aSH6L+Z5qC355qE57uc6L+e5o6l5p2h5Lu277yM5Li66YG/5YWN56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5Zu+5om55aSE55CG5Lu75Yqh55qE57yT5a2Y5pyq5ZG95Lit546H5LiO57yT5a2Y5a656YeP57uc55O26aKI77yM5oiR5Lus5Zyo5YW35pyJ5aSa5Liq5aSE55CG5Zmo5o6l55qE5pyN5Yqh5Zmo5LiK77yM5q+P5Liq5o6l5YiG5Yir6L+Q5a+56LGh57yT5a2Y5pyN5Yqh5ZKM5Z+65YeG5rWL6K+V56iL5bqP77yMPC9wPjxwPuS7peWIqeezu+e7n+S4remAn+eahOe7nOWbnui3r+i/nuaOpe+8iCDvvInjgII8L3A+PHA+5om55aSE55CG5Lu75Yqh5pWw5o2u5Lit5a2Y5Zyo5aSa56eN5om55aSE55CG5Lu75Yqh77yM5L6L5aaC5Lu25aSH5Lu977yM56a757q/5Zu+5aSE55CG5ZKM6KeG6aKR6L2s56CB5Y6L57yp562J44CC5p2l5pmu5p6X5pav6aG/5a2m55qE5rWL6K+V56iL5bqP5aWX6KOF77yIIO+8iTwvcD48cD7ljIXlkKvkuobkupvlhbjlnovnmoTmlbDmja7kuK3mibnlpITnkIbku7vliqHjgII8L3A+PHA+6KeG6aKR57yW56CB6ZqP552A5a2Y5YKo5ZKM57uc5bim5a6955qE5aKe5Yqg77yMIOe7nOinhumikeWcqOe7nOa1gemHj+S4reWNoOaYvuiRl+WinuWKoO+8jOinhumikeeahOino+egge+8jOi9rOegge+8jOWOi+e8qeetieS7u+WKoeWvueS6juWmgueahOinhumikeermeWIhumHjeimgeOAguinhumikee8lueggea1i+ivleeoi+W6j+aYr+S4quWfuuS6jjwvcD48cD7vvIgg77yJ5qCH5YeG55qE6KeG6aKR57yW56CB5Zmo77yMIOS6juWwhuWbvuWDj+acieaNn+WOi+e8qeS4uuS4quinhumikea1geOAguS4juWJjeS7o+inhumikee8lueggeagh+WHhuebuCDvvIwg5Y+v5Lul5Lul5pu05L2O54m5546H6L6T5Ye66LSo6YeP6KeG6aKR77yM5Lmf5Zug5q2k5oiQ5Li65LqG5YyF5ous6KeG6aKR5Lya6K6u5ZKM6KeG6aKR5YiG5Y+R562J5bqUPC9wPjxwPueahOW4uOagh+WHhuOAgueEtueahOWOi+e8qeeOh+mAmui/h+abtOWkmueahOi9rOeggeWSjOino+eggeiuoeeul+W+l+adpe+8jOWboOatpOebuOS4iuS7o+agh+WHhu+8jOe8lueggeWSjOino+eggemcgOimgeabtOW8uueahOiuoeeul+iDvSDjgII8L3A+PHA+57yW56CB5Zmo5ZKM6Kej56CB5Zmo5pON5L2c5Zyo5Zu65a6a55qE77yMIOS4uuS5mOeahOWDj+e0oOWdl+WGheOAguWkmuenjeaKgOacr+iiq+i/kOWFtuS4reS7peajgOa1i+WSjOWHj+WwkeaVsOaNruWGl+S9meOAguWFtuS4reacgOmHjeimgeeahOaKgOacr+aYr+i/kOWKqOihpeWBv++8iCDvvInjgILliqjkvZzooaXlgb/ooqvlupTlnKjov57nu63luKfkuYvpl7Tku6Xmo4DmtYvmr4/luKflm77lg4/ml7bpl7Tml7bpl7TkuIrnmoTlhpfkvZnjgILliqjkvZzooaXlgb/lr7nmnIDlkI7op4bpopHnmoTljovnvKnnjofmnInlhrPlrprmgKfkvZwg77yM5L2G5ZCM5pe25Lmf5piv5Y6L57yp6KeG6aKR5rWB5pe26L+Q566X6YeP5pyA55qE5pON5L2c44CCIOe8lueggeWZqOi+k+WHuueahOW4p+acieS4ieenjeexu+Wei++8jOexu++8jCDnsbvlkoznsbvvvIgg77yMPC9wPjxwPu+8ie+8jOS4lOavj+W4p+i+k+WHuuWvueWJjeWQjuW4p+i+k+WHuumDveacieS+nei1luOAgiDlupTpgJrov4fmtYHnur/lubYg77yM5YW257uT5p6c5LmL6Ze055u45LqS5L6d6LWW55qE5oCn6LSo5a+86Ie05YW26YeP55qE6L+b56iL6Ze06YCa5L+h77yM5Zug5q2k5YWx5Lqr6YCf57yT5a2Y55qE5a656YeP5a+55YW25oCn6IO95pyJ6L6D5b2x5ZON44CCIOeahDwvcD48cD7ph4/mlbDmja7ovpPovpPlh7rph4/vvIzkuZ/kvJrlr7nlhbHkuqvpgJ/nvJPlrZjlkozliqjmgIHpmo/mnLrlrZjlgqjlmajnmoTorr/pl67luKblrr3pgKDmiJDovoPlvbHlk43jgILlm74g77yIIO+8iTwvcD48cD7ooajkuobnvJPlrZjlr7nnmoTnvJPlrZjmnKrlkb3kuK3njofnmoTlvbHlk40g44CCPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puacn+adg+WumuS7t+S4reWMheWQq+S4quWfuuS6juW4g+iOseWFi+iIkuWwlOaWr++8iCDvvInnrYnlvI/nmoTmrKflvI/mnJ/mnYPlrprku7flupQg44CC5biD6I6x5YWL6IiS5bCU5pav562J5byP5piv5Liq5YGP5b6u5YiG56iL77yM5LiU5rKh5pyJ5Liq6Kej5p6Q6Kej77yM5Zug5q2k5b+F6aG76YCa6L+H5pWw5YC86K6h566X55qE5rOV5om+5Yiw5YW26L+R5Ly86Kej44CC5q2k5bqUPC9wPjxwPuiejeeoi+S4remHj+eahOWBj+W+ruWIhueoi+axguino+iupOS4uueahOS7o+ihqOOAguW6lOW5tuaxguino+WkmuS4queoi++8jOmcgOimgei/m+mHj+eahOa1rueCueaVsOiuoeeul+OAgueUseS6juWFtuaJgOmcgOaxgueahOaVsOaNrumHj+mHj+i+g+Wwke+8jOWboOatpOWvuee8k+WtmOWSjOWGheWtmOezu+e7n+eahOWOi+i+gyDvvIzlpoLlm74g77yIIO+8ieOAgjwvcD48cD7ku7vliqHotYTmupDpnIDmsYLliIbmnpDnpL7kuqTmnI3liqHlvJXmk47lnKjkuI7ku7vliqHmt7flkIjmiafml7bvvIznu5nlrprkuKrpgLvovpHlhoXmoLjvvIgg77yM5oC75YWx5Liq6YC76L6R5YaF5qC477yJ5ZKM55qE5pyr57qn6YCf57yT5a2Y77yM5rWL5b6X5YW25ZCE5pON5L2c55qE5pyN5Yqh6LSo6YeP5oCn6IO977yIIOe6v++8ieWmguWbvuaJgCDjgILlrp7pqozkuK3ku4Xnu5/orqHluLjnmoTmk43kvZzvvIzlpoLmlLblj5Hmtojmga/lkozmm7TmlrDliqjmgIHnrYnvvJvkuI3luLjnmoTmk43kvZzlpoLms6jlhozvvIznmbvlvZXlkozpgIDlh7rnrYnvvIzlnKjnp5Lph4fmoLfml7bpl7TlhoXku4Xog73lj5blvpflsJHph4/moLfmnKzvvIznvLrkuY/nu5/orqHlrabmhI/kuYnvvIzlm6DmraTkuI3kuojnu5/orqHjgILmiYDmnInnu5/orqHnmoTmk43kvZznmoTmnI3liqHotKjph4/nmoTorqHph4/moIflh4blnYfkuLrph4fmoLfml7bpl7TlhoXlk43lupTml7bpl7TnmoTkuZ3liIbkvY3ngrnvvIzmnI3liqHotKjph4/opoHmsYLkuLrlk43lupTml7bpl7TnmoTkuZ3liIbkvY3ngrnkuI3kuo7np5LvvIjnuqLnur/vvInjgII8L3A+PHA+5Zu+5Lit5ZCM5pe257uZ5Ye65LqG5YW26K6/6Zeu5bu26L+f55qE5bmz5Z2H5YC877yI6JOd57q/77yJ5ZKM5qCH5YeG5beu77yI5reh5qmZ5Z2X77yJ44CCPC9wPjxwPuWbvuW8leaTjueahOacjeWKoei0qOmHj+S4jui0n+i9veW8uuW6puS7juWbvuWPr+S7peeci+WIsOWcqOi0n+i9veW8uuW6pui+g+S9juaXtu+8iCDmiLfmlbDph4/lnKjlhoXvvInvvIwg56S+5Lqk5byV5pOO55qE5bmz5Z2H5bu26L+f57yT5oWi55qE5LiK5rao77yM5LiU5beu6L6DIO+8jOS4iuWNh+i2i+WKv+eos+Wumu+8jOayoeaciei/neWPjeacjeWKoei0qOmHj+imgeaxgu+8m+WcqOi0n+i9veW8uuW6pui+g+aXtu+8iCDvvInvvIzlubPlnYflu7bov5/nmoTlop7plb/pgJ/luqblj5jlv6vvvIwg5beu5Y+YIO+8jOWHuueOsOi/neWPjeacjeWKoei0qOmHj+imgeaxgueahOaDheWGte+8m+W9k+i0n+i9veW8uuW6puS4pemHjei2hei/h+WcqOatpOaXtui1hOa6kOesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6puWbvuW8leaTjueahOacjeWKoei0qOmHj+S4juacjeWKoeWZqOi1hOa6kOWIhumFjeWIhumFjeWPr+aJv+i9veeahOW8uuW6puaXtu+8iCDmiLfmlbDph48g77yJ77yM5bmz5Z2H5bu26L+f6L+F6YCf5LiK5Y2H77yMIOW3ruaYvuiRl+WPmCDvvIzkuI3kvYblh7rnjrDov53lj43mnI3liqHotKjph4/nmoTopoHmsYLvvIzkuJTmgKfog73ooajnjrDkuI3nqLPlrprjgILmgKfog73ooajnjrDkuI3nqLPlrprnmoTljp/lm6Dlj6/ku6Xpg6jliIblvZLnu5PlnKjmtYvor5XmiafnmoTms5XjgILlnKjlrp7pqoznmoTmtYvor5Xms5XkuK3vvIzmqKHmi5/miLfnur/nqIvlkK/liqjlkI7lsIblkITnmbvlvZXlubblnKjnmbvlvZXlkI7vvIzmjInnhafmiYDov7DnmoTmqKHlvI/lvIDlp4vorr/pl67jgILmtYvor5XnqIvluo/lsIblnKjmqKHmi5/miLfnur/nqIvlkK/liqjov5DmrrXml7bpl7TlkI7lvIDlp4vph4fmoLfjgILlnKjnpL7kuqTlvJXmk47miYDojrflvpfnmoTmnI3liqHlmajotYTmupDkuKXph43kuI3ku6XmjIHlvZPliY3otJ/ovb3lvLrluqbml7bvvIwg5oi355qE55m75b2V5pON5L2c5Y+v6IO95Y+N5aSN5aSx6LSl5byV6LW35ZCO57ut55qE5pON5L2c5rOV5q2j5bi46L+bIOOAguWPpjwvcD48cD7vvIzlm6DmnI3liqHlmajlkITkuKrmk43kvZznmoTorr/pl67lu7bov5/mmL7okZfkuIrljYfvvIzph4fmoLflvIDlp4vlkI7lrZjlnKjnmoTph4/nmoTor7fmsYLms5XlnKjph4fmoLfml7bpl7TlhoXnu5PmnZ/vvIw8L3A+PHA+6L+b5rOV57uf6K6h5YW25pON5L2c5bu26L+f44CC5ZCE5Liq5pON5L2c55qE55u45LqS5b2x5ZON5L2/5b6X5pyN5Yqh5Zmo55qE5pyN5Yqh6LSo6YeP5Y+Y5YyW5beoIOOAguWPr+S7peiCr+WumueahOeCueaYr++8jOWcqOatpOenjeaDheWGteS4i++8jCDnpL7kuqTlvJXmk47mmL7nhLbov53lj43kuoblhbbmnI3liqHotKjph4/opoHmsYLjgII8L3A+PHA+54S2IO+8jOi/meazleino+mHiuWcqOW8uuW6pui0n+i9veW8uuW6pu+8jCDmjIHnu63ov53lj43mnI3liqHotKjph4/opoHmsYLml7bvvIzlh7rnjrDmgKfog73nmoTnqoHnhLbmj5Ag77yI5qih5ouf5oi35pWw6YePIO+8ieOAguWbvuWxleS6huW8leaTjueahOacjeWKoei0qOmHj+S4juacjeWKoeWZqOi1hOa6kOWIhumFjeWFs+ezu+eahOa1i+ivlee7k+aenOOAgiDlhYjlrrnmmJPnnIvliLDvvIwg5byV5pOO55qE5pyN5Yqh5oCn6IO95a+56K6h566X5qC45pWw5LiO57yT5a2Y5bm25LiN5pWP5oSf44CCIOacjeWKoeeahOS4u+imgeiAl+aXtuWcqOS6juaVsOaNruW6k+aTjeS9nO+8jOWtmOWCqOaIt+WPkeW4g+mDveWKqOaAgeWSjOafpeivouaIt+WlveWPi+WPkeW4g+eahOWKqOaAge+8jOWboOatpOWFtuWvuee8k+WtmOS4jeaVj+aEn+WuueaYk+eQhuino+OAguWQjOaXtu+8jOWcqOS4uuW8leaTjuWIhumFjemHj+e8k+WtmOaXtu+8jOS4juS5i+W5tuaJp+eahOaJueWkhOeQhuS7u+WKoee8k+WtmOWuuemHj+WPl+mZkOS6p+mHj+eahOe8k+WtmOS4jeWRveS4re+8jOi/mzwvcD48cD7ph4/ljaDlhoXlrZjluKblrr3vvIwg5omw55qE5pWw5o2u5bqT6K+75YaZ5pON5L2c44CC5Zug5q2k77yM5Y+v5Lul55u45L+h5pyN5Yqh5oCn6IO955qE5a+56K6h566X5qC45Liq5pWw55qE5LiN5pWP5oSf77yM5Y+v5Lul5b2S57uT5Li65YaF5a2Y6K6/6Zeu5bim5a695aSE55qE5oCn6IO955O26aKI44CC5Zu+5Y+z77yM5Y+v5Lul55yL5Yiw5YW25LiK5p2h5pac5bqm5ZCR5LiL55qE5bu26L+f5bOw77yM5YW25Lit55qE5pWw5o2u5piv6YCa6L+H5q+P5qyh5Zu65a6a5qC45Liq5pWw77yM5pS55Y+Y5YiG6YWN55qE57yT5a2Y5a656YeP5rWL5b6X55qE44CC5q+P5qyh55qE5rWL6K+V5pe255u46L+R77yM55Sx5q2k5Y+v5Lul5o6o5pat5bOw5Ye6546w5YW35pyJ5Zu65a6a5ZGo5pyf44CC5oiR5Lus6K6k5Li66L+Z5qC355qE5ZGo5pyf5oCn5bu26L+f5p2l5om55aSE55CG5Lu75Yqh5ZGo5pyf5oCn55qE6K+75YaZ5pWw5o2u5bOw55qE56Gs5oCn77yM6L+Z5qC355qE5o6o5pat5ZCM5pe25Y+v5Lul6Kej6YeK5Zu+5Lit5oCn6IO955qE5Ymn54OI5Y+Y5YyW44CC57u85LiK5omA6L+w77yMPC9wPjxwPui/h+W6pueahOWGheWtmOiuv+mXruW4puWuveWvvOiHtOS6huW8leaTjueahOS9juaAp+iDveOAgjwvcD48cD7nlLHkuo7nvLrlsJHnoazku7bmjIHnmoTlhoXlrZjorr/pl67luKblrr3pmpTnprvmioDmnK/vvIzmiJHku6zlj6rog73pgJrov4fpmZDliLbov5DnmoTmoLjmlbDmnaXor5Xlm77mjqfliLblhbbluKblrr3jgIIg5bqU5YW35pyJ5bqm55qE5bm25omn5ZKM5ZCE6L+b56iL5oyH5Luk5bqm5ZCM5q2l55qE54m554K544CC5b2T5Ye6546w5YaF5a2Y6K6/6Zeu5bOw5pe277yMPC9wPjxwPuS5juaJgOaciei/m+eoi+WwhuWQjOaXtuWkhOS6juivu+WPluaIluWGmeWGheWtmOeahOmYtuauteOAguWNs+S9v+WwhuWkmuS4qui/meagt+eahOi/m+eoi+mZkOWItuWcqOWQjOaguCDvvIwg5Liq6L+b56iL5omn6K6/6Zeu5YaF5a2Y5oyH5Luk5bm26Zi75aGe5ZCO77yM5LiL6L+b56iL5Lmf5bCG6KKr5YiH5o2i6L+b6K6h566X5qC45omnIOOAguWFtuWGheWtmOiuv+mXruazlemAmui/h+aOp+WItuiuoeeul+aguOaVsOW+l+WIsOacieaViOaOp+WItu+8jOaJgOS7peWcqOekvuS6pOacjeWKoeW8leaTjuWcqOS4juS7u+WKoea3t+WQiOaJp+aXtu+8jCDnmoTmnI3liqHotKjph4/pmr7ku6Xkv53or4HjgII8L3A+PHA+56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5Y2V54us5omn5re35ZCI5omn5Zu+5a+56LGh57yT5a2Y55qE5pyN5Yqh6LSo6YeP5LiO5pyN5Yqh5Zmo6LWE5rqQ5YiG6YWN55Sx5q2k55yL5Ye677yM5Y2z5L2/5Zyo5a2Y5Zyo6LWE5rqQ6ZqU56a755qE5p2h5Lu25LiL77yM6YCa6L+H5a6a5q6177yIIOWmguazoea1i+ivlSDvvInlkIjnkIbnmoTpgInmi6nmt7flkIjmiafnmoTku7vliqHkuZ/ku43nhLbph43opoHjgIIg5a+56LGh57yT5a2Y5pyN5Yqh5YW35pyJ5q+P56eS5aSE55CG6YeP55qE6K+35rGC77yIIOS4h+e6p++8ie+8jOWvueiuoeeul+aguOaVsOacieW+iOimgeaxgu+8jOS4lOWFtuWvuee8k+WtmOWuuemHj+aVj+aEn+eoi+W6puS4jSDjgIIg6ZyA6KaB6L+b6YeP55qE5rWu54K56L+Q566X5Zug5q2k6IO95pyJ5pWI5Yip56m66Zey55qE6K6h566X5qC4IO+8jOWFtuWni+e7iOeahOaVsOaNrumbhuS4jeS8muWvueacjeWKoeS6p+i/h+eahOWOiyDjgILkuIrov7Dku7vliqHnmoTmt7flkIjlj6/mnInmlYjliKnmnI3liqHlmajotYTmupDvvIzkuJTlrrnmmJPlr7nlhbbkuqfnmoTnm7jkupLmibDov5vnu4bnspLluqbnmoTosIPmjqfvvIzlm6DmraTmmK/kuKrnkIbmg7PnmoTku7vliqHmt7flkIjmoYjjgILlr7nosaHnvJPlrZjmnI3liqHlnKjljZXni6zmiafkuI7mt7flkIjmiafnmoTmnI3liqHotKjph4/pmo/otYTmupDliIbphY3nmoTlj5jljJblpoLlm74g44CC5Y+v5Lul55yL5Ye677yM6LWE5rqQ6ZqU56a75oqA5pyv5Zyo5q2k5pyJ5pWI55qE5L+d6K+B5LqG5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5pyN5Yqh6LSo6YeP55qE56iz5a6a44CCPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6pjwvcD48cD7nrKzlm5vnq6Dlrp7pqozkuI7nu5PmnpzliIbmnpA8L3A+PHA+5Z+65LqO5by65YyW5a2m5Lmg55qE6LWE5rqQ6LCD5bqm5Zmo5Zu+5pi+5LqG5oiR5Lus5oOz5a6e546w55qE5Z+65LqO5by65YyW5a2m5Lmg55qE6LWE5rqQ6LCD5bqm5Zmo55qE5Z+65pys5qGG5p6277yM5Zu+5pi+5LqG5pu05YW35L2T55qE5a6e6aqM546v5aKD77yM5pm66IO95L2T5bCG6YCa6L+H6KeC5a+f546v5aKD55qE54q25oCB5ZKM5omA5omn5Yqo5L2c5bim5p2l55qE5aWW5Yqx77yM5a2m5Lmg5aaC5L2V5YiG6YWN6LWE5rqQ57uZ5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5ZKM5om55aSE55CG5Lu75Yqh44CC5pm66IO95L2T5Zyo5q+P5Liq6LCD5bqm5ZGo5pyf5byA5aeL5YmN5YGa5Ye66LWE5rqQ5YiG6YWN5Yaz562W77yM5Zyo5paw55qE6LCD5bqm5ZGo5pyf5byA5aeL5pe277yM5pm66IO95L2T6KeC5a+f546v5aKD54q25oCB5bm25YGa5Ye65paw55qE6LWE5rqQ5YiG6YWN5Yaz562W44CCPC9wPjxwPueKtuaAgeepuumXtOacrOmXrumimOS4re+8jOeOr+Wig+eahOeKtuaAgeWNs+S4uuacjeWKoeWZqOS4iuWQhOenjei1hOa6kOeahOWIqeeOh++8jOWSjOW7tui/n+aVj+aEn+Wei+S7u+WKoeWPiuaJueWkhOeQhuS7u+WKoeeahOi/kDwvcD48cD7nirbmgIHjgILlrp7pqozkuK3vvIzmmbrog73kvZPmiYDog73op4Llr5/liLDnmoTnirbmgIHlj4LmlbDljIXmi6zku6XkuIvkuInnp43vvJo8L3A+PHA+5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5Zyo5Y2z5bCG5byA5aeL55qE6LCD5bqm5ZGo5pyf5Lit55qE6LSf6L2977ybPC9wPjxwPuS4iuS4quiwg+W6puWRqOacn+WGhe+8jOWQhOS4quS7u+WKoeWvueiuoeeul+aguOeahOWIqeeOh++8mzwvcD48cD7kuIrkuKrosIPluqblkajmnJ/lhoXvvIzlkITkuKrku7vliqHlr7nliqjmgIHpmo/mnLrlrZjlgqjorr/pl67luKblrr3nmoTliKnnjofvvJs8L3A+PHA+56ys5Liq5Y+C5pWw77yM5Y2z5bCG5byA5aeL55qE5ZGo5pyf5YaF55qE6LSf6L295by65bqm77yM5Y+v5Lul6YCa6L+H5b2T5YmN5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE6L+e5o6l5oC75pWw6I635b6X77yM5oiW6YCa6L+H5YmN5q616LCD5bqm5ZGo5pyf6K6w5b2V55qE6LSf6L295by65bqm5Lyw6K6h6I635b6X44CC6YCa6L+H5a+55b2T5YmN6LCD5bqm5ZGo5pyf6LSf6L295by65bqm55qE5Lyw6K6h77yM5pm66IO95L2T5Y+v5Lul5Yid5q2l5Yik5pat5omA6ZyA55qE6K6h566X5qC45LiO57yT5a2Y6LWE5rqQ44CCPC9wPjxwPuesrOe7hOWSjOesrOS4iee7hOWPguaVsOW4ruWKqeaZuuiDveS9k+S6huino+WJjeWRqOacn+WIhumFjeeahOi1hOa6kOWIqeeahOaDheWGteOAguW9k+WJjeiwg+W6puWRqOacn+eahOi0n+i9veW8uuW6puS4jeiDveaPj+i/sOi0n+i9veeahOWFqOmDqOeJueW+ge+8muWvueS6juWvueixoee8k+WtmOacjeWKoeadpeivtO+8jOaTjeS9nOWMheaLrOivu+WPluWSjOWGmSDjgILlvZPlhpnkuLrkuLvopoHor7fmsYLnsbvlnovml7bvvIzku4Xku4Xmj5DmnKvnuqfpgJ/nvJPlrZjlubbkuI3og73mnInmlYjmj5DlhpnmgKfog73vvJvlvZPor7vlj5bkuLrkuLvopoHotJ/ovb3nsbvlnovml7bvvIzlu7bov5/mlY/mhJ/lnovku7vliqHlj6/og73lr7nmnKvnuqfpgJ/nvJPlrZjnmoTlrrnph4/mm7TliqDmlY/mhJ/jgILlvZPotJ/ovb3nmoTlkITmk43kvZznsbvlnovkvovlj5jljJbml7bvvIzlu7bov5/mlY/mhJ/lnovlr7nmiYDojrflvpfnmoTotYTmupDliKnmg4XlhrXkuYvpl7TlsIblrZjlnKjlt67lvILjgILlm6DmraTvvIzmiJHku6zluIzmnJvpgJrov4flnKjnjq/looPnirbmgIHkuK3liqDkuIrosIPluqblkajmnJ/nmoTotYTmupDliKnnjofnmoTkv6Hmga/vvIzluK7liqnmmbrog73kvZPmjZXojrfkuI3lkIzotJ/ovb3nsbvlnovnu4TlkIjlr7notYTmupDpnIDmsYLnmoTlt67lvILvvIzku6XlgZrlh7rmm7TkvJjljJbnmoTlhrPnrZbjgII8L3A+PHA+5Yqo5L2c56m66Ze05pm66IO95L2T55qE5Yqo5L2c56m66Ze05Y2z5Li66L6T5Ye65b2T5YmN6LCD5bqm5ZGo5pyf5YaF5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5ZKM5om55aSE55CG5Lu75Yqh5ZCE5Y+v55qE6K6h566X5qC45pWw5ZKM5pyr57qn6YCf57yT5a2Y5a656YeP44CC5a6e6aqM5Lit55qE5pyN5Yqh5Zmo5LiK5YWx5pyJ5Liq54mp55CG5qC4IO+8iCDkuKrpgLvovpHmoLgg77yJ77yM5YiG6YWN57KS5bqm5Li65YiG5LmL5YWx5Lqr5pyr57qn6YCf57yT5a2Y44CCPC9wPjxwPuW9k+WKqOS9nOepuumXtOi/h+aXtu+8jOW8uuWMluWtpuS5oOeul+azlemcgOimgemHj+agt+acrO+8jOaUtuaVm+e8k+aFouOAgumAmui/h+WFt+S9k+mXrumimOS4reeahOadoeS7tuadpemZkOWItuWKqOS9nOepuumXtOWPr+acieaViOWKoOW/q+WtpuS5oOeul+azleaUtuaVm+eahOmAn+W6puOAgueUseS6juWQjOeJqeeQhuaguOS4iui/kOeahOe6v+eoi+WwhuWFseS6q+esrOWSjOesrOe6p+e8k+WtmO+8jOS4lOWFtuS4iueahOaJsOazleaOp+WItu+8jOWboOatpOiuvue9ruiuoeeul+aguOiwg+W6pueahOeykuW6puS4uuWNleS4queJqeeQhuaguCDjgILlu7bov5/mlY/mhJ/lnovku7vliqHlnKjmnIDkvY7otJ/ovb3ml7bov5DnmoTpnIDopoHnmoTmnIDlsJHotYTmupDvvIzku6Xlj4rliIbmnpDlupTlr7nlkITkuKrotYTmupDliIbphY3nmoTmlY/mhJ/nqIvluqblubblkIjnkIborr7nva7otYTmupDliIbphY3nspLluqbkuZ/lj6/ku6XmnInmlYjlh4/liqjkvZznqbrpl7TjgII8L3A+ZAIDDxYCHwJoZAIFDxYCHwEC/////w9kAgMPZBYKZg8VBQ0xMjA0MTY1MjBfMDAzOOWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4reW/g+i1hOa6kOiwg+W6pl/nrKw06YOo5YiGATABMAQ0NzE0ZAIBDxYCHwFmZAICDxUBmWk8cD48L3A+PHA+56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm6YCJ5oup5Yqo5L2c6L6T5Ye65YC85Ye95pWw5Zu+5by65YyW5a2m5Lmg57uc5aWW6LWP5L+h5Y+357uT5p6E5pm66IO95L2T55qE5LyY5YyW5qCH5YyF5ous5Lik6YOo5YiG77yMIOWFiOimgeS/neivgeW7tui/n+aVj+aEn+Wei+S7u+WKoeS4jei/neWPjeWFtue7meWumueahOacjeWKoei0qOmHj+imgeaxgu+8jOWFtuasoe+8jOaZuuiDveS9k+mcgOimgeWwneivleaPkOacjeWKoeWZqOi1hOa6kOeahOWIqeeOh+OAguWboOatpO+8jOWllui1j+S/oeWPt+S4jeS9huW6lOivpeS4juW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoei0qOmHj+ebuOWFs++8jOi/mOW6lOWQjOaXtuWPjeW6lOacjeWKoeWZqOi1hOa6kOeahOWIqeeOh+aDheWGteOAguiLpeWBh+iuvuaJueWkhOeQhuS7u+WKoeWPr+S7peWFheWIhuWIqeaJgOacieWIhumFjeeahOi1hOa6kO+8jOatpOaXtuaZuuiDveS9k+eahOS8mOWMluagh+WPr+etieS7t+S4uuWwvemHj+WHj+WwkeWIhumFjee7meW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOi1hOa6kOOAgjwvcD48cD7lpZbotY/kv6Hlj7forr7orqHnmoTpmr7ngrnlnKjkuo7ms5XpgJrov4fpooTlhYjorr7nva7kuKrlh73mlbDliKTmlq3mmK/lkKbmmbrog73kvZPliIbphY3liIbphY3nu5nlu7bov5/mlY/mhJ/lnovku7vliqHnmoTotYTmupDlpJ/lsJHjgILlpoLmnpzov5nmoLfnmoTlh73mlbDmmJPkuo7orr7orqHvvIzmiJHku6zkuZ/kuI3pnIDopoHpgJrov4flvLrljJblrabkuaDmnaXor5Xlm77op6PlhrPmlbDmja7kuK3nmoTotYTmupDosIPluqbpl67popjjgIIg5Liq5pu/5Luj55qE5oyH5qCH5piv5Zyo5omn5pm66IO95L2T57uZ5Ye655qE6LWE5rqQ5YiG6YWN5qGI5ZCO77yM6YeH5qC35rWL5b6X55qE5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh6LSo6YeP44CC5L6L5aaC5pyN5Yqh6LSo6YeP6KKr5a6a5LmJ5Li65bu26L+f5pe277yM5aaC5p6c5rWL5b6X55qE5bu26L+f6L+c5LqO5pyN5Yqh6LSo6YeP6KaB5rGC77yM5oiR5Lus5Y+v5Lul5Yik5pat5pm66IO95L2T57uZ5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5YiG6YWN5LqG6L+H5aSa55qE6LWE5rqQ44CC5aaC5p6c5Zyo5Li65bu26L+f5pWP5oSf5Z6L5Lu75Yqh6L+H5aSa5YiG6YWN6LWE5rqQ5pe277yM5pm66IO95L2T6I635b6X5aWW5Yqx77yM5pm66IO95L2T5bCG5YC+5ZCR5LqO6L+H5aSa5YiG6YWN6LWE5rqQ5L+d6K+B5aWW5Yqx55qE6I635b6X44CC5LiO5q2k55u45ZCM77yM5oiR5Lus5LiN5biM5pyb5Ye6546w55qE5oOF5Ya16L+Y5pyJ5pm66IO95L2T5YiG6YWN57uZ5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE6LWE5rqQ5aSq5Lul5LqO5YW26L+d5Y+N5pyN5Yqh6LSo6YeP6KaB5rGC44CC5YC85b6X5rOo5oSP55qE5piv77yM55Sx5LqO6LWE5rqQ5YiG6YWN55qE57KS5bqm5ZKM5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5a+56LWE5rqQ5YiG6YWN55qE5pWP5oSf5oCn77yMIOS6m+aDheWGteS4i+azleS9v+W+l+acjeWKoei0qOmHj+WkhOS6juaIkeS7rOiuvuWumueahOWMuumXtO+8jDwvcD48cD7nhLbmmbrog73kvZPnmoTkuLrmmK/mraPnoa7nmoTvvIzkuI3lupTor6Xooqvmg6nnvZrjgILlm6DmraTvvIzmiJHku6zorr7lrprlpZblirHlh73mlbDlpoLkuIvvvIzlvZPlu7bov5/mlY/mhJ/lnovku7vliqHlpITlnKjmiJHku6zorr7lrprnmoTlkIjnkIbljLrpl7TlhoXml7bvvIzmmbrog73kvZPojrflvpfmraPnmoTlpZbotY/kv6Hlj7fvvJvlvZPmtYvlvpfnmoTmnI3liqHotKjph4/ov53lj43kuobmnI3liqHotKjph4/opoHmsYLvvIzov5Tlm57nu5nmmbrog73kvZPotJ/nmoTlpZbotY/kv6Hlj7fvvJvlvZPmtYvlvpfmnI3liqHotKjph4/kuo7pooTmnJ/ml7bvvIznu5nkuI7mmbrog73kvZPpm7bnmoTlj43ppojkv6Hlj7fjgILmmbrog73kvZPojrflvpfnmoTlpZblirHlpoLlvI/miYAg44CC5a+56LGh57yT5a2Y5pyN5Yqh55qE5pyN5Yqh6LSo6YeP6KaB5rGC5Li65Lmd5YiG5L2N5bu26L+fIHA8L3A+PHA+OTB0aDwvcD48cD50PC9wPjxwPuS6juavqzwvcD48cD7np5LjgII8L3A+PHA+ciAodCkgPTwvcD48cD4wIHA8L3A+PHA+OTB0aDwvcD48cD50PC9wPjxwPjU8L3A+PHA+MSA1IHA8L3A+PHA+OTB0aDwvcD48cD50PC9wPjxwPjEwPC9wPjxwPjEgMTAgcDwvcD48cD45MHRoPC9wPjxwPnQ8L3A+PHA+572R57uc6K6+6K6h5Y+C6ICD562J5L2/55qE566X5rOVIO+8jOWunumqjOeahOelnue7j+e7nOe7k+aehOiuvuiuoeWmguWbvuaJgCDvvIjkuI3ku6PooajnnJ/lrp7npZ7nu488L3A+PHA+57uc5bGC5pWw5ZKM56We57uP5YWD5pWw6YeP77yJ44CC5oiR5Lus6YeH5a6e546w55qE5ZKM5L2/55u45ZCM55qE5bqV5bGC57uc57uT5p6E44CCIOeul+azleacrOmAmui/h+mHh+agt+eahOW8j+S8sOiuoeeKtuaAgei9rOenu++8jOWboOatpOe7nOWcqOi+k+eOr+Wig+eKtuaAgeWQju+8jOi+k+WHuuWIhuWIq+mHh+WPluWQhOS4quWKqOS9nOWQjuWPr+iDvei9rOenu+WIsOeahOeOr+Wig+eKtuaAgeeahOeKtuaAgeWAvOacn+acm++8myDpgJrov4fmraTovpPlh7rpgInmi6nmnIDkvJjnrZbnlaXjgII8L3A+PHA+56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5oiR5Lus6YCa6L+H5oiR5Lus6L+Y6YeH57uP6aqM5Zue5pS+5rGg5Lul5YeP5bCR6L+e57ut5Yqo5L2c5LmL6Ze055qE5YWz6IGU5oCn6YCg5oiQ55qE6K6t57uD5L2O5pWI77yM5ZCM5pe25o+Q5pWw5o2u5Yip546H44CC5Y+m5aSW77yM5Li65LqG5L+d6K+B5pm66IO95L2T5aSf5o6i57Si5Y+v6IO955qE546v5aKD56m66Ze077yMIOmAmui/h+i0quWpqueul+azle+8iCDvvInpgInmi6nmiafliqjkvZwg77yM5Y2z6YCa6L+H6L+e57ut5Z6L5Z2H5YyA5YiG5biD5ZyoPC9wPjxwPlswIDFdPC9wPjxwPumXtOWPluWAvOS6ju+8jCDlsIbpmo/mnLrpgInmi6nliqjkvZzmiacg77yM5Y+N5LmL5bCG5qC55o2u55qE6K+E5Lu36YCJ5oup5pyA5LyY55qE5Yqo5L2c44CCIOWwhumaj+edgOiuree7g+i/h+eoi+eahOWinuWKoOmAkOa4kOWHjyDvvIwg55qE5Li65Lmf5bCG55Sx5pu05YC+5ZCR5LqO5o6i57Si546v5aKD6YCQ5riQ5Y+Y5Li65pu05YC+5ZCR5LqO5omn5pyA5LyY5Yqo5L2c44CCPC9wPjxwPueul+azleW8uuWMluWtpuS5oOe7nOiuree7g+eul+azleWIneWni+WMluiuree7g+asoeaVsOS4uiBU77yMIOabtOaWsOmXtOmalOS4uiBDPC9wPjxwPuWIneWni+WMlue7j+mqjOWbnuiuv+axoCBE77yM6K6+572u5Li6IE7vvIzmr4/mrKHlj5bmoLfkuKrmlbDkuLogTTwvcD48cD7liJ3lp4vljJbnirbmgIHluo/liJcgUzwvcD48cD4xPC9wPjxwPuWIneWni+WMlue7nCBR77yM5Y+C5pWw6K6+5Li66ZqP5py65oiQ55qE5Y+C5pWwPC9wPjxwPuKAsjwvcD48cD7liJ3lp4vljJbnu5xR77yM5Y+C5pWw6K6+5Li65LiK5q2l5oiQ55qE5Y+C5pWwPC9wPjxwPuKAsjwvcD48cD50ID0gMSBUPC9wPjxwPumaj+acuumAieaLqeWKqOS9nOmaj+acuumAieaLqeWKqOS9nOeahOamgueOh+S4ujwvcD48cD5hPC9wPjxwPnQg6ZqP5py65Yqo5L2cPC9wPjxwPmEgdCBhcmdtYXggYSBRKHMgdDwvcD48cD5hKTwvcD48cD7lh48g77yM5omn5Yqo5L2cIGE8L3A+PHA+dDwvcD48cD7vvIzop4Llr5/liLDlpZblirEgcjwvcD48cD50PC9wPjxwPu+8jOeOr+Wig+eKtuaAgSBzPC9wPjxwPnQrMTwvcD48cD7lnKjnu4/pqozlm57mlL7msaAgRCDkuK3orrDlvZXnu4/pqowgKHMgdCBhIHQgciB0IHM8L3A+PHA+dCsxPC9wPjxwPik8L3A+PHA+5LuO57uP6aqM5Zue5pS+5rGg5Lit6ZqP5py65Y+W5qC3IE0g5Liq57uP6aqM57uP6aqMPC9wPjxwPihzIGogYSBqIHIgaiBzPC9wPjxwPmorMTwvcD48cD4pPC9wPjxwPnkgaiByPC9wPjxwPmo8L3A+PHA+KyBhcmdtYXg8L3A+PHA+YTwvcD48cD7igLI8L3A+PHA+UShzIGoraTwvcD48cD5hPC9wPjxwPuKAsjwvcD48cD4pPC9wPjxwPuWvuee7nOWPguaVsOmAmui/h+air+W6puS4i+mZjeazleabtOaWsO+8jOaNn+WkseWHveaVsOS4ujwvcD48cD4oIHk8L3A+PHA+aiBRKHMgaiBhPC9wPjxwPmo8L3A+PHA+KSk8L3A+PHA+MjwvcD48cD7mr4/nu4/ov4cgQyDmrKHov63ku6PvvIw8L3A+PHA+5a6e6aqM57uT5p6c5oiR5Lus57uf6K6h5pm66IO95L2T5YGa5Ye655qE5pyA5paw55m+5Liq5Yqo5L2c5omA6I635b6X55qE5bmz5Z2H5aWW6LWP5p2l55uR5o6n5pm66IO95L2T6K6t57uD55qE6L+H56iL77yM5bmz5Z2H5aWW6LWP5pyA57uI56iz5a6a5Zyo6ZmE6L+R5rOi5Yqo44CC5Zyo5pm66IO95L2T55qE6LWE5rqQ5YiG6YWN562W55Wl56iz5a6a5ZCO77yM5oiq5Y+W5Yiw5aaC5Zu+5omA55qE5pm66IO95L2T5Zyo5q615pe26Ze05YaF55qE6LWE5rqQ5YiG6YWN5Yaz562W44CC5Y+v5Lul55yL5Yiw5pm66IO95L2T5a+55LqO6K6h566X5qC455qE5YiG6YWN5Z+65pys5LiK6Lef6ZqP5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE6LSf6L295by65bqm5Y+Y5YyW77yM5LiU5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5bu26L+f5Z+65pys5L+d5oyB5Zyo5oiR5Lus56Gu5a6a55qE5qCH5Yy66Ze05q+r56eS5YaF44CCPC9wPjxwPuWAvOW+l+azqOaEj+eahOaYr++8jOWcqOacq+err+i0n+i9veW8uuW6pui+g+S9ju+8iOS9juS6juaXtu+8ie+8jOaZuuiDveS9k+Wvueiuoeeul+aguOeahOWIhumFjeWHuueOsOWJp+eDiOaKluWKqO+8jDwvcD48cD7kuJTln7rmnKzkuI7otJ/ovb3lvLrluqbkuI3nm7jlvZPjgILlnKjlu7bov5/pmo/otJ/ovb3lvLrluqbnmoTlj5jljJbkuK3lj6/ku6XnnIvliLDvvIzmraTmrrXml7bpl7TlhoXotYTmupDliIbphY3nmoTlj5jljJblubbmsqHmnInmmL7okZflvJXotbflu7bov5/mlY/mhJ/lnovku7vliqHnmoTmnI3liqHotKjph4/lj5jljJbvvIzkuJTlu7bov5/lnYfln7rkuo7miJHku6zorr7nva7nmoTlu7bov5/moIfljLrpl7TnmoTkuIvpmZDkuIvjgILmiJHku6zorqTkuLrvvIzlnKjotJ/ovb3lvLrluqbovoPkvY7ml7bvvIwg5bu26L+f5pWP5oSf5Z6L5Lu75Yqh5a+55LqO6K6h566X6LWE5rqQ55qE5aKe5Yqg5bm25LiN5pWP5oSf77yM5Zug5q2k5YW356ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqm5Zu+6K6t57uD57uT5p6c5pyJ5LmO55u45ZCM55qE5pyN5Yqh6LSo6YeP77yb5Y+m5a+55LqO5L2O6LSf6L2977yM5Lul54mp55CG5qC45Li66LWE5rqQ5YiG6YWN57KS5bqm6L+H5LqO57KX57OZ77yM5Lul5LqO5Zyo5Li055WM5oOF5Ya177yM5YeP5bCR5Liq54mp55CG5qC45bCG6L+d5Y+N5pyN5Yqh6LSo6YeP6KaB5rGC77yMIOWinuWKoOaguOacjeWKoei0qOmHj+WPiOi/nOS6juaIkeS7rOeahOimgeaxguOAgjwvcD48cD7mraPmmK/nlLHkuo7ov5nnp43kuI3mlY/mhJ/vvIzkvb/lvpfmmbrog73kvZPlnKjlvZPliY3nmoTlpZblirHkv6Hlj7forr7orqHkuYvkuIvvvIwg5rOV6YCa6L+H5a2m5Lmg5p2l5Yy65YiG5q2k56eN5oOF5Ya15LiL5ZCE56eN6LWE5rqQ5YiG6YWN55qE5LyY5Yqj4oCU4oCU5Zug5Li65Zyo6L+Z5Lqb6LWE5rqQ5YiG6YWN5Lit77yM5pm66IO95L2T6I635b6X55qE6YO95piv6Zu255qE5aWW5Yqx44CCPC9wPjxwPuWboOS4uuWvueixoee8k+WtmOS7u+WKoeWvuee8k+WtmOWuuemHj+S4jeaVj+aEn++8iOingeiKgui1hOa6kOmcgOaxguWIhuaekO+8ie+8jOWQjOagt+eahOaDheWGteS5n+WPkeWcqOaZuuiDveS9k+Wvueacq+e6p+mAn+e8k+WtmOeahOWIhumFjeS4iuOAguWPr+S7peeci+WIsOacq+e6p+mAn+e8k+WtmOeahOeahOehruWvueW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoeaAp+iDveWtmOWcqOW9seWTje+8jDwvcD48cD7nhLbkuI3lkIznmoTliIbphY3moYjlr7nlu7bov5/nmoTlvbHlk43lnYfkuI0g44CC5bu26L+f55qE5Y2H5oiW6ZmN5L2O6YO95L+d5oyB5Zyo5oiR5Lus6K6+6K6h55qE5qCH5Yy66Ze05YaF44CC5ZCM5L2O6LSf6L295pe25Lu75Yqh5a+56K6h566X5qC455qE5LiN5pWP5oSf5qC377yM5oiR5Lus6ZyA6KaB5pS56L+b5aWW6LWP5L+h5Y+355qE6K6+6K6h5Lul5L2/5b6X5pm66IO95L2T5pyJ6IO95Yy65YiG5LiN5ZCM55qE5YiG6YWN562W55Wl77yM6L+b5L+d6K+B5pm66IO95L2T5a2m5Lmg5Yiw5pyA5LyY55qE6LWE5rqQ5YiG6YWN562W55Wl44CCPC9wPjxwPuWcqOS9jui0n+i9veaDheWGteaXtuS7peeJqeeQhuaguOWIhumFjeeykuW6pui/h+S6jueyl+ezme+8jOmAoOaIkOWcqOi0n+i9veS9juaXtuacn++8jOW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoeaAp+iDvei2hei/h+aIkeS7rOeahOimgeaxgu+8jOWboOaZuuiDveS9k+iOt+W+l+mbtuWllui1j+OAgui/meaYr+mAoOaIkOacgOe7iOe7k+aenOS4reW5s+Wdh+Wllui1j+ayoeaciemAvOi/keaYr+WcqOWcqOmZhOi/keazouWKqOeahOWOn+WboOOAgjwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+56ys5LqU56ug57uT6K66PC9wPjxwPuacrOaOouiuqOS6humAmui/h+W8uuWMluWtpuS5oOazleWNj+iwg+Wkmuenjei1hOa6kOmalOemu+acuuWItuadpeino+WGs+aVsOaNruS4reS7u+WKoea3t+WQiOaJp+eahOmXrumimOOAgumAmui/h+iuvue9ruWvueixoee8k+WtmOacjeWKoeWSjOacn+adg+WumuS7t+S7u+WKoea3t+WQiOaJp+eahOWunumqjO+8jOaIkeS7rOivgeaYju+8jOWmguaenOWQiOeQhueahOiuvue9ruWllui1j+S/oeWPt++8jOaZuuiDveS9k+eahOehruiDveWkn+S7jueOr+Wig+S4reWtpuS5oOWIsOWQiOeQhueahOi1hOa6kOWIhumFjeetlueVpe+8jOWcqOS/neivgeW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoei0qOmHj+WSjOaPkOaVsOaNruS4rTwvcD48cD7mnI3liqHlmajotYTmupDliKnnjofjgILnm7jkuo7ln7rkuo7orr7nva7osIPluqbnrZbnlaXnmoTnrpfms5XvvIzlvLrljJblrabkuaDnmoTotYTmupDosIPluqbms5Xlj6rpnIDopoHliLblrprlkIjnkIbnmoTlpZbotY/lh73mlbDvvIwg5LiN6ZyA6KaB6K6+572u5Lu75Yqh5oCn6IO95ZKM6LWE5rqQ6LCD5bqm55qE5LiT5Lia55+l6K+G44CC54S2IO+8jOaZuuiDveS9k+WtpuS5oOWIsOeahOeahOiwg+W6puetlueVpeeahOi0qOmHj+i/mOacieW+hemHj+WMlueahOWIhuaekOOAgjwvcD48cD7lrp7pqozkuK3vvIzmiJHku6zkuZ/lj5HnjrDkuoblvLrljJblrabkuaDlnKjotYTmupDosIPluqblupTov5jlrZjlnKjor7jlpJrpmr7popjjgIIg5YWI5piv6K6t57uD5pWw5o2u6YeP55qE6Zeu6aKY44CC5LiO5omA5pyJ55qE5py65Zmo5a2m5Lmg5Lu75Yqh5qC377yM5by65YyW5a2m5Lmg55qE57uT5p6c5L6d6LWW5LqO5a2m5Lmg55qE5qC35pys77yMIOWPl+W7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoei0qOmHj+WumuS5ieazleeahOW9seWTje+8jOW8uuWMluWtpuS5oOeahOWtpuS5oOagt+acrOmHh+agt+eOh+i+g+S9juOAguS+i+WmguWJjeaPkOWIsOeahOekvuS6pOacjeWKoeW8leaTju+8jOWFtuacjeWKoei0qOmHj+iiq+WumuS5ieS4uuenkuWGheaJgOacieivt+axgueahOW7tui/n+eahOS5neWIhuS9jeWAvOOAguWcqOWNlee6v+eoi+eahOWtpuS5oOaooeWei+S4re+8jOmcgOimgeWIhumSn+eahOaXtumXtO+8jOeOr+Wig+aJjeiDvei/lOWbnuS4iuS4quWKqOS9nOS6p+eahOe7k+aenO+8jOi/meaegeeahOW9seWTjeS6huWtpuS5oOmAn+W6puOAgumAmui/h+WHj+WwkemHh+agt+eahOaXtumXtOWPr+S7peaPkOmHh+agt+eOh++8jDwvcD48cD7nhLbph4fmoLfnmoTml7bpl7Totornn63vvIzlu7bov5/mlY/mhJ/lnovku7vliqHlrozmiJDnmoTor7fmsYLmlbDkuZ/lsLHotorlsJHvvIzmlbDmja7nmoTlt67kuZ/kvJrotoog77yM5Lul5LqO5LiN56iz5a6a5oiW5LiN6IO95Y+N5pig55yf5a6e55qE5bu26L+f5pWP5oSf5Z6L5Lu75Yqh55qE5pyN5Yqh6LSo6YeP44CC5Y+X6ZmQ5LqO5a6e6aqM546v5aKD77yM5oiR5Lus5rOV6YCa6L+H6KeE5qih55qE5bm25a2m5Lmg5p2l5o+Q5a2m5Lmg6YCf5bqm77yb5oiR5Lus6YCa6L+H5Lik5Liq5rOV5YeP6L275q2k6Zeu6aKY55qE5b2x5ZON44CCIOWFiO+8jOWcqOaooeWei+eahOiuvuiuoeS4iuaIkeS7rOS9v+eahOiusOW/humHjeaUvuadpeaPkOaVsOaNrueahOWIqeeOh+OAguWFtuasoe+8jOaIkeS7rOmAieaLqeeahOS7u+WKoeS4uuWvueixoee8k+WtmOacjeWKoe+8jOebuOekvuS6pOW8leaTju+8jOWFtuWFt+acieW+iOeahOWQnuWQkOmHj++8jOavj+enkuacjeWKoeeahOivt+axguWcqOS4ieS4h+W3puWPs+OAguWvueixoee8k+WtmOacjeWKoeWQnuWQkOmHj+eahOeJueeCueS9v+W+l+aIkeS7rOWPr+S7peWcqOi+g+efreaXtumXtOWGhea1i+ivleWFtuacjeWKoei0qOmHj+OAguWNs+S+v+WmguatpO+8jOWunumqjOeahOaooeaLn+eOr+Wig+S4re+8jOWQr+WKqOa1i+ivleeoi+W6j+aooeaLn+WmguatpOeahOivt+axgumHj+S5n+i+g+iAl+aXtu+8jOaJgOS7peacgOe7iOiOt+W+l+WtpuS5oOagt+acrOeahOmAn+W6puS5n+S4jSDvvIzkvYbnm7jnpL7kuqTmnI3liqHmnInlvojmj5DljYfjgII8L3A+PHA+6YCa6L+H5pyN5Yqh5Zmo6L+Q55qE56a757q/5pWw5o2u6L+b5a2m5Lmg5Y+v5Lul6YOo5YiG6Kej5Yaz6K6t57uD5pWw5o2u6YeP55qE6Zeu6aKY77yM54S26L+Z5bCG6ZmQ5Yi25pm66IO95L2T5o6i57Si5LiN5ZCM5Yqo5L2c55qE6IO9IOKAlOKAlOaZuuiDveS9k+WPquiDveWtpuS5oOWIsOacjeWKoeWZqOS4iuS9v+i/h+eahOi1hOa6kOWIhumFjeahiOOAguS+i+Wmgu+8jOiLpeacjeWKoeWZqOS4iui/kOeahOi1hOa6kOWIhumFjeetlueVpemZkOWItuWwkeS4uuW7tui/n+aVj+aEn+Wei+S7u+WKoeWIhumFjeWNiueahOiuoeeul+aguCDvvIzpgqPkuYjmmbrog73kvZPms5Xku47kuK3nn6XpgZPliIbphY3mm7TlsJHnmoTmoLjlsIbkuqfmgI7moLfnmoTlvbHlk43vvIzmmL7nhLbkuqfnjq/looPnmoTmnI3liqHlmajkuI3lhYHorrjmmbrog73kvZPlgZrov5nmoLfnmoTmjqLntKLjgII8L3A+PHA+5Y+m5Liq5oyR5oiY5YiZ5piv5aWW6LWP5Ye95pWw55qE6K6+6K6h6Zeu6aKY44CC5a6e6aqM5Lit5oiR5Lus6K6+572u55qE5aWW6LWP5L+h5Y+35Z+65LqO5rWL5b6X55qE5a+56LGh57yT5a2Y5pyN5Yqh55qE5bu26L+f5omA6JC95Zyo55qE5Yy66Ze044CC5Zyo6L+Z5qC355qE6K6+572u5LiL77yM5pm66IO95L2T5Y+v5Lul5Yy65YiG5L2/5b6X5bu26L+f5pWP5oSf5Z6L5Lu75Yqh6L+d5Y+N5pyN5Yqh6LSo6YeP55qE6LWE5rqQ5YiG6YWN5ZKM5YW25LuW5L+d6K+B5YW25pyN5Yqh6LSo6YeP55qE6LWE5rqQ5YiG6YWN44CC54S2IO+8jOWmguaenOWcqOS4jeWQjOeahOi1hOa6kOWIhumFjeahiOS4i++8jOW7tui/n+aVj+aEn+Wei+S7u+WKoeS6p+aOpei/keeahOW7tui/n++8jOaZuuiDveS9k+WwhuS4jeiDveWMuuWIhuS7luS7rOihqOeOsOeahOWlveWdj+OAgui/meWcqOW7tui/n+aVj+aEn+Wei+S7u+WKoeWvueafkOS6m+WFseS6q+i1hOa6kOeahOWIhumFjeW5tuS4jeaVj+aEn+aXtuW9seWTjeaZuuiDveS9k+WtpuW+l+eahOWIhumFjeetlueVpeeahOaViOeOh+OAguS+i+WmguW7tui/n+aVj+aEn+Wei+etlueVpeWcqOafkOS6m+aDheWGteS4i+Wvuee8k+WtmOWuuemHj+S4jeaVj+aEn++8jOmCo+S5iOaZuuiDveS9k+S8muiupOS4uuWvueWFtuWIhumFjeWkmuWwkee8k+WtmOayoeacieWMuuWIq++8jOWPr+iDveeahOaDheWGteWImeaYr+e7meW7tui/n+aVj+aEn+Wei+S7u+WKoeWIhumFjeS6huabtOWkmuS4jeW/heimgeeahOe8k+WtmOOAguWcqOWunumqjOS4re+8jOaIkeS7rOmAmui/h+a1i+ivleW7tui/n+aVj+aEn+Wei+S7u+WKoeeahOacjeWKoei0qOmHj+maj+i1hOa6kOWIhumFjeeahOWPmOWMluadpeehruWumuWFtuaVj+aEn+aAp++8jOW5tuWcqOWKqOS9nOepuumXtOS4rea2iOmZpOS6m+aZuuiDveS9k+azleWMuuWIhueahOWKqOS9nOOAguS+i+Wmgu+8jOW7tui/n+aVj+aEn+Wei+S7u+WKoeWcqOiOt+W+l+aguCDvvIwg57yT5a2Y5LiO5qC4IO+8jCDnvJPlrZjml7bmnInkuY7oh7TnmoTmnI3liqHmgKfog73vvIzmiJHku6zlsIbkuI3lhYHorrjmmbrog73kvZPlgZrlh7rlkI7otYTmupDliIbphY3lhrPnrZbjgII8L3A+PHA+5by65YyW5a2m5Lmg55qE5LyY5YyW77yM5piv5Z+65LqO5a+557Sv56ev5aWW6LWP5pyf5pyb55qE5LyY5YyW44CC6L+Z5qC355qE5LyY5YyW5qCH5a+55LqO6YOo5YiG5Lu75Yqh6YO95piv5ZCI55CG55qE44CCPC9wPjxwPueEtuWvueS6juW7tui/n+aVj+aEn+Wei+S7u+WKoe+8jOWFtuWunumZhei0n+i9veW4uOWHuueOsOazlemihOaWmeeahOWzsOOAgueUseS6juWzsOWHuueOsOeahOamgueOh+S9juS6juWFtuS7lui0n+i9veW8uuW6puWHuueOsOeahOamgueOh++8jOaZuuiDveS9k+eahOWtpuS5oOi/h+eoi+S4reaegeWPr+iDveiupOS4uuWcqOi0n+i9veWzsOaXtui/neWPjeacjeWKoei0qOmHj+imgeaxguWPl+WIsOeahOaDqeesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6pue9mueahOacn+acm+aYr+WPr+S7peaOpeWPl+eahO+8m+i/meaYvueEtuS4juaIkeS7rOWunumZheeahOmihOacn+S4jeespuOAguaIkeS7rOeahOWunumqjOS4reeugOWMluS6huWunumZheaDheWGte+8jOW/veeVpeS6hui0n+i9veWzsOeahOWtmOWcqOOAgumAmui/h+S/ruaUueWlluWKseS/oeWPt++8jOaPkOWcqOi/meenjeaDheWGteS4i+aZuuiDveS9k+WPl+WIsOeahOaDqee9muWPr+S7pemBv+WFjeaZuuiDveS9k+W/veeVpeWvuei0n+i9veWzsOaXtui1hOa6kOWIhumFjeeahOS8mOWMlu+8jOeEtuabtOWkjeadguWMlueahOWlluWKseS/oeWPt+WwhuWmguS9leW9seWTjeaVtOS4quW8uuWMluWtpuS5oOeahOi/h+eoi+i/mOmavuS7peW+l+efpeOAgjwvcD48cD7nu7zkuIrmiYDov7DvvIzlvLrljJblrabkuaDlnKjmlbDmja7kuK3nmoTotYTmupDosIPluqbkuK3mnInlvojnmoTmvZwg77yM5ZCM5pe25Lmf5pyJ5b6I5aSa6Zeu6aKY6ZyA6KaB6Kej5Yaz44CC5aaC5p6c5by65YyW5a2m5Lmg5Y+v5Lul5a6e6ZmF5bqU5Yiw5pe26Ze05pWw5o2u5Lit6LWE5rqQ6LCD5bqm5Yaz562W5Lit77yM5bCG5pyJ5biM5pyb6Kej5Yaz5YW25L2O6LWE5rqQ5Yip546H6Zeu6aKY44CCPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6pjwvcD48cD7lj4LogIPmlofnjK48L3A+PHA+Ly88L3A+PHA+Ly88L3A+PHA+ZmZpIC8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPmZmaTwvcD48cD5mZmk8L3A+PHA+56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqmPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPmZmaSAvLzwvcD48cD5mZjwvcD48cD4vLzwvcD48cD5mZmkgLy88L3A+PHA+56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqmPC9wPjxwPi8vPC9wPjxwPmZmPC9wPjxwPi8vPC9wPjxwPmZmaTwvcD48cD5mZmk8L3A+PHA+Ly88L3A+PHA+4oCZPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPuesrOmhteWFsemhteWfuuS6juW8uuWMluWtpuS5oOeahOaVsOaNruS4rei1hOa6kOiwg+W6pjwvcD48cD4vLzwvcD48cD4vLzwvcD48cD4vLzwvcD48cD5mZmk8L3A+PHA+Ly88L3A+PHA+Zmw8L3A+PHA+ZmY8L3A+PHA+56ys6aG15YWx6aG15Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqmPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8vPC9wPjxwPi8gaHR0cCA6IC8gLyB3d3cgLiBhbGV4YSAuIGNvbSAvPC9wPjxwPnNpdGVpbmZvL2ZhY2Vib29rLmNvbTwvcD48cD4vLzwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+6Ie06LCiPC9wPjxwPuWFiOimgeaEn+iwouWGt+mdmeW4iOWSjOWunumqjOWupOeahOWtpumVv++8jOWcqOaVtOS4quavleS4muiuvuiuoeS4ree7meS6huaIkeW+iOWkmueahOW4ruWKqeWSjOaMgeOAguS7jumAiemimOW8gOWni++8jOWGt+W4iOe7meaIkeaPkOS+m+S6huW+iOWkmuWFs+mUrueahOiuuuWSjOi1hOaWme+8jOiuqeaIkeiDveWkn+W/q+mAn+eahOS6huino+eglOeptueahOiDjOaZr+OAguWGjeWIsOWBmuWunumqjOaXtu+8jDwvcD48cD7lkozlhrfluIjmr4/lkajnmoTlrprmnJ/kuqTmtYHkuI3kvYborqnmiJHlvLrov6vlhYvmnI3mi5blu7bnl4fvvIzkuZ/luK7liqnmiJHlj5HnjrDkuoblkozop6PlhrPkuoblvojlpJrnmoTpl67popjjgII8L3A+PHA+54S25ZCO6KaB5oSf6LCi5oiR55qE5q+N5ZKM5pyL5Y+L5Lus77yM5LuW5Lus57uZ5LqG5oiR5b6I5aSa57K+56We5LiK55qE5oyB5ZKM6Iie77yM5oiR6LaF57qn5Zac5qyi5LuW5Lus44CC5oSf6LCi5oiR54i477yM5Zyo5a2m5Zub5bm055u05a+55oiR5om+5pyL5Y+L55qE5LqL5oOF5L+d5oyB5bqm54Ot5oOF5ZKM5LuO5pyq6KGw5YeP55qE5L+hIO+8m+aEn+iwouaIkeWmiO+8jOe7j+W4uOedo+S/g+aIkeWkmuWQg+mlre+8jOiuqeaIkeWcqOWtpuacn+mXtOWinumHjeaJjeacieS9k+mthOWujOaIkOavleS4muiuvuiuoeOAguWcqOaIkeeahOaci+WPi+S4re+8jOaIkeWwpOWFtuimgeaEn+iwoueahOWlveaci+WPi+eyn+mUkO+8jOWcqOW8uuWMluWtpuS5oOS4iue7meS6huaIkeW+iOWkmuW4ruWKqe+8m+aIkeeahOi2hee6p+Wlveaci+WPi+mbt+a1qeiLpe+8jOWcqOavleiuvueahOi/h+eoi+S4reaEv+aEj+WQrOaIkeWPkeeJoumqmu+8jOiuqeaIkeWcqOWunumqjOmBh+WIsOmXrumimOeahOaXtuWAmeS5n+S4jeaYr+mCo+S5iOmavuWPl+OAgjwvcD48cD7mnIDlkI7opoHmhJ/osKLmiJEg77yM5Zyo5Y6L5beo55qE5pyA5ZCO5YWz5aS05rKh5pyJ57+Y6L6rIO+8jOe7iOS6juimgeavleS4muWVpuOAgjwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+4oCcIOKAnTwvcD48cD5mZmkgZmZpIGZmaSBmZjwvcD48cD5mZjwvcD48cD7nrKzpobXlhbHpobXln7rkuo7lvLrljJblrabkuaDnmoTmlbDmja7kuK3otYTmupDosIPluqY8L3A+PHA+4oCZPC9wPjxwPmZmaTwvcD48cD5mZmk8L3A+PHA+4oCcIOKAnTwvcD48cD7nrKzpobXlhbHpobU8L3A+PHA+5Z+65LqO5by65YyW5a2m5Lmg55qE5pWw5o2u5Lit6LWE5rqQ6LCD5bqmZmZpPC9wPjxwPuKAmTwvcD48cD5mZjwvcD48cD7nrKzpobXlhbHpobU8L3A+ZAIDDxYCHwJoZAIFDxYCHwEC/////w9kZFyJb9J9oRZHdUFRvMesjpR5o7wd" />
+
+    <div class="PMLC12_bgd_mainbody">
+        <!------------------------- head -------------------------------------------->
+        <div class="PMLC12_bgd_head">
+            <div style="width: 640px; height: 43px;">
+                <div class="PMLC12_head_left">
+                </div>
+                <div class="PMLC12_head_right">
+                </div>
+            </div>
+            <div class="PMLC12_bgd_bt">
+                文本复制检测报告单</div>
+        </div>
+        <!------------------------- head 结束 -------------------------------------------->
+        <!------------------------- 检测条件 -------------------------------------------->
+        <div class="PMLC12_bgd_k1">
+            <table width="640" cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_a">
+                <tr class="PMLC12_table_a_cos">
+                    <td colspan="3" class="PMLC12_text_red_a">
+                        №:<span id="Label_FileName">ADBD2018R_20160520123000201806011520551204165206941</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80" class="PMLC12_text_green">
+                        检测文献：
+                    </td>
+                    <td width="550" class="PMLC12_text_block_a">
+                        <span id="Check_PM">基于强化学习的数据中心资源调度</span>
+                    </td>
+                    <td width="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="PMLC12_text_green">
+                        作者：
+                    </td>
+                    <td class="PMLC12_text_block_a">
+                        <span id="Check_ZZ">周鼎</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="PMLC12_text_green" style="vertical-align: top;">
+                        检测范围：
+                    </td>
+                    <td class="PMLC12_text_block_b">
+                        <span class="PMLC12_text_block_aa">
+                            <span id="Check_Range">中国学术期刊网络出版总库<br />中国博士学位论文全文数据库/中国优秀硕士学位论文全文数据库<br />中国重要会议论文全文数据库<br />中国重要报纸全文数据库<br />中国专利全文数据库<br />图书资源<br />优先出版文献库<br />互联网资源(包含贴吧等论坛资源)<br />英文数据库(涵盖期刊、博硕、会议的英文数据以及德国Springer、英国Taylor&amp;Francis 期刊数据库等)<br />港澳台学术文献库<br />互联网文档资源</span></span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="PMLC12_text_green">
+                        时间范围：
+                    </td>
+                    <td class="PMLC12_text_block_b">
+                        <span class="PMLC12_text_block_aa">
+                            <span id="Label_Time_Range">1900-01-01至2018-06-01</span></span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="PMLC12_text_green">
+                        检测时间：
+                    </td>
+                    <td class="PMLC12_text_block_a">
+                        <span id="Apply_Time">2018-06-01 15:20:55</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+        <!------------------------- 检测条件结束 -------------------------------------------->
+        <!------------------------- 去除本人复制比部分 -------------------------------------------->
+        <div class="PMLC12_bgd_k2">
+            <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_b">
+                <tr class="PMLC12_table_b_cos">
+                    <td class="PMLC12_text_B">
+                        <span id="Label_Copy_Font">总文字复制比</span>：<span class="PMLC12_text_red_a"><span id="Label_AllCopy">0%</span>
+                        </span>
+                    </td>
+                    <td width="80">
+                    </td>
+                    <td width="25" height="25">
+                    </td>
+                    <td width="75" class="PMLC12_text_block_b6">
+                    </td>
+                    <td width="25">
+                    </td>
+                    <td width="75" class="PMLC12_text_block_b6">
+                    </td>
+                    <td width="120">
+                    </td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_b1">
+                <tr id="zishu" class="PMLC12_table_b_cosa">
+	<td width="120" class="PMLC12_text_B">
+                        去除引用：<span class="PMLC12_text_back_a"><span id="Label_Quote">0%</span></span>
+                    </td>
+	<td class="PMLC12_text_B">
+                        去除本人：<span class="PMLC12_text_back_a"><span id="Label_SameAuthor">0%</span></span>
+                    </td>
+	<td class="PMLC12_text_B">
+                        重合字数：<span class="PMLC12_text_back_a"><span id="Label_AllWords">0</span></span>
+                    </td>
+	<td class="PMLC12_text_B">
+                        文献总字数：<span class="PMLC12_text_back_a"><span id="Check_ZS">34882</span></span>
+                    </td>
+</tr>
+
+                
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_a">
+                <tr id="SectionP" class="PMLC12_table_a_cosa">
+	<td width="95" class="PMLC12_text_G" style="text-align: right;">
+                        总段落数：
+                    </td>
+	<td width="50" class="PMLC12_text_G" style="text-align: left;">
+                        <span class="PMLC12_text_block_b">[&nbsp;<span id="lb_zzjs">4</span>&nbsp;]</span>
+                    </td>
+	<td width="90" class="PMLC12_text_G" style="text-align: right;">
+                        疑似段落数：
+                    </td>
+	<td width="80" class="PMLC12_text_G" style="text-align: left;">
+                        <span class="PMLC12_text_block_b">[&nbsp;<span id="lb_yszj">0</span>&nbsp;]</span>
+                    </td>
+	<td width="140" class="PMLC12_text_G" style="text-align: right;">
+                        疑似段落最大重合字数：
+                    </td>
+	<td width="85" class="PMLC12_text_G" style="text-align: left;">
+                        <span class="PMLC12_text_block_b">[&nbsp;<span id="lb_yszdcf">0</span>&nbsp;]</span>
+                    </td>
+	<td width="65">
+                    </td>
+</tr>
+
+                <tr id="SectionP1" class="PMLC12_table_a_cosa">
+	<td class="PMLC12_text_G" style="text-align: right;">
+                        前部重合字数：
+                    </td>
+	<td style="text-align: left;">
+                        <span class="PMLC12_text_block_b">[&nbsp;<span id="lb_qcf">0</span>&nbsp;]</span>
+                    </td>
+	<td class="PMLC12_text_G" style="text-align: right;">
+                        后部重合字数：
+                    </td>
+	<td style="text-align: left;">
+                        <span class="PMLC12_text_block_b">[&nbsp;<span id="lb_hcf">0</span>&nbsp;]</span>
+                    </td>
+	<td class="PMLC12_text_G" style="text-align: right;">
+                        疑似段落最小重合字数：
+                    </td>
+	<td style="text-align: left;">
+                        <span class="PMLC12_text_block_b">[&nbsp;<span id="lb_yszxcf">0</span>&nbsp;]</span>
+                    </td>
+	<td>
+                    </td>
+</tr>
+
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_a">
+                <tr id="SectionP2">
+	<td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            
+                                    <tr>
+                                        <td height="25" width="20">
+                                        </td>
+                                        <td style="text-align: left; width: 70px;">
+                                            <div class="per_g">0%</div>
+                                        </td>
+                                        <td width="550" class="PMLC12_text_block_a2R">
+                                            <a href='#120416520_000'>
+                                                基于强化学习的数据中心资源调度_第1部分</a>( 总12616字
+                                            )
+                                        </td>
+                                        <td width="10">
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td height="25" width="20">
+                                        </td>
+                                        <td style="text-align: left; width: 70px;">
+                                            <div class="per_g">0%</div>
+                                        </td>
+                                        <td width="550" class="PMLC12_text_block_a2R">
+                                            <a href='#120416520_001'>
+                                                基于强化学习的数据中心资源调度_第2部分</a>( 总8540字
+                                            )
+                                        </td>
+                                        <td width="10">
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td height="25" width="20">
+                                        </td>
+                                        <td style="text-align: left; width: 70px;">
+                                            <div class="per_g">0%</div>
+                                        </td>
+                                        <td width="550" class="PMLC12_text_block_a2R">
+                                            <a href='#120416520_002'>
+                                                基于强化学习的数据中心资源调度_第3部分</a>( 总9012字
+                                            )
+                                        </td>
+                                        <td width="10">
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td height="25" width="20">
+                                        </td>
+                                        <td style="text-align: left; width: 70px;">
+                                            <div class="per_g">0%</div>
+                                        </td>
+                                        <td width="550" class="PMLC12_text_block_a2R">
+                                            <a href='#120416520_003'>
+                                                基于强化学习的数据中心资源调度_第4部分</a>( 总4714字
+                                            )
+                                        </td>
+                                        <td width="10">
+                                        </td>
+                                    </tr>
+                                
+                        </table>
+                    </td>
+</tr>
+
+            </table>
+            <div id="imgdiv" class="PMLC12_k3">
+                <div class="PMLC12_pic">
+                </div>
+            </div>
+        </div>
+        <!------------------------- 去除本人复制比部分 -------------------------------------------->
+        <!------------------------- 内容部分 -------------------------------------------->
+        <div class="PMLC12_bgd_k1">
+            
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_b2">
+                        <tr class="PMLC12_table_b_cosa">
+                            <td class="PMLC12_text_Ba">
+                                <a name='120416520_000'></a>
+                                基于强化学习的数据中心资源调度_第1部分
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_a">
+                        <tr class="PMLC12_table_a_cosa">
+                            <td width="200" class="PMLC12_text_B">
+                                总文字复制比：<span class="PMLC12_text_red_a">0%（0）</span>
+                            </td>
+                            <td width="200" class="PMLC12_text_B">
+                                总字数：<span class="PMLC12_text_back_a">12616</span>
+                            </td>
+                            <td width="240">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="PMLC12_k4 PMLC12_text_block_a3" width="638" border="0" cellspacing="0"
+                        cellpadding="5" style="table-layout: fixed;">
+                        <tr>
+                            <td class="p5_report" style="word-break: break-all; word-wrap: break-word;">
+                                <p>学学位论论题目： 基于强化学习的数据中资源调度学姓名： 周鼎学学号：</p><p>专业： 计算机科学与技术指导教师： 冷静学院系 ：电信息与电程学院基于强化学习的数据中资源调度基于强化学习的数据中心资源调度</p><p>摘要</p><p>随着多种公有云和私有云架构的发展和成熟，越来越多的络应和计算任务被迁移数据中</p><p>执 。数据中建造和运成本昂，其中以上的花费于购买服务器硬件。然 ，其服务器的平均资源利率却通常不超过 。造成资源利率低下的主要原因是量延迟敏感型任务的存在。处理器中的计算核共享多种计算资源，因此，并执的任务间存在资源竞争并将相互扰。延迟敏感型任务受到严格的服务质量要求限制，对共享资源上的扰分敏感；为保证其服务质量，通常禁其他任务与之混合执 。基于软件和硬件的资源隔离技术可以有效限制共享资源上的相互扰，使得延迟敏感型任务与其他任务的混合执成为可能，其有效应的挑战在于多种共享资源间产的相互扰。本中，我们尝试在延迟敏感型任务与其他任务混合执的情境下，</p><p>应强化学习法来协调多种共享资源的隔离，在保证延迟敏感型任务的服务质量的前提下，提服务器整体的资源利率。</p><p>关键词： 数据中资源管理强化学习</p><p>第页共页基于强化学习的数据中资源调度第页共页基于强化学习的数据中资源调度</p><p><span class="Font_Color_Grey">目录</span></p><p><span class="Font_Color_Grey"></span></p><p>插图索引表格索引算法索引</p><p>第一章绪论</p><p>服务质量（ ， ）</p><p>资源利率问题混合执</p><p>泡测试（ ）</p><p>资源隔离技术计算核末级速缓存动态随机存储器访问带宽</p><p>络带宽热功率</p><p>第二章强化学习方法</p><p>动态资源调度的动机处理器核末级速缓存</p><p>络带宽热功率动态资源调度于强化学习强化学习在资源调度中的挑战强化学习法简介马尔科夫决策过程（ ）</p><p>策略与状态值函数策略梯度法（ ）</p><p>学习第页共页基于强化学习的数据中资源调度</p><p>第三章实验环境</p><p>模型设计隔离技术整体架构混合执任务选择延迟敏感型任务批处理任务任务资源需求分析</p><p>第四章实验与结果分析</p><p>基于强化学习的资源调度器状态空间动作空间奖赏信号结构</p><p>络设计实验结果</p><p>第五章结论</p><p>参考文献</p><p>致谢</p><p>第页共页基于强化学习的数据中资源调度插图索引混合执与服务质量下降数据中集群级任务调度</p><p>泡测试法吵闹的邻居末级速缓存上的相互扰混合执时的性能下降强化学习框架马尔科夫决策过程例通过深度神经络近似策略函数实验系统架构批处理任务的缓存未命中率与缓存容量引擎的服务质量与负载强度引擎的服务质量与服务器资源分配对象缓存的服务质量与服务器资源分配强化学习络训练结果第页共页基于强化学习的数据中资源调度表格索引模拟户总体访问模式第页共页基于强化学习的数据中资源调度算法索引强化学习络训练算法第页共页基于强化学习的数据中资源调度</p><p>第一章绪论</p><p>随着公有云和私有云架构的发展，越来越多的的络应和计算任务被迁移规模的数据中</p><p>以减少单位计算成本，数据中的计算能也随之不断扩展。这些数据中由数以万计的服务器组成，其建造和运营通常花费数千万美元以上。在现代节能型数据中的拥有成本中，购买服务器的花费占最 ，可达 。 直以来，摩尔定律使得新代服务器在相同价格下都有更的计算能 ，数据中也得以不提花费同时持续提升规模。然随着暗硅（ ）时代的到来 ，这样的增长将法持续。 种解决办法是通过使更低能耗的组件 ，如移动计算核和移动设备中使的内存 。另种办法是通过提服务器的利率显然服务器的低利率不但使得常运营成本偏 ，也不利于收回对设备的投资。尽管低能耗组件能够降低服务器利率时的运营成本 ，但为了考虑到服务器的巨资本开销，研究提数据中的资源利率是最有效的，也是法避开的。</p><p>服务质量（ ， ）</p><p>数据中不同的任务向不同的应和户，因此具有不同的服务质量要求。直接向户的应 ，如社交媒体，搜索引擎，软件即服务，在线地图， 页邮箱，在线翻译，线上购物和告等等，通常是延迟敏感型，具有很严格的服务质量要求。延迟型敏感应通过其内部的服务基本要求</p><p>（ ）定义。如歌搜索的服务质量通过查询的延迟和每秒处理的请求个数定义； 将其定义为返回结果的质量 。</p><p>数据中还有另类批处理任务，如件备份，图像离线处理和视频压缩转码等等。与延迟敏感型任务相反，他们不向户，延迟也不敏感，因此乎没有服务质量要求。批量分析框架可以产</p><p>量的批处理任务，并且这些任务即使偶尔被暂停或重启，他们仍然可以产可观的价值 。</p><p>资源利用率问题多个研究表明，数据中的服务器平均利率较低，介于之间 ，且通常不超过 。造成资源低利率的主要原因是存在量的运在严格服务质量要求下的延迟敏感型任务。这些直接向户的服务的运状态和数据通常分布在多个服务器的内存和闪存之中。</p><p>各个任务的户的访问模式存在差异，因每个任务的负载相差较 。然 ，由于延迟敏感型任务普遍巨的数据量和昂的移动代价，这些服务难以被集中在少量服务器中，因难以优化他们的计算资源利率。</p><p>数据中的服务器通常区有个处理器插 ，每个插上有个核 。核之间共享些资源，如末级速缓存（ ， ），动态随机存储器，输输出通道， 络连接。这种共享使得各个核之间产难以预测的扰， 即使轻微扰便可能导致延迟敏感型任务违反服务质量要求 。为了避免违反服务质量要求，通常禁在运延迟敏感任务的服务器上执其他任务。这样过度的限制使得延迟敏感型任务独占服务器，部分核空闲，系统的资源利率降低。</p><p>第页共页</p><p>基于强化学习的数据中资源调度</p><p>app</p><p>QoS</p><p>100%</p><p>90%</p><p>80%</p><p>2 .....10</p><p>Figure 2: Example sensitivity curve for A. Assum-</p><p>ing B’s pressure score is 2 we can predict A will be</p><p>performing at 90% of full performance.</p><p>workloads does not violate this QoS threshold (light bars),</p><p>while others violate the threshold (dark bars). An inabil-</p><p>ity to precisely predict the performance impact for a given co-location leads to the heavy handed solution of simply disallowing co-location. On the other hand, without pre-</p><p>diction, profiling all possible co-locations’ performance in-</p><p>terference beforehand to guide co-location decisions is pro-</p><p>hibitively expensive. The profiling complexity for all pair-</p><p>wise co-locations is O(N</p><p>2</p><p>) (N as the number of applica-</p><p>tions). With hundreds to thousands of applications running in a datacenter, and the frequent development and updating of these applications, a brute-force profiling approach is not practical.</p><p>The goal of this work is to enable the precise prediction of the performance degradation that results from contention for shared resources in the memory subsystem. A precise prediction is one that provides an expected amount of per-</p><p>formance lost when co-located. With this information, co-</p><p>locations that do not violate the QoS threshold of an appli-</p><p>cation can be allowed, resulting in improved utilization in the datacenter.</p><p>This is a challenging problem. The most relevant re-</p><p>lated work aims to classify applications based on how ag-</p><p>gressive they are for the shared memory resources and iden-</p><p>tify co-locations to reduce contention based on the classifi-</p><p>cation [3,16,17,21,23,24,37,39,41]. However prior work has</p><p>not presented a solution to precisely predict the amount of performance degradation suffered by each application due to co-location, which is essential for co-location decisions of latency-sensitive applications in WSCs. In this work, we present such a solution: The Bubble-Up methodology.</p><p>The key insight of Bubble-Up is that predicting the perfor-</p><p>mance interference of co-running applications can be decou-</p><p>pled into 1) measuring the pressure on the memory subsys-</p><p>tem an application generates, and 2) measuring how much</p><p>an application suffers from different levels of pressure. The underlying hypothesis is both pressure and sensitivity can be quantified using a common pressure metric. Having such a metric reduces the complexity of co-location analysis. As opposed to the brute force approach of profiling and charac-</p><p>terizing every possible pairwise co-location, Bubble-Up only requires characterizing each application once to produce pre-</p><p>cise pairwise interference predictions (e.g. O(N )).</p><p>memory subsystem. This bubble is run along with th application being characterized. As this dial is increas tomatically (expanding the bubble), the impact on th application is recorded, producing a sensitivity curve host application such as the one illustrated in Figure the y-axis, we have the normalized QoS performance application (latency, throughput, etc), and the x-axis the bubble pressure. In the second step, we identify a sure score for the application using a bubble pressure reporter. After these two steps of the Bubble-Up m ology is applied to each application, we have a sens curve and a pressure score for each application. Giv applications A and B, we can then predict the perfor impact of application A when co-located with applica by using A’s sensitivity curve to look up the relative p mance of A, at B’s pressure score. In the example</p><p>in Figure 2, B has a pressure score of 2, and as w</p><p>see from A’s sensitivity curve, A’s predicted QoS wit</p><p>co-location is 90%.</p><p>The specific contributions of this work are as follow</p><p>We present the design of Bubble-Up, a genera acterization methodology that enables the precis diction of the performance degradation suffered bitrary applications when co-located.</p><p>We introduce 17 production Google workloads an</p><p>acterize their propensity to performance interf when co-located on production servers.</p><p>In addition to demonstrating the prediction ac of our Bubble-Up methodology on the spectr contentious kernel in our SmashBench suite, w evaluate the prediction accuracy and the improv in utilization when applying the Bubble-Up m ology to steer pairwise co-locations of Google a tions in a production datacenter environment.</p><p>Using Bubble-Up, we are able to precisely predi performance degradation due to arbitrary co-locati</p><p>Google applications with at most a 2.2% error and</p><p>less than 1%. To evaluate using Bubble-Up to stee</p><p>enforced co-locations of production workloads, we p</p><p>a study in a 500-machine cluster and are able to increa</p><p>machine utilization in the cluster by 50%–90%, dep</p><p>on the latency-sensitive applications’ allowable QoS t</p><p>old.</p><p>2. BACKGROUND In this section, we describe how large-scale web-s are run in modern datacenters. We then discuss Qo</p><p>co-locations in production datacenters.</p><p>2.1 Datacenter Task Placement</p><p>In modern warehouse scale computers, each web-ser composed of one to hundreds of application tasks, an task runs on a single machine. A task is composed application binary, associated data, and a configurati that specifies the machine level resources required.</p><p>Inference</p><p>延迟敏感型任务服务质量随扰强度的变化搜索任务在混合执时的服务质量下架图混合执与服务质量下降例如， 以运页搜索服务的服务器时内的平均空闲率为 。对延迟敏感型任务的过度保护代价昂，同时也是不必要的。制定合理的混合执策略可以有效提服务器资源利率 。</p><p>混合执行数据中的应通常由数百个任务组成，每个任务有其单独的进制程序，相关数据，以</p><p>及个声明其所需求资源的配置件 。配置件般包括其需要的核数量，内存 ，硬盘空</p><p>间和是否需要禁与其他任务混合执 。 个任务调度的简化版本可见 。集群级别的任务调度器收到任务时，通过类似装箱问题的算法将各个任务分配集群内的服务器上运 。当任务到达指定服务器上时，服务器级别的资源调度器将会控制任务的执 。任务的资源需求通常由管理员精</p><p>配置以满其服务质量要求。禁混合执的延迟敏感型任务不可避免的会占更多的服务器资源，进导致资源利率下降。延迟敏感型任务严格的服务质量要求，使得我们似乎必须在延迟敏感型任务的服务质量和资源利率之间做出选择。事实是，延迟敏感型任务独占服务器的策略通常是不必要的尽管其他任务的执会降低延迟敏感型任务的服务性能，但并定导致其违反服务质量要求。图 （ ）表个来歌搜索的关键组件的性能（以响应延迟的倒数表 ）随同处理器上混合执的其他任务的影响的变化，可以看出当来混合执任务的扰较低时，延迟敏感型任务的性能依然可满服务质量要求 。图 （ ）显了该搜索组件与多种具体任务混合执</p><p>时产的性能下降，可以看到该搜索组件与地图等任务混合执时仍能达到规定的服务质量；</p><p>其与告等任务混合执时，将产显著的性能下降，且违反服务质量要求。</p><p>合理地混合执延迟敏感型任务与批处理任务，使批处理任务有机会利延迟敏感型任务没有</p><p>够利的资源，有利于提整体资源利率。混合执的个主要挑战在于难以确定批处理任务对共享资源产影响，其对延迟敏感型任务的扰更是难以预测。正因为如此，关于混合执的研究通常关注吞吐量的任务和批处理任务的混合 。</p><p>气泡测试（ ）</p><p>确定延迟敏感型任务和批处理任务的混合执策略是困难的。批处理任务对延迟敏感型任务产</p><p>的性能影响很难准确预测，这导致了部分延迟敏感型应直接禁混合执 。若法对其影响第页共页</p><p>基于强化学习的数据中资源调度</p><p>cluster</p><p>manager</p><p>...</p><p>core3</p><p>server</p><p>core1 core2core4</p><p>latency-sensitive core3</p><p>server</p><p>core1 core2core4</p><p>batch batch core3</p><p>server</p><p>core1 core2core4</p><p>batch batch core3</p><p>server</p><p>core1 core2core4</p><p>batch batch core3</p><p>server</p><p>core1 core2core4</p><p>batch batch</p><p>tasks</p><p>...</p><p>latency-sensitive</p><p>...</p><p>Figure 3: Task placement in a cluster. The cluster</p><p>manager does not co-locate latency-sensitive appli-</p><p>cations with others to protect their QoS from perfor-</p><p>mance interference, causing low machine utilization.</p><p>Task placement is conducted by a cluster-level manager that is responsible for a number of servers. Based on the re-</p><p>source requirement, the cluster manager uses an algorithm similar to bin-packing to place each task in a cluster of ma-</p><p>chines [25]. After a task is assigned a machine, a machine</p><p>level manager (in the form of a deamon running in user-</p><p>mode) uses resource containers [1] to allocate and manage</p><p>the resources belonging to the task. For the remainder of this work, we use the term application to represent the pro-</p><p>gram binary for a given component of a web-service, and application task as this binary coupled with its execution</p><p>configuration file.</p><p>2.2 QoS and Co-location</p><p>2.2.1 Application QoS</p><p>As multicores become widely adopted in datacenters, the cluster manager consolidates multiple disparate tasks on a single server to improve the machine utilization. However,</p><p>various application tasks in a datacenter often have different quality-of-service (QoS) priorities. User-facing applications for web search, maps, email and other internet services are latency-sensitive, and have high QoS priorities. Applica-</p><p>tions such as file backup, offline image processing, and video compression are batch applications that often have no QoS constraints. For these, latency is not as important. We de-</p><p>fine the QoS of a latency-sensitive application in terms of the relevant performance metric specified in its internal ser-</p><p>vice level requirements (SLAs). For example, the QoS of Google’s web search is measured using query latency and</p><p>queries-per-second, in contrast to Bing’s [15, 18], which uses</p><p>the quality of search results provided. More details and ex-</p><p>amples are presented in Section 4.</p><p>2.2.2 QoS Flexibility</p><p>tolerable amount of QoS</p><p>example, a 95% QoS pol</p><p>to sacrifice 5% of the QoS</p><p>utilization. To enforce th</p><p>diction for QoS degradati</p><p>2.2.3 Co-location</p><p>A simplified illustration shown in Figure 3. The a ory resources specified in carefully tuned by the dev QoS requirements. Latenc location inadvertently occ leading to unnecessary ov</p><p>utilization.</p><p>3. THE BUBBLE-</p><p>The key insight of Bub formance interference of c</p><p>coupled into two steps, 1)</p><p>tion suffers from different memory subsystem; and</p><p>memory subsystem an ap</p><p>3.1 Two Step Meth</p><p>Figure 4 illustrates the</p><p>steps to Bubble-Up are,</p><p>1. In Step 1, we charac</p><p>cation task to press this step, we use a ca the bubble to iterati sure applied to the m in the subsystem).</p><p>pressure “dial”, we p curve for the applic pressure on the x-a how each applicatio</p><p>creases.</p><p>2. In Step 2, we charac</p><p>application task in te subsystem. We call bubble score. To iden cation, we use a rep performance is affec a score for the appli With the sensitivity cur plication we are able to degradation from arbitrar note that step one needs whose QoS needs to be en applied to the application</p><p>tion’s QoS.</p><p>3.2 Modeling Bub</p><p>图数据中集群级任务调度</p><p>准确预测，指定混合执策略的唯途径则只能是测试不同的任务混合执的效果。对N</p><p>个任</p><p>务进测试，则需要O(N</p><p>2</p><p>)</p><p>次实验。对于数据中成百上千的应程序和其频繁的升级更新，这种蛮测试的代价显然是法接受的。</p><p>等提出了泡测试的法来预测混合执任务之间相互的性能影响 。 泡测试将预测混合执的任务之间的相互扰分为两部分， 部分是任务受共享内存系统压导致的性能下降，</p><p>另部分为其本对共享内存系统造成的压 ，如图所 。第步，通过精设计的泡（测试任务）来测试标任务对内存系统压的的敏感程度；第步通过测试标任务对泡造成的影响来预测其系统造成的压 。当混合执导致的性能下降可以低廉代价准确预测时，即可通过类似装箱的算法找到充分利服务器资源不于使延迟敏感型任务违反服务质量代价的混合策略。</p><p>泡测试可以准确的预测延迟敏感型任务在不同程度资源竞争条件的性能下降，并以此成任务混合策略。任务的混合执使得服务器的资源利率提 ，然在成混合策略时必须考虑到延迟敏感型任务最的资源需求。延迟敏感型任务通常向户，其负载虽具有固定的访问模式，但具有法预测的访问峰。这样的差异意味着延迟敏感型任务在相当时间内并没有全部利预留的资源。任何静态的混合执策略要么过于保守——导致资源利率不 ；要么过于乐观——导致延迟敏感型任务违反其服务质量要求 。</p><p>解决此问题的个办法是使动态的混合执策略，在应程序峰与低时执不同的混合策略。当延迟敏感型任务处于低负载时，将其与较多占共享资源的批处理任务混合执 ；当延迟敏感型任务的负载上升时，将共享资源占的批处理任务迁移其他服务器，并调度较低共享资源占的批处理任务当前服务器。延迟敏感型任务负载的峰通常难以预测，且数据中任务较</p><p>的运时数据意味着昂服务器间迁移任务的代价。同时，迁移任务所需的计算能 、缓存占 、</p><p>络带宽使也会对资源敏感型任务的服务质量造成压 。另外，动态混合策略还可能存在已进计算的进度难以保存的问题。因此通过动态的混合执策略来提服务器资源利率并不实际。</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="638" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;
+                        table-layout: fixed;" id="table_item_list" class="PMLC12_bgd_biao">
+                        
+                        
+                    </table>
+                
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_b2">
+                        <tr class="PMLC12_table_b_cosa">
+                            <td class="PMLC12_text_Ba">
+                                <a name='120416520_001'></a>
+                                基于强化学习的数据中心资源调度_第2部分
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_a">
+                        <tr class="PMLC12_table_a_cosa">
+                            <td width="200" class="PMLC12_text_B">
+                                总文字复制比：<span class="PMLC12_text_red_a">0%（0）</span>
+                            </td>
+                            <td width="200" class="PMLC12_text_B">
+                                总字数：<span class="PMLC12_text_back_a">8540</span>
+                            </td>
+                            <td width="240">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="PMLC12_k4 PMLC12_text_block_a3" width="638" border="0" cellspacing="0"
+                        cellpadding="5" style="table-layout: fixed;">
+                        <tr>
+                            <td class="p5_report" style="word-break: break-all; word-wrap: break-word;">
+                                <p></p><p>另个解决静态混合执策略的办法则是按延迟敏感型处在低强度负载时的性能需求来确定能与之并执的批处理任务。这样的批处理任务具有更的资源需求，可以在延迟敏感型任务低负第页共页基于强化学习的数据中资源调度图泡测试法载时充分利服务器资源；在延迟敏感型任务强度负载时并需要的量的服务器资源时，通过资源隔离的机制保证其性能。</p><p>资源隔离技术敏感型任务与批处理任务混合执时，共享资源的相互扰使得我们难以控制批处理任务对延迟敏感型任务的影响，进难以保证不违反延迟敏感型任务的服务质量要求。 个典型的混合执的任务之间在共享资源上相互扰的例是吵闹的邻居问题 ，即混合执的任务在某个或多个共享资源上进了过多的占 。图中，蓝线表延迟敏感型任务的性能，红线表批处理任务的性能。可以看到，当批处理任务不受限制地占共享资源时，延迟敏感型任务的性能将因此出现显著下降。批处理任务不公平和不受控制的占共享资源可能来多个 。</p><p>批处理任务具有很的并性，因此产了量的进程或线程并执并由此抢占量的处理器运时间；</p><p>批处理任务使规模数据集且频繁读写，由此占部分的共享缓存和动态随机存储访问带宽，使得批处理任务的缓存命中率降低和动态随机存储器的访问延迟上升；</p><p>延迟敏感型任务使的协议在检测到络阻塞时会主动降低带宽占 ，当批处理任务使</p><p>等没有流量控制的协议，批处理任务的流量不受限制的挤压延迟敏感型任务的络带宽。</p><p>混合执任务在共享资源上相互扰的问题，使得延迟敏感型任务的性能下降和出现不稳定，保证其服务质量成为难题。新出现的些资源隔离技术可以让我们在单个服务器中动态分配共享资源使得我们能够通过同时协调多种资源的分配，在采更激进的混合执策略的同时，改善混合执对延迟敏感型任务服务质量的影响。</p><p>第页共页基于强化学习的数据中资源调度图吵闹的邻居计算核心核的共享对延迟敏感型任务的服务质量影响巨 ，英特尔处理器的超线程技术使得问题更加复杂化。我们通常不允许延迟敏感型任务和批处理任务共享个逻辑核 （ 个超线程），因为在共享逻辑核时，操作系统内核的调度会增加即使毫秒的延迟 。另外当同属个物理核的两个超线程同时执延迟敏感型任务和批处理任务，他们将共享指令带宽， 级速缓存和页表缓存。实验表明，当延迟敏感型任务与其他计算密集或访存密集的任务共享同物理核时（运在不同逻辑内核上），敏感型任务的服务质量会出现显著下降 。</p><p>通过的框架我们可以将延迟敏感型任务和批处理任务隔离在不同的逻辑核</p><p>集上。随着服务器的逻辑计算核数增多，这样的资源调度也更为细粒度。计算核的分配可以动态调节，调节的速度取决于内核可以在多快时间内将任务从个核迁移到另外个核</p><p>，这通常在毫秒左右。</p><p>末级高速缓存同处理器接上的核共享末级速缓存。多个研究表明共享末级速缓存中不受控制的扰会严重影响混合执任务的性能 。混合执任务在末级速缓存上不受控制的扰是个典型的吵闹的邻居问题，如图 。图 （ ）中，批处理任务有频率的数据读取需求，在没有末级速缓存隔离时，批处理任务占了量的缓存容量。对延迟敏感型任务来说，尽管通过计算核隔离技术获得了较的计算核资源，其实际可的缓存却严重低于需求，引起缓存命中率的将下降，整体性能也将下降。当延迟敏感型任务处于负载状态时，轻微的相互扰会引起巨的延迟 ，因此末级速缓存的扰可能造成延迟敏感型任务违反服务质量要求。</p><p>混合执任务抢占末级速缓存的问题直法有效解决，直到近期硬件持的资源管理技术的出现。英特尔引的缓存分配技术（ ）基于硬件实现了第页共页基于强化学习的数据中资源调度批处理任务过多占缓存缓存分配技术隔离缓存使图末级速缓存上的相互扰末级速缓存按路分配管理 。缓存分配技术将末级缓存按组关联路数划分成更的缓存集。当核被分配给某缓存集后，可以在缓存任何位置命中，但新读取的数据只能写其被分配的集之中。通过缓存分配我们可以为延迟敏感型任务和批处理任务分配不相重叠的末级速缓存以限制批处理任务在末级缓存处对延迟敏感型任务产的压 。即使是将批处理任务与只关注吞吐量的任务混合执时，通过硬件或软件技术动态分配末级速缓存也是被普遍偏好的做法 。</p><p>改变缓存分配可以通过写特定寄存器（ ）动态实现并在在数毫秒内效，</p><p>其粒度通常在末级速缓存的左右 。 内核起通过虚拟件系统也实现了对缓存分配技术的持。</p><p>通过缓存分配技术，我们可以实现混合执任务间末级速缓存资源的隔离。图 （ ）中，通过缓存分配技术，延迟敏感型任务被分配与之计算核资源成例的末级速缓存容量，避免了来</p><p>批处理任务的扰以获得稳定的服务性能。图显压缩任务与各种任务混合执时，缓存分配技术（ ）的使对其性能的稳定作 。可以看到对来部分产较缓存压的应的扰敏感；同时还能看到，合理的隔离不同任务对末级速缓存的共享（实验中为分配的末级速缓存），使得任务在混合执条件下基本保持与单独执时致的性能。</p><p>动态随机存储器访问带宽数据中的部分的任务， 论是延迟敏感任务或批处理任务，都运在较的数据集之上，</p><p>法载上速缓存。因此，这些任务在执时都将占动态随机存储器的访问带宽，且对混合执</p><p>的任务访问动态随机存储产扰。当批处理任务的末级速缓存使受限后，其末级缓存的命中率也会降低，导致其对动态随机存储的访问增加并占更多的访存带宽。批处理任务占更的动态随机存储器访问带宽意味着当延迟敏感型应内存读写的代价升 ，进可能导致其违反服务质量要求。因此动态控制批处理任务的动态随机存储器带宽占有利于减资源敏感型任务读写内第页共页基于强化学习的数据中资源调度图混合执时的性能下降存性能受到的扰。</p><p>已有量的研究致于解决混合执任务的动态随机存储访问上的相互扰 。最新的英特尔处理器引了内存带宽分配（ ）技术和内存带宽监控</p><p>（ ）技术 。内存分配技术仅在部分新处理器可 ， 部分处理器硬件仅持内存带宽监控 。幸运的是，基于硬件且粒度为单个核的内存带宽监控配合动态的计算核分配技术，我们能够粗粒度的调控批处理任务对动态随机存储器访问带宽 。当监测到批处理任务过多占内存访问带宽延迟敏感型任务受限与此时，可以通过减少为其分配的计算核以降低其带宽占 。尽管如此，缺少硬件持的对动态随机存取器访问带宽的直接调控限制了在混合执</p><p>时保证延迟敏感型任务服务质量的能和效率。</p><p>网络带宽数据中向外扩展（ ）的应程序会产络流量。许多数据中使丰富的拓扑和</p><p>够的等分带宽来避免结构中的路由拥塞 。通常延迟敏感型任务发出的数据包较 ，批处理任务发出的数据包相很多。基于此特征，也有络协议通过优先处理数据包来提延迟敏感型任务的络性能 。</p><p>在单服务器内部，批处理任务在发出和收取数据包时都可能影响延迟敏感型任务。如果批处第页共页基于强化学习的数据中资源调度理任务引起络连接接收拥塞，则可以通过内核阻塞其执 ，直到络协议的流量控制发挥作 。</p><p>当络连接的发出端拥塞时，可以通过系统提供的流量控制， 如中的带宽服务质量保证</p><p>（ ），来优先处理延迟敏感型任务产的流量 。</p><p>热功率热功率是任务在混合执时相互影响的另因素。 乎所有现在多核处理器都存在某种机制的超频，例如英特尔的睿频加速技术（ ）和的动态超频技术（ ）。这些技术使得处理器在不超出总体设计热功率时使某些计算核运在更的频率以匹配瞬时增的计算压</p><p>。受总体设计热功率的限制，延迟敏感型任务所在的核的时钟频率并不只取决于延迟敏感型任务的负载强度，同时也取决于同处理器接上的运批处理任务的强度。当混合执的批处理任务的强度运使得其计算核长时间处于能耗状态时，处理器将不得不降低其他核的时钟频率以保证总的热功率不超过设计限制。可以想象，这样的影响有可能导致同接上运延迟敏感型任务的核性能突然下降。</p><p>这种扰可以通过对每核进动态电压和时钟频率调整（</p><p>）来降低。通过控制运批处理任务的核的电压和时钟频率，我们可以有效保证运延迟敏感型任务的核保持稳定的性能，甚保证在负载突然上升时，有超频以提性能的空间。</p><p>第页共页基于强化学习的数据中资源调度</p><p>第二章强化学习方法</p><p>延迟敏感型任务和批处理任务的混合执能显著提服务器的资源利率。 泡测试等法也使得我们能够以可接受的代价确定合适的混合策略。借助上提到的基于硬件或软件的资源隔离法，延迟敏感型任务的服务质量可以得到有效保证。然 ，对混合执任务使静态的资源分配案法充分得利服务器资源任何的静态的资源分配要么过于保守，导致资源利率不 ；要么过于乐观，导致延迟敏感型任务违反其服务质量要求动态资源调度的动机当两个或多个任务并执时，任务之间竞争共享的资源。硬件和软件上的资源隔离技术使得我们能够在定程度上控制这种竞争，以减少不同任务之间的相互影响。本节分析混合执中存在的主要资源竞争，以及进动态资源管理的动机。</p><p>处理器核心单个服务器中最主要的共享资源是个或多个处理器接中的处理器核 。我们不能简单的通过等具将计算核按统计学指标静态地分配给延迟敏感型任务和批处理任务。当延迟敏感型任务，例如搜索引擎，达到吞吐量峰时，需要所有可的核来满负载需求以避免违反服务质量要求。仅仅给延迟敏感型任务分配更的进程调度优先级并不能解决问题。例如系统的完全公平调度器（ ）在内的常见调度器由于算法的缺陷，在延迟敏感型任务和批处理任务混合执时常常导致延迟敏感型任务违反服务质量要求 。实时调度算法，例如的并不保存已完成的运算，导致系统资源实际利率下降。</p><p>末级高速缓存当混合执的任务中含有向户的延迟敏感型任务时，末级速缓存的动态管理更加重要。</p><p>延迟敏感型任务的缓存占随着其负载强度的变化产改变 ，与此同时，其对批处理任务通过共享末级速缓存引起的扰的敏感程度，也因的负载强度也有所不同。当延迟敏感型任务处于负载状态时，轻微的相互扰会引起巨的延迟 ，例如的机器学习中的聚类任务</p><p>（ ）在负载左右时基本不受来末级速缓存压的影响，但在更的负载强度时对其扰分敏感 。</p><p>过量限制批处理任务利末级速缓存并不能有效保证延迟敏感型任务的服务执 ，也不定利于提服务器的资源利率。 些批处理任务对末级速缓存变化敏感，当可缓存减少，其缓存不命中率可能迅速升 ，导致其对动态随机存储的访问次数上升，处理器将花费更多时间等待数据的输输出，导致批处理任务性能降低，服务器资源实际利率降低。更糟糕的是，批处理任务的缓存不命中率上升同时还将使其占更多访存带宽，降低延迟敏感型任务访问动态随机第页共页基于强化学习的数据中资源调度存储器的性能，从影响其服务质量。通过英特尔提供的内存带宽监控技术（ ）和内存带宽分配技术（ ）可以减轻此问题的影响，然前仅有少量最新的处理器硬件持此技术。</p><p>当混合执的任务中包含向户的延迟敏感型任务时，延迟敏感型任务对末级速缓存占随负载强度的动态变化，其处于负载状态时对末级速缓存压的敏感程度和多种共享资源占的相互扰，体现出动态分配末级速缓存以满不同负载时的资源需求的必要性与确定合理动态分配末级速缓存策略的难度。</p><p>网络带宽数据中的型应程序主要是通过向外扩展（ ）达到其规模，因此服务器之间的络连接性能也关重要。因为延迟敏感型任务产的络流量随负载强度变化， 络带宽的管理也应动态进 。静态的优先级设置会导致络连接的低利率和批处理任务的饥饿（ ） 。对</p><p>络带宽的动态管理也可以延伸对固态存储器（ ）访问带宽的管理上 。</p><p>热功率因处理器总体热设计功耗（ ）限制，同处理器接上的核之间会相互影响其最时钟频率，进影响计算性能。为保证运延迟敏感型任务的核不会因为运批处理任务核过度能耗使导致时钟频率的突然下降，必须限制运批处理任务核的时钟频率。静态将运批处理任务的核设置在最低时钟频率可以避免运延迟敏感型任务的核因能耗被限制性能。然使静态的设置严重影响了批处理任务运的性能。 部分的批处理任务并不总是会使核处于能耗状态，并且延迟敏感型任务也仅仅在负载强度时才需要提升核频率来获得额外的性能提升。为了在保证延迟敏感型任务在负载时获得合理的时钟频率的同时，尽可能避免过分限制批处理任务的性能，动态的核热功率控制是必要的。</p><p>动态资源调度于强化学习混合执延迟敏感型任务和批处理任务的更挑战在于控制两种任务同时在上述多种资源上复杂的相互扰。批处理任务会同时在各种共享资源上对延迟敏感型任务产扰， 延迟敏感型任务对来各种共享资源上的扰都分敏感。因此，仅仅控制好种共享资源上的相互扰是不以保证延迟敏感型任务的服务质量的；所有共享资源都应尽可能的监控并有效的实施扰隔离。除此之外，各种共享资源上的扰还会相互影响。例如，延迟敏感型任务和批处理任务在缓存上的竞争会导致某任务对动态随机存储访问带宽的要求提 ，成为潜在的性能瓶颈；又例如当任务检测到络连接拥塞，将可能会采取更激进的压缩算法，导致计算资源和能耗的竞争。各种资源的相互竞争导致难以在保证延迟敏感型任务的服务质量的同时，通过动态资源调度提升服务器资源利率。</p><p>强化学习在些极具挑战性的决策类优化问题中表现出其巨潜 。强化学习中，智能体</p><p>（ ）从过往的经验学习以做出更好的决策。图 （ ）展了智能体如何与环境交互。交互过程</p><p>被离散化成为连串步骤，每步智能体先感知环境的状态（ ）为 s</p><p>t</p><p>，然后选择并执个动</p><p>作（ ）。这步骤将导致环境的状态发变化，转移 s</p><p>t+1</p><p>，智能体在后续步骤中也将能够感</p><p>知，此状态的变化还将成个奖励信号（ ）r</p><p>t</p><p>。智能体对任务本和规则所知，仅仅通第页共页基于强化学习的数据中资源调度图强化学习框架过环境返回的奖励信号来的得知他当前学习到策略的好坏 。智能体学习的标时通过优化选择动作的策略，以最化其累积奖赏。强化学习最近的研究将其和深度学习相结合，使得强化学习在很多应上取得突破性的成绩， 如玩电游戏 ，控制数据中的冷却系统等等。</p><p>回顾优化数据中资源调度的问题，我们相信强化学习常适合解决此类问题。 先，资源调度程序做出的决策通常有很的重复性，因此可以产量数据于强化学习训练。其次，正如我们在强化学习算法应在游戏时看到的，强化学习算法可以通过深度神经络（</p><p>）模拟复杂的模型和决策过程。不同的信号和环境可能存在的轻微扰动都可以整合起来同时输神经络，产个决策模型。另外，通过强化学习，我们能够通过个相关的奖励信号来优化些难以直接优化的标。最后，通过持续的学习，强化学习可以从量经验中学到不同情况下的优化策略。</p><p>图 （ ）展了如何在强化学习的框架内优化数据中的资源调度以提服务器利率。智能体在这充当资源调度器， 环境则包含了混合执的延迟敏感型任务和批处理任务， 持这些任务的执的所有服务器资源，以及按定模式变化的延迟敏感型任务的负载。强化学习的每步骤对应资源调度器的次决策，智能体将在此时获得环境的状态并做出动作。环境相关的信息包括当前延迟敏感型任务的负载强度，计算核 ，末级缓存和随机存储访存带宽等等资源的利率，以及延迟敏感型任务的服务质量。智能体可做的选择则为增加分配给延迟敏感型任务的某类服务器资源，以提其服务质量并避免违反服务质量要求，或是减少分配给延迟敏感型任务的某类资源以提</p><p>批处理任务性能并提资源利率。环境产的奖励信号有多种设计标。若此动作的执导致资源敏感型任务违反其服务质量要求，智能体将给予惩罚（负的奖励）；在不违反服务质量要求时，</p><p>延迟敏感型任务占的资源越少，智能体收到的奖励越 ；所有的动作并不都定可以在任意环境状态下执 ，例如某类资源分配法增加或减少，智能体若做出法动作将会受到惩罚。</p><p>第页共页基于强化学习的数据中资源调度图马尔科夫决策过程示例强化学习在资源调度中的挑战将强化学习应在数据中的资源调度上时，同样临挑战。 先是功劳分配问题（</p><p>），智能体需要学习如何从直接观察到的奖励信号中分析以前所执的动作哪些有正的贡献，哪些产了负的影响，以及这些负的贡献和影响各有多 。在些情况中， 些能即产额奖励的动作可能将使系统进不理想的状态，难以产更多的奖励； 另些情况中， 个动作可能法产即的奖励，但可能对系统进个理想状态关重要。因此最优的策略需要产长远的规划，智能体需要能够预见未来的可能情况才能采取相应的动以最化总的奖励。其次是探索环境的积极性。智能体需要探索环境，学习不同状态下执不同动作所带来的后果。</p><p>，积极的探索环境让智能体可能学会更效的控制策略；另 ，智能体在任何时刻也应该尽量执已经找到的最优策略。对环境的探索太少将导致智能体始终执没有够优化的策略；</p><p>过多的探索将使智能体长时间执不够优化的策略，拉长训练时间，且降低其性能表现。最后是泛化问题，环境的状态空间随考虑的因素指数增长，表环境状态的变量可能相当 。在这种情况下，</p><p>智能体很可能根本法在此遇到以前经历过的环境状态。因此，从智能体的经验中学习并泛化是唯</p><p>可办法。</p><p>强化学习方法简介马尔科夫决策过程（ ）</p><p>考虑般的强化学习场景，如图 （ ）所 ，在每步骤t 能观察到环境状态</p><p>s</p><p>t</p><p>。当智能体执</p><p>动作</p><p>a</p><p>t 后，环境状态变为</p><p>s</p><p>t+1</p><p>，且智能体收到奖励</p><p>r</p><p>t</p><p>。环境状态的转变和智能体收到的奖励都是随机的，并被假设具有马尔科夫性质（ ）。因此，智能体所处的环境被抽象为马可夫决策过程（ ， ）。 个马尔科夫决策过程包含了个状态集合 S， 个动</p><p>作集合 A， 个状态间转换的关于动作的条件概率分布 T = P(s</p><p>t+1</p><p>= s</p><p>′</p><p>s</p><p>t</p><p>= s a</p><p>t</p><p>= a)，以及在每个状态</p><p>下执个动作使得环境状态改变另个状态的奖励的期望</p><p>R = E[r</p><p>t</p><p>+ 1 s</p><p>t</p><p>= s a</p><p>t</p><p>= a s</p><p>t</p><p>+ 1 = s</p><p>′</p><p>]</p><p>。</p><p>图是个马尔科夫决策过程的例。 例的马尔科夫决策过程定义了两个环境状态 S0和 S1，</p><p>和智能体在两个状态下都可选择执的两个动作 A0 和 A1。智能体在状态 S0 下执动作 A0，有 0 1</p><p>第页共页基于强化学习的数据中资源调度</p><p>的可能性留在状态 S0 并获得 3 的奖励；同时有 0 9 的可能性转移状态 S1 并获得 15 的奖励。智</p><p>能体能控制的仅仅是选择下个执的动作，并且对环境可能的反应没有任何先验的知识。因此智能体的标在于优化选择动作的策略以获得最的累积奖赏。值得注意的是，对于智能体来说，</p><p>执某动作后的状态转变并不总是确定的，有时是按概率跳转的。环境状态如何变化不在智能体的控制范围内，但智能体能通过量的经验学习到其变化的规律。</p><p>强化学习框架解决资源调度问题时，很然会将总的步骤设为限步骤，在限长的时间智能体通过合理分配服务器资源给延迟敏感型任务以保证其服务质量要求同时尽量提服务器资源利率。随着智能体考虑的时间由有限变为限， 个潜在的问题是劣质的策略也能带来限的总效 ，导致智能体法定义个有效的优化标。因此，在限时间步骤时，优化折现后的累计奖赏（ ）更为合适，这可以理解为如果能拿到奖赏，智能体倾向于尽早拿到奖赏。同时，由于智能体的优化标仍然是累积奖赏，因此智能体仍然有发现远期更价值奖赏</p><p>的潜 。折现累积奖赏可表为 ，其意义为当前步骤后执 i 次动作后得到奖赏的期望 r</p><p>t+i</p><p>在当</p><p>前决策中的价值为</p><p>i r</p><p>t+i</p><p>，其中为折现率。</p><p>R = E(</p><p>∑</p><p>i=1</p><p>i r</p><p>t+i</p><p>)</p><p>策略与状态值函数强化学习中智能体根据其学习到的策略和观察到的环境状态选择下执动作。策略是个关于动作的条件概率</p><p>: (s a) [0 1]</p><p>。</p><p>(s a)</p><p>表了智能体在环境状态为 s 时选择执动作 a。当考虑的环境因素增加时，环境状态的可能情况呈指数上升。 般具有时间研究意义的问题都考虑较多的环境变量导致环境状态空间巨 。这种情况下，智能体学习的策略法传统的表格式表 ，</p><p>需要个函数来近似 。通过函数近似，我们可以可接受数的参数来近似策略</p><p>(s a)</p><p>，</p><p>我们将通过参数来参数化近似表的策略记为θ</p><p>(s a)</p><p>。函数近似可以解决问题的个理由是对于相似的状态，我们认为智能体本来也应该采取相同的动作以优化其标。</p><p>很多函数近似法都可以来实现近似强化学习中的策略函数，例如通过环境状态和动作空间的特征进线性组合来近似策略</p><p>(s a)</p><p>θ</p><p>(s a) =</p><p>T</p><p>(s a)。深度神经络在最近的研究中被作函数近似来表策略函数，并在些规模的强化学习场景中取得很好效果。使深度神经络不是前提到的特征的线性组合的个优点是不需要繁琐的特征程来选取环境状态和动作中的特征。图表了如何使深度神经络来近似策略函数时进强化学习。</p><p>当智能体按照个给定的策略选择动作并执时会产系列的环境状态，执动作和奖赏信号的序列，如 s</p><p>0</p><p>a</p><p>0</p><p>r</p><p>0</p><p>s</p><p>1</p><p>a</p><p>1</p><p>r</p><p>1</p><p>。状态值函数（ ），见式 ，V</p><p>πθ</p><p>(s)</p><p>表了从指定的环境状态 s 开始，执按照策略θ产的动作序列，可获得的折现后累积奖赏的期望。</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="638" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;
+                        table-layout: fixed;" id="table_item_list" class="PMLC12_bgd_biao">
+                        
+                        
+                    </table>
+                
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_b2">
+                        <tr class="PMLC12_table_b_cosa">
+                            <td class="PMLC12_text_Ba">
+                                <a name='120416520_002'></a>
+                                基于强化学习的数据中心资源调度_第3部分
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_a">
+                        <tr class="PMLC12_table_a_cosa">
+                            <td width="200" class="PMLC12_text_B">
+                                总文字复制比：<span class="PMLC12_text_red_a">0%（0）</span>
+                            </td>
+                            <td width="200" class="PMLC12_text_B">
+                                总字数：<span class="PMLC12_text_back_a">9012</span>
+                            </td>
+                            <td width="240">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="PMLC12_k4 PMLC12_text_block_a3" width="638" border="0" cellspacing="0"
+                        cellpadding="5" style="table-layout: fixed;">
+                        <tr>
+                            <td class="p5_report" style="word-break: break-all; word-wrap: break-word;">
+                                <p>我们将状态值</p><p>函数，作为判断个环境状态好坏的标准。</p><p>V</p><p>πθ</p><p>(s) = E</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r t</p><p>s</p><p>0</p><p>= s</p><p>]</p><p>进步的，我们还定义值函数（ ）来作为判断个环境状态动作对的好坏的标准，见式 。 值函数 Q</p><p>πθ</p><p>(s a)</p><p>从指定的环境状态 s 开始，在执动作 a 后，所有的后续动作完第页共页基于强化学习的数据中资源调度图通过深度神经络近似策略函数全按照策略θ产的动作执 ，可以得到的折现后累积奖赏的期望。 值函数可以来解决前所提到的功劳分配问题 ，从下节策略梯度法中的式可以看到值函数与值函数之间密切</p><p>的关系。</p><p>Q</p><p>πθ</p><p>(s a) = E</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r t</p><p>s</p><p>0</p><p>= s a</p><p>0</p><p>= a</p><p>]</p><p>在规模的问题中，环境状态的空间远远于我们可以表格值来精确表的规模。</p><p>策略梯度方法（ ）</p><p>智能体优化策略的个算法是通过计算值函数的策略梯度，并按计算的梯度调整策略实现最化值函数，也就是最化从当前状态开始的折现累积奖赏的期望。我们的优化标是式给出的折现累积奖赏，其梯度表为式 。</p><p>θE</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r</p><p>t</p><p>]</p><p>= E</p><p>πθ</p><p>[</p><p>θlog</p><p>θ</p><p>(s a)Q</p><p>πθ</p><p>(s a)</p><p>]</p><p>其中 Q</p><p>πθ</p><p>(s a)</p><p>是在状态 s 是执动作 a 并在后续均按θ的策略选择所有动作时得到的折现后累积奖赏。策略梯度的主要思想是通过按照策略执动作并观测环境的变化来估计环境变化随策略的变化，并由此计算策略梯度。这本质上是个简单的蒙特卡罗法 ——智能体通过采样多种动</p><p>作执的序列和环境状态的变化序列获得经验，然后根据这些经验来计算折现累积奖赏 v</p><p>t</p><p>，并将其作为对 Q</p><p>πθ</p><p>(s a)</p><p>的偏估计，即 v</p><p>t</p><p>=</p><p>Q</p><p>πθ</p><p>(s a)</p><p>。然后，智能体根据估计出的策略梯度来更新现有策略以求优化折现累积奖赏 ，见式 。其中是学习率。</p><p>+</p><p>∑</p><p>t θlog</p><p>θ</p><p>(s t a</p><p>t</p><p>)</p><p>t</p><p>第页共页基于强化学习的数据中资源调度梯度</p><p>θlog</p><p>θ</p><p>(s t a</p><p>t</p><p>)</p><p>给出了通过改变近似策略的参数来增加θ</p><p>(s t a</p><p>t</p><p>)</p><p>（即在状态 s</p><p>t</p><p>下，策略</p><p>选择执动作 a</p><p>t</p><p>的概率）的向。 应该多程度地将策略向此向调整（即多程度地增加策略</p><p>在状态 s</p><p>t 下，策略选择执动作 a</p><p>t</p><p>的概率），取决于智能体当前对于 Q</p><p>πθ</p><p>(s a)</p><p>的偏估计 v</p><p>t</p><p>。如果</p><p>当前智能体通过经验估计到的 v</p><p>t</p><p>越 ，即智能体认为在后获得的累积折现奖赏越 ，智能体就将越</p><p>积极的调整策略，使得学习到的策略在状态 s</p><p>t 下有更的可能性执动作 a</p><p>t</p><p>。若智能体通过经验估</p><p>计到的 v</p><p>t 越 ，则智能体将会越不愿意在状态 s</p><p>t 下执动作 a</p><p>t</p><p>，因此更新后的策略在状态 s</p><p>t</p><p>下选</p><p>择动作 a</p><p>t 的可能性增加将会较少；在 v</p><p>t 为负值的情况下，策略在状态 s</p><p>t 下选择动作 a</p><p>t</p><p>的可能性还将降低。</p><p>学习最优的值函数 Q (s a) 是通过改变策略参数 ，从指定的环境状态 s，执动作 a 后，按照策略θ</p><p>产的动作序列执 ，可获得最期望折现后累积奖赏。</p><p>Q (s a) = max θQ</p><p>πθ</p><p>(s a) = max θE</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r t</p><p>s</p><p>0</p><p>= s a</p><p>0</p><p>= a</p><p>]</p><p>最优值函数满以下的等式 。直觉上容易理解，如果已知最优值函数，那么</p><p>只需要在下状态选择选择执使值函数最的动作即可最化折现的累计奖赏的期望。</p><p>Q (s a) = E</p><p>s</p><p>′</p><p>P</p><p>[</p><p>r (s a s</p><p>′</p><p>) + max</p><p>a</p><p>′</p><p>Q (s</p><p>′</p><p>a</p><p>′</p><p>) s</p><p>0</p><p>= s a</p><p>0</p><p>= a</p><p>]</p><p>学习最优的值函数 Q (s a)，则等同于学习最优的策略θ</p><p>(s a)</p><p>， 学习通过动态规划，多次迭代</p><p>来学习最优值函数，如式 。容易看到，</p><p>lim i Q</p><p>i</p><p>= Q 。</p><p>Q</p><p>i+1</p><p>(s a) = E</p><p>s</p><p>′</p><p>P</p><p>[</p><p>r (s a s</p><p>′</p><p>) + max</p><p>a</p><p>′</p><p>Q</p><p>i</p><p>(s</p><p>′</p><p>a</p><p>′</p><p>) s</p><p>0</p><p>= s a</p><p>0</p><p>= a</p><p>]</p><p>与策略的神经络参数化表相同，我们同样可以通过深度神经络来近似值函数。</p><p>策略梯度法存在的个问题是其训练结果的差过 。如果我们通过设置基准 b 来减模型的差，如 。</p><p>θE</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r</p><p>t</p><p>]</p><p>= E</p><p>πθ</p><p>[</p><p>θlog</p><p>θ</p><p>(s a) (Q</p><p>πθ</p><p>(s a) b)</p><p>]</p><p>更进步，当使状态值函数作为基准时，策略梯度为将变为 。</p><p>θE</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r</p><p>t</p><p>]</p><p>= E</p><p>πθ</p><p>[</p><p>θlog</p><p>θ</p><p>(s a) (Q</p><p>πθ</p><p>(s a) V</p><p>πθ</p><p>(s))</p><p>]</p><p>其中 Q</p><p>πθ</p><p>(s a) V (s))</p><p>被称为动作优势函数 A(s t)（ ）。如果不考虑状态转移的概</p><p>率，使采样的式来估计状态转移，则在当前的策略参数下值函数可以近似为式 ：</p><p>Q</p><p>πθ</p><p>(s t a</p><p>t</p><p>) r</p><p>πθ</p><p>(s t a</p><p>t</p><p>) + V</p><p>πθ</p><p>(s</p><p>t+1</p><p>)</p><p>第页共页基于强化学习的数据中资源调度根据此近似，式简化为式 ，通过此近似进策略梯度学习需要通过采样对状态值函数进估计。与策略样，状态值函数同样可以使深度神经路近似。此时，选择动作的策略络被称为动作执者（ ）， 对状态进评价的状态值函数被称为评委（ ）。训练算法可以简单描述为， 执多个动作， 通过观察各个动作和环境的变化来改变对环境状态的评价；同时根据对环境状态的评价来产策略梯度，由此改变动作选择的策略。</p><p>θE</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r</p><p>t</p><p>]</p><p>= E</p><p>πθ</p><p>[</p><p>θlog</p><p>θ</p><p>(s a) (r</p><p>πθ</p><p>(s t a</p><p>t</p><p>) + V</p><p>πθ</p><p>(s</p><p>t+1</p><p>) V</p><p>πθ</p><p>(s))</p><p>]</p><p>等价的，根据式中所做的近似，式同样可以简化为式 ，此时可以通过估计值函数替代估计状态值函数。</p><p>θE</p><p>πθ</p><p>[</p><p>∑</p><p>t=0</p><p>t r</p><p>t</p><p>]</p><p>= E</p><p>πθ</p><p>[</p><p>θlog</p><p>θ</p><p>(s a) (r</p><p>πθ</p><p>(s t a</p><p>t</p><p>) + Q</p><p>πθ</p><p>(s t a</p><p>t</p><p>) Q</p><p>πθ</p><p>(s t 1</p><p>a</p><p>t 1</p><p>))</p><p>]</p><p>第页共页基于强化学习的数据中资源调度</p><p>第三章实验环境</p><p>模型设计考虑在具有多种可调度资源的单个服务器上混合执延迟敏感型任务和批处理任务的问题。智能体执调度的周期可设置为够 ，以于在每个时间步骤内，延迟敏感型任务的负载可视为基本不发变化。通过调度决策开始时到延迟敏感型应的请求数量，可以预计此段时间步骤内延迟敏感型任务的负载强度。根据预计的负载强度和当前服务器的各类资源利率（环境状态），智能体选择动作进资源调度。在当前周期结束后，智能体将收到新的预计负载强度和新的服务器资源利</p><p>率。同时，智能体还会收到反映上个动作质量的奖励信号。</p><p>智能体的优化标是在不违反延迟敏感型任务的服务质量要求的同时，优化服务器的资源利率。当我们假设批处理任务可以充分利被分配的资源时， 个相关的且容易量化的优化标为分配给延迟敏感型任务的资源尽量少。上述假设通常是成的。</p><p>隔离技术计算核心资源直接影响任务获得的计算速度和并计算能 。通过系统提供的 ，</p><p>我们可以任意为延迟敏感型任务和批处理任务分配计算核 。实验在英特尔上进</p><p>。该处理器具有个物理计算核 ， 个逻辑计算核 。英特尔的超线程技术使得共同个物理计算核的超线程将共级速缓存。 对于末级速缓存的访问前没有办法进隔离，因此我们将资源分配的粒度设置为分配物理核以防批处理任务与延迟敏感型任务在同物理核上运时在级速缓存上产扰。末级高速缓存上批处理任务对延迟敏感型任务在延迟敏感型任务负载强度时产巨的扰。因此隔离任务对末级速缓存的使能有效保证延迟敏感型任务在负载强度时的服务质量。处理器硬件提供级的缓存分配，为简化问题，我们将缓存分配设置为级，即资源分配的粒度为末级速缓存总的分之 。 于控制动态随机存储访问带宽的内存带宽分配技术（ ）在实验环境的服务器上缺乏硬件持，因此法直接控制混合执任务对动态随机存储器的访问。 于替代内存带宽分配技术，我们般通过内存带宽监控技术（ ）检测每个计算核产的动态随机存储访问流量，当批处理任务对动态随机存储访问带宽产过压时，减少分配给批处理任务的计算核以降低其对动态随机存储的访问，然从后续节任务资源需求分析中发现，这种粗粒度的调节并不能取得很好效果。</p><p>整体架构为避免资源调度算法与延迟敏感型程序抢夺资源，资源调度程序将在单独的硬件上运 ，并通过与延迟敏感型程序混合执的个轻量控制程序监控资源利和进资源调度。系统的整体架构如图所 。</p><p>充当资源调度程序的智能体通过与其运在同服务器上的控制器与环境交互。当只能体做出动作时，控制器接受智能体的动作，并将其传递被调度服务器上执 。被调度的服务器上运的第页共页基于强化学习的数据中资源调度图实验系统架构轻量控制器将在指定的时间内取样服务器的资源利率并返回给调度程序端的控制器。除了执来</p><p>智能体的动作，控制器还将调动负载模拟程序向延迟敏感型任务施加负载并收回此段时间内的服务质量报告。为了获得具有统计学意义的数据，以上施加负载和采样资源利率的过程都被设定为</p><p>够长以允许延迟敏感型任务服务够多的请求。所有搜集到的数据，包括资源利率报告和服务质量报告，将作为环境状态和计算出的此步骤奖励起返回给资源调度智能体。</p><p>混合执行任务选择延迟敏感型任务数据中常见的延迟敏感型任务包括社交络，搜索引擎，软件即服务，在线地图， 页邮箱，</p><p>机器翻译，在线购物和告等等。</p><p>社交服务引擎社交络应与普通站服务不同，其更多是个平台。例如脸书（ ）就给户提供了个社交平台。社交络上的部分数据是由户（ 不是开发者）产 。这些数据由其他户的为，或外来资源的变化引起动态更新，并被推送给户。正因为如此，社交络应包含频繁的后端数据库写 ，且写的数据将在后来推送给户。</p><p>社交服务引擎是个基于实现的开源社交络应 ，并被包括澳利亚政府，新西兰教育部， 出版社，弗罗达学在内的机构使 。 社交服务引擎提供与流的社交服务脸书提供相似的功能，允许户在其中建个个好友络，并在络中互相分享内容。 社交引擎还包括个迷你博客 ，可于与其他户分享字，图和视频内容。在中分享的内容被其他户可见，类似与脸书中发上墙的功能。每个户都有的实时与好友</p><p>络共享的信息流，被称为 。通过 ， 户可以实现多种操作， 如发送和接收聊天信息，在上发送动态，以及接收其他户最新分享的内容。所有的操作都有发送和接受简短消息实现，因此的主要负载都是这些来的简短请求。</p><p>的后端通过服务器脚本语和数据库实现。脸书的服务器后端相似 ，我第页共页基于强化学习的数据中资源调度们还通过加速数据库访问。为了简化问题， 的页服务器和后端，包括和都运在同服务器上，并作为延迟敏感型任务分配资源。</p><p>我们使框架来实现社交引擎的服务质量测试。 是个基于的基准测试开发和执框架，提供了于快速开发基准测试程序。通过定义测试的操作和各种操作的执概率，可以快速开发络应的基准测试。在基准测试完成后， 将输出各个操作执情况的统计数据，例如执测试，相应时间和违反服务质量要求的情况。</p><p>提供了多种功能，因此户可以进多种操作，例如登录登出，添加好友，发送接收消息和分享动态等。考虑到真实户执不同操作具有不同频率，且每个操作与前个操作具有定关联，我们通过个马尔科夫过程（ ）模拟户的为。 的服务质量被定义为段时间内所有该操作的响应时间的九分位点。从服务器来看，模拟户总体的产的各个操作的</p><p>例各个操作和其服务质量要求如表所 。对于引擎服务质量的设置参考于各操作的平均延迟 ，对于注册、登录和退出等户不频繁使的的操作，设置了较低的服务质量要求。</p><p>表模拟用户总体访问模式操作占服务质量要求操作占服务质量要求操作占服务质量要求注册页发消息登录动态收消息退出好友刷新主页对象缓存服务为了提性能， 络应通常使对象缓存服务（ ）来缓存些代价昂贵的操作的计算结果，因此对象缓存服务存储和读取的速度将极影响整个服务的性能。 是个常的以键—值形式存储的对象缓存系统，通常来缓存些时较长的数据库请求的结果。对页服务器的个请求般会使络服务器产多个对对象缓存服务的请求。为了避免页加载的延迟，对象存储服务必须以低延迟返回请求结果，因此其服务质量（九分位延迟）通常设置在毫秒。</p><p>中提供了的基准测试程序 。由于对象缓存服务的请求基本需额外的处理，因此对象缓存服务器除了低延迟外，还具有很吞吐量。 对此优化了基准测试程序结构。测试程序通过实现以提性能，在其产的多个测试线程中， 半的线程进</p><p>请求，另边的线程验证缓存服务返回的信息。两种线程的分减少了请求和处理间的扰，有利于准确计时和产统计信息。由于已知的规模扩展问题，即当其产超过四个线程时会由显著性能下降，因此实践中般在个服务器上运多个实例。 可以在多个缓存服务器之间平衡负载。测试结束后，基准测试可以报告平均的请求延迟，九分位延迟和缓存命中率等数据。</p><p>的吞吐量使得缓存服务器和运基准测试的服务器之间的络连接成为性能瓶颈，通常要求其间的连接带宽在以上。实验环境中不具备这样的络连接条件，为避免第页共页基于强化学习的数据中资源调度图批处理任务的缓存未命中率与缓存容量络瓶颈，我们在具有多个处理器接的服务器上，每个接分别运对象缓存服务和基准测试程序，</p><p>以利系统中速的络回路连接（ ）。</p><p>批处理任务数据中存在多种批处理任务，例如件备份，离线图处理和视频转码压缩等。来普林斯顿学的测试程序套装（ ）</p><p>包含了些典型的数据中批处理任务。</p><p>视频编码随着存储和络带宽的增加， 络视频在络流量中占显著增加，视频的解码，转码，压缩等任务对于如的视频站分重要。视频编码测试程序是个基于</p><p>（ ）标准的视频编码器， 于将图像有损压缩为个视频流。与前代视频编码标准相 ， 可以以更低特率输出质量视频，也因此成为了包括视频会议和视频分发等应</p><p>的常标准。然的压缩率通过更多的转码和解码计算得来，因此相上代标准，编码和解码需要更强的计算能 。</p><p>编码器和解码器操作在固定的， 为乘的像素块内。多种技术被运其中以检测和减少数据冗余。其中最重要的技术是运动补偿（ ）。动作补偿被应在连续帧之间以检测每帧图像时间时间上的冗余。动作补偿对最后视频的压缩率有决定性作 ，但同时也是压缩视频流时运算量最的操作。 编码器输出的帧有三种类型，类， 类和类（ ，</p><p>），且每帧输出对前后帧输出都有依赖。 应通过流线并 ，其结果之间相互依赖的性质导致其量的进程间通信，因此共享速缓存的容量对其性能有较影响。 的</p><p>量数据输输出量，也会对共享速缓存和动态随机存储器的访问带宽造成较影响。图 （ ）</p><p>表了缓存对的缓存未命中率的影响 。</p><p>第页共页基于强化学习的数据中资源调度期权定价中包含个基于布莱克舒尔斯（ ）等式的欧式期权定价应 。布莱克舒尔斯等式是个偏微分程，且没有个解析解，因此必须通过数值计算的法找到其近似解。此应</p><p>融程中量的偏微分程求解认为的代表。应并求解多个程，需要进量的浮点数计算。由于其所需求的数据量量较少，因此对缓存和内存系统的压较 ，如图 （ ）。</p><p>任务资源需求分析社交服务引擎在与任务混合执时，给定个逻辑内核（ ，总共个逻辑内核）和的末级速缓存，测得其各操作的服务质量性能（ 线）如图所 。实验中仅统计常的操作，如收发消息和更新动态等；不常的操作如注册，登录和退出等，在秒采样时间内仅能取得少量样本，缺乏统计学意义，因此不予统计。所有统计的操作的服务质量的计量标准均为采样时间内响应时间的九分位点，服务质量要求为响应时间的九分位点不于秒（红线）。</p><p>图中同时给出了其访问延迟的平均值（蓝线）和标准差（淡橙块）。</p><p>图引擎的服务质量与负载强度从图可以看到在负载强度较低时（ 户数量在内）， 社交引擎的平均延迟缓慢的上涨，且差较 ，上升趋势稳定，没有违反服务质量要求；在负载强度较时（ ），平均延迟的增长速度变快， 差变 ，出现违反服务质量要求的情况；当负载强度严重超过在此时资源第页共页基于强化学习的数据中资源调度图引擎的服务质量与服务器资源分配分配可承载的强度时（ 户数量 ），平均延迟迅速上升， 差显著变 ，不但出现违反服务质量的要求，且性能表现不稳定。性能表现不稳定的原因可以部分归结在测试执的法。在实验的测试法中，模拟户线程启动后将各登录并在登录后，按照所述的模式开始访问。测试程序将在模拟户线程启动运段时间后开始采样。在社交引擎所获得的服务器资源严重不以持当前负载强度时， 户的登录操作可能反复失败引起后续的操作法正常进 。另</p><p>，因服务器各个操作的访问延迟显著上升，采样开始后存在的量的请求法在采样时间内结束，</p><p>进法统计其操作延迟。各个操作的相互影响使得服务器的服务质量变化巨 。可以肯定的点是，在此种情况下， 社交引擎显然违反了其服务质量要求。</p><p>然 ，这法解释在强度负载强度， 持续违反服务质量要求时，出现性能的突然提 （模拟户数量 ）。图展了引擎的服务质量与服务器资源分配关系的测试结果。 先容易看到， 引擎的服务性能对计算核数与缓存并不敏感。 服务的主要耗时在于数据库操作，存储户发布都动态和查询户好友发布的动态，因此其对缓存不敏感容易理解。同时，在为引擎分配量缓存时，与之并执的批处理任务缓存容量受限产量的缓存不命中，进</p><p>量占内存带宽， 扰的数据库读写操作。因此，可以相信服务性能的对计算核个数的不敏感，可以归结为内存访问带宽处的性能瓶颈。图右，可以看到其上条斜度向下的延迟峰，其中的数据是通过每次固定核个数，改变分配的缓存容量测得的。每次的测试时相近，由此可以推断峰出现具有固定周期。我们认为这样的周期性延迟来批处理任务周期性的读写数据峰的硬性，这样的推断同时可以解释图中性能的剧烈变化。综上所述，</p><p>过度的内存访问带宽导致了引擎的低性能。</p><p>由于缺少硬件持的内存访问带宽隔离技术，我们只能通过限制运的核数来试图控制其带宽。 应具有度的并执和各进程指令度同步的特点。当出现内存访问峰时，</p><p>乎所有进程将同时处于读取或写内存的阶段。即使将多个这样的进程限制在同核 ， 个进程执访问内存指令并阻塞后，下进程也将被切换进计算核执 。其内存访问法通过控制计算核数得到有效控制，所以在社交服务引擎在与任务混合执时， 的服务质量难以保证。</p><p>第页共页基于强化学习的数据中资源调度单独执混合执图对象缓存的服务质量与服务器资源分配由此看出，即使在存在资源隔离的条件下，通过定段（ 如泡测试 ）合理的选择混合执的任务也仍然重要。 对象缓存服务具有每秒处理量的请求（ 万级），对计算核数有很要求，且其对缓存容量敏感程度不 。 需要进量的浮点运算因此能有效利空闲的计算核 ，其始终的数据集不会对服务产过的压 。上述任务的混合可有效利服务器资源，且容易对其产的相互扰进细粒度的调控，因此是个理想的任务混合案。对象缓存服务在单独执与混合执的服务质量随资源分配的变化如图 。可以看出，资源隔离技术在此有效的保证了延迟敏感型任务服务质量的稳定。</p><p>第页共页基于强化学习的数据中资源调度</p><p>第四章实验与结果分析</p><p>基于强化学习的资源调度器图显了我们想实现的基于强化学习的资源调度器的基本框架，图显了更具体的实验环境，智能体将通过观察环境的状态和所执动作带来的奖励，学习如何分配资源给延迟敏感型任务和批处理任务。智能体在每个调度周期开始前做出资源分配决策，在新的调度周期开始时，智能体观察环境状态并做出新的资源分配决策。</p><p>状态空间本问题中，环境的状态即为服务器上各种资源的利率，和延迟敏感型任务及批处理任务的运</p><p>状态。实验中，智能体所能观察到的状态参数包括以下三种：</p><p>延迟敏感型任务在即将开始的调度周期中的负载；</p><p>上个调度周期内，各个任务对计算核的利率；</p><p>上个调度周期内，各个任务对动态随机存储访问带宽的利率；</p><p>第个参数，即将开始的周期内的负载强度，可以通过当前延迟敏感型任务的连接总数获得，或通过前段调度周期记录的负载强度估计获得。通过对当前调度周期负载强度的估计，智能体可以初步判断所需的计算核与缓存资源。</p><p>第组和第三组参数帮助智能体了解前周期分配的资源利的情况。当前调度周期的负载强度不能描述负载的全部特征：对于对象缓存服务来说，操作包括读取和写 。当写为主要请求类型时，仅仅提末级速缓存并不能有效提写性能；当读取为主要负载类型时，延迟敏感型任务可能对末级速缓存的容量更加敏感。当负载的各操作类型例变化时，延迟敏感型对所获得的资源利情况之间将存在差异。因此，我们希望通过在环境状态中加上调度周期的资源利率的信息，帮助智能体捕获不同负载类型组合对资源需求的差异，以做出更优化的决策。</p><p>动作空间智能体的动作空间即为输出当前调度周期内延迟敏感型任务和批处理任务各可的计算核数和末级速缓存容量。实验中的服务器上共有个物理核 （ 个逻辑核 ），分配粒度为分之共享末级速缓存。</p><p>当动作空间过时，强化学习算法需要量样本，收敛缓慢。通过具体问题中的条件来限制动作空间可有效加快学习算法收敛的速度。由于同物理核上运的线程将共享第和第级缓存，且其上的扰法控制，因此设置计算核调度的粒度为单个物理核 。延迟敏感型任务在最低负载时运的需要的最少资源，以及分析应对各个资源分配的敏感程度并合理设置资源分配粒度也可以有效减动作空间。</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="638" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;
+                        table-layout: fixed;" id="table_item_list" class="PMLC12_bgd_biao">
+                        
+                        
+                    </table>
+                
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_b2">
+                        <tr class="PMLC12_table_b_cosa">
+                            <td class="PMLC12_text_Ba">
+                                <a name='120416520_003'></a>
+                                基于强化学习的数据中心资源调度_第4部分
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" border="0" class="PMLC12_table_a">
+                        <tr class="PMLC12_table_a_cosa">
+                            <td width="200" class="PMLC12_text_B">
+                                总文字复制比：<span class="PMLC12_text_red_a">0%（0）</span>
+                            </td>
+                            <td width="200" class="PMLC12_text_B">
+                                总字数：<span class="PMLC12_text_back_a">4714</span>
+                            </td>
+                            <td width="240">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table class="PMLC12_k4 PMLC12_text_block_a3" width="638" border="0" cellspacing="0"
+                        cellpadding="5" style="table-layout: fixed;">
+                        <tr>
+                            <td class="p5_report" style="word-break: break-all; word-wrap: break-word;">
+                                <p></p><p>第页共页基于强化学习的数据中资源调度选择动作输出值函数图强化学习络奖赏信号结构智能体的优化标包括两部分， 先要保证延迟敏感型任务不违反其给定的服务质量要求，其次，智能体需要尝试提服务器资源的利率。因此，奖赏信号不但应该与延迟敏感型任务的服务质量相关，还应同时反应服务器资源的利率情况。若假设批处理任务可以充分利所有分配的资源，此时智能体的优化标可等价为尽量减少分配给延迟敏感型任务的资源。</p><p>奖赏信号设计的难点在于法通过预先设置个函数判断是否智能体分配分配给延迟敏感型任务的资源够少。如果这样的函数易于设计，我们也不需要通过强化学习来试图解决数据中的资源调度问题。 个替代的指标是在执智能体给出的资源分配案后，采样测得的延迟敏感型任务的服务质量。例如服务质量被定义为延迟时，如果测得的延迟远于服务质量要求，我们可以判断智能体给延迟敏感型任务分配了过多的资源。如果在为延迟敏感型任务过多分配资源时，智能体获得奖励，智能体将倾向于过多分配资源保证奖励的获得。与此相同，我们不希望出现的情况还有智能体分配给延迟敏感型任务的资源太以于其违反服务质量要求。值得注意的是，由于资源分配的粒度和延迟敏感型任务对资源分配的敏感性， 些情况下法使得服务质量处于我们设定的区间，</p><p>然智能体的为是正确的，不应该被惩罚。因此，我们设定奖励函数如下，当延迟敏感型任务处在我们设定的合理区间内时，智能体获得正的奖赏信号；当测得的服务质量违反了服务质量要求，返回给智能体负的奖赏信号；当测得服务质量于预期时，给与智能体零的反馈信号。智能体获得的奖励如式所 。对象缓存服务的服务质量要求为九分位延迟 p</p><p>90th</p><p>t</p><p>于毫</p><p>秒。</p><p>r (t) =</p><p>0 p</p><p>90th</p><p>t</p><p>5</p><p>1 5 p</p><p>90th</p><p>t</p><p>10</p><p>1 10 p</p><p>90th</p><p>t</p><p>网络设计参考等使的算法 ，实验的神经络结构设计如图所 （不代表真实神经</p><p>络层数和神经元数量）。我们采实现的和使相同的底层络结构。 算法本通过采样的式估计状态转移，因此络在输环境状态后，输出分别采取各个动作后可能转移到的环境状态的状态值期望； 通过此输出选择最优策略。</p><p>第页共页基于强化学习的数据中资源调度我们通过我们还采经验回放池以减少连续动作之间的关联性造成的训练低效，同时提数据利率。另外，为了保证智能体够探索可能的环境空间， 通过贪婪算法（ ）选择执动作 ，即通过连续型均匀分布在</p><p>[0 1]</p><p>间取值于， 将随机选择动作执 ，反之将根据的评价选择最优的动作。 将随着训练过程的增加逐渐减 ， 的为也将由更倾向于探索环境逐渐变为更倾向于执最优动作。</p><p>算法强化学习络训练算法初始化训练次数为 T， 更新间隔为 C</p><p>初始化经验回访池 D，设置为 N，每次取样个数为 M</p><p>初始化状态序列 S</p><p>1</p><p>初始化络 Q，参数设为随机成的参数</p><p>′</p><p>初始化络Q，参数设为上步成的参数</p><p>′</p><p>t = 1 T</p><p>随机选择动作随机选择动作的概率为</p><p>a</p><p>t 随机动作</p><p>a t argmax a Q(s t</p><p>a)</p><p>减 ，执动作 a</p><p>t</p><p>，观察到奖励 r</p><p>t</p><p>，环境状态 s</p><p>t+1</p><p>在经验回放池 D 中记录经验 (s t a t r t s</p><p>t+1</p><p>)</p><p>从经验回放池中随机取样 M 个经验经验</p><p>(s j a j r j s</p><p>j+1</p><p>)</p><p>y j r</p><p>j</p><p>+ argmax</p><p>a</p><p>′</p><p>Q(s j+i</p><p>a</p><p>′</p><p>)</p><p>对络参数通过梯度下降法更新，损失函数为</p><p>( y</p><p>j Q(s j a</p><p>j</p><p>))</p><p>2</p><p>每经过 C 次迭代，</p><p>实验结果我们统计智能体做出的最新百个动作所获得的平均奖赏来监控智能体训练的过程，平均奖赏最终稳定在附近波动。在智能体的资源分配策略稳定后，截取到如图所的智能体在段时间内的资源分配决策。可以看到智能体对于计算核的分配基本上跟随延迟敏感型任务的负载强度变化，且延迟敏感型任务的延迟基本保持在我们确定的标区间毫秒内。</p><p>值得注意的是，在末端负载强度较低（低于时），智能体对计算核的分配出现剧烈抖动，</p><p>且基本与负载强度不相当。在延迟随负载强度的变化中可以看到，此段时间内资源分配的变化并没有显著引起延迟敏感型任务的服务质量变化，且延迟均基于我们设置的延迟标区间的下限下。我们认为，在负载强度较低时， 延迟敏感型任务对于计算资源的增加并不敏感，因此具第页共页基于强化学习的数据中资源调度图训练结果有乎相同的服务质量；另对于低负载，以物理核为资源分配粒度过于粗糙，以于在临界情况，减少个物理核将违反服务质量要求， 增加核服务质量又远于我们的要求。</p><p>正是由于这种不敏感，使得智能体在当前的奖励信号设计之下， 法通过学习来区分此种情况下各种资源分配的优劣——因为在这些资源分配中，智能体获得的都是零的奖励。</p><p>因为对象缓存任务对缓存容量不敏感（见节资源需求分析），同样的情况也发在智能体对末级速缓存的分配上。可以看到末级速缓存的的确对延迟敏感型任务的服务性能存在影响，</p><p>然不同的分配案对延迟的影响均不 。延迟的升或降低都保持在我们设计的标区间内。同低负载时任务对计算核的不敏感样，我们需要改进奖赏信号的设计以使得智能体有能区分不同的分配策略，进保证智能体学习到最优的资源分配策略。</p><p>在低负载情况时以物理核分配粒度过于粗糙，造成在负载低时期，延迟敏感型任务的服务性能超过我们的要求，因智能体获得零奖赏。这是造成最终结果中平均奖赏没有逼近是在在附近波动的原因。</p><p>第页共页基于强化学习的数据中资源调度</p><p>第五章结论</p><p>本探讨了通过强化学习法协调多种资源隔离机制来解决数据中任务混合执的问题。通过设置对象缓存服务和期权定价任务混合执的实验，我们证明，如果合理的设置奖赏信号，智能体的确能够从环境中学习到合理的资源分配策略，在保证延迟敏感型任务的服务质量和提数据中</p><p>服务器资源利率。相于基于设置调度策略的算法，强化学习的资源调度法只需要制定合理的奖赏函数， 不需要设置任务性能和资源调度的专业知识。然 ，智能体学习到的的调度策略的质量还有待量化的分析。</p><p>实验中，我们也发现了强化学习在资源调度应还存在诸多难题。 先是训练数据量的问题。与所有的机器学习任务样，强化学习的结果依赖于学习的样本， 受延迟敏感型任务的服务质量定义法的影响，强化学习的学习样本采样率较低。例如前提到的社交服务引擎，其服务质量被定义为秒内所有请求的延迟的九分位值。在单线程的学习模型中，需要分钟的时间，环境才能返回上个动作产的结果，这极的影响了学习速度。通过减少采样的时间可以提采样率，</p><p>然采样的时间越短，延迟敏感型任务完成的请求数也就越少，数据的差也会越 ，以于不稳定或不能反映真实的延迟敏感型任务的服务质量。受限于实验环境，我们法通过规模的并学习来提学习速度；我们通过两个法减轻此问题的影响。 先，在模型的设计上我们使的记忆重放来提数据的利率。其次，我们选择的任务为对象缓存服务，相社交引擎，其具有很的吞吐量，每秒服务的请求在三万左右。对象缓存服务吞吐量的特点使得我们可以在较短时间内测试其服务质量。即便如此，实验的模拟环境中，启动测试程序模拟如此的请求量也较耗时，所以最终获得学习样本的速度也不 ，但相社交服务有很提升。</p><p>通过服务器运的离线数据进学习可以部分解决训练数据量的问题，然这将限制智能体探索不同动作的能 ——智能体只能学习到服务器上使过的资源分配案。例如，若服务器上运的资源分配策略限制少为延迟敏感型任务分配半的计算核 ，那么智能体法从中知道分配更少的核将产怎样的影响，显然产环境的服务器不允许智能体做这样的探索。</p><p>另个挑战则是奖赏函数的设计问题。实验中我们设置的奖赏信号基于测得的对象缓存服务的延迟所落在的区间。在这样的设置下，智能体可以区分使得延迟敏感型任务违反服务质量的资源分配和其他保证其服务质量的资源分配。然 ，如果在不同的资源分配案下，延迟敏感型任务产接近的延迟，智能体将不能区分他们表现的好坏。这在延迟敏感型任务对某些共享资源的分配并不敏感时影响智能体学得的分配策略的效率。例如延迟敏感型策略在某些情况下对缓存容量不敏感，那么智能体会认为对其分配多少缓存没有区别，可能的情况则是给延迟敏感型任务分配了更多不必要的缓存。在实验中，我们通过测试延迟敏感型任务的服务质量随资源分配的变化来确定其敏感性，并在动作空间中消除些智能体法区分的动作。例如，延迟敏感型任务在获得核 ， 缓存与核 ， 缓存时有乎致的服务性能，我们将不允许智能体做出后资源分配决策。</p><p>强化学习的优化，是基于对累积奖赏期望的优化。这样的优化标对于部分任务都是合理的。</p><p>然对于延迟敏感型任务，其实际负载常出现法预料的峰。由于峰出现的概率低于其他负载强度出现的概率，智能体的学习过程中极可能认为在负载峰时违反服务质量要求受到的惩第页共页基于强化学习的数据中资源调度罚的期望是可以接受的；这显然与我们实际的预期不符。我们的实验中简化了实际情况，忽略了负载峰的存在。通过修改奖励信号，提在这种情况下智能体受到的惩罚可以避免智能体忽略对负载峰时资源分配的优化，然更复杂化的奖励信号将如何影响整个强化学习的过程还难以得知。</p><p>综上所述，强化学习在数据中的资源调度中有很的潜 ，同时也有很多问题需要解决。如果强化学习可以实际应到时间数据中资源调度决策中，将有希望解决其低资源利率问题。</p><p>第页共页基于强化学习的数据中资源调度</p><p>参考文献</p><p>//</p><p>//</p><p>ffi //</p><p>//</p><p>//</p><p>//</p><p>//</p><p>ffi</p><p>ffi</p><p>第页共页基于强化学习的数据中资源调度</p><p>//</p><p>//</p><p>//</p><p>//</p><p>//</p><p>//</p><p>//</p><p>//</p><p>ffi //</p><p>ff</p><p>//</p><p>ffi //</p><p>第页共页基于强化学习的数据中资源调度</p><p>//</p><p>ff</p><p>//</p><p>ffi</p><p>ffi</p><p>//</p><p>’</p><p>//</p><p>//</p><p>//</p><p>//</p><p>//</p><p>//</p><p>第页共页基于强化学习的数据中资源调度</p><p>//</p><p>//</p><p>//</p><p>ffi</p><p>//</p><p>fl</p><p>ff</p><p>第页共页基于强化学习的数据中资源调度</p><p>//</p><p>//</p><p>//</p><p>/ http : / / www . alexa . com /</p><p>siteinfo/facebook.com</p><p>//</p><p>第页共页基于强化学习的数据中资源调度</p><p>致谢</p><p>先要感谢冷静师和实验室的学长，在整个毕业设计中给了我很多的帮助和持。从选题开始，冷师给我提供了很多关键的论和资料，让我能够快速的了解研究的背景。再到做实验时，</p><p>和冷师每周的定期交流不但让我强迫克服拖延症，也帮助我发现了和解决了很多的问题。</p><p>然后要感谢我的母和朋友们，他们给了我很多精神上的持和舞，我超级喜欢他们。感谢我爸，在学四年直对我找朋友的事情保持度热情和从未衰减的信 ；感谢我妈，经常督促我多吃饭，让我在学期间增重才有体魄完成毕业设计。在我的朋友中，我尤其要感谢的好朋友粟锐，在强化学习上给了我很多帮助；我的超级好朋友雷浩若，在毕设的过程中愿意听我发牢骚，让我在实验遇到问题的时候也不是那么难受。</p><p>最后要感谢我 ，在压巨的最后关头没有翘辫 ，终于要毕业啦。</p><p>第页共页基于强化学习的数据中资源调度</p><p>“ ”</p><p>ffi ffi ffi ff</p><p>ff</p><p>第页共页基于强化学习的数据中资源调度</p><p>’</p><p>ffi</p><p>ffi</p><p>“ ”</p><p>第页共页</p><p>基于强化学习的数据中资源调度ffi</p><p>’</p><p>ff</p><p>第页共页</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="638" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;
+                        table-layout: fixed;" id="table_item_list" class="PMLC12_bgd_biao">
+                        
+                        
+                    </table>
+                
+            
+        </div>
+        <!------------------------- 内容部分结束 -------------------------------------------->
+        <!------------------------- 检测表格结果 -------------------------------------------->
+        
+        
+        
+        <!------------------------- 检测表格结果结束 -------------------------------------------->
+        <!----------------------------------------报告单底部------------------------------------>
+        <div class="PMLC12_bgd_bottom">
+            <div class="PMLC12_bgd_bottom_left">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td height="20">
+                        </td>
+                        <td width="70" class="PMLC12_text_back_a" style="cursor: pointer">
+                        </td>
+                        <td height="20">
+                        </td>
+                        <td width="70" class="PMLC12_text_back_a" style="cursor: pointer">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="PMLC12_bgd_bottom_right">
+                http://check.cnki.net
+            </div>
+        </div>
+        <!-------------------------------------报告单底部结束------------------------------------>
+    </div>
+    
+    </form>
+</body>
+</html>
+<?xml version="1.0" encoding="UTF-8"?><ReturnData />
