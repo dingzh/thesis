@@ -46,7 +46,7 @@
 
 \section{强化学习方法简介}
 \subsection{马尔科夫决策过程（Markov Decision Processes, MDPs）}
-考虑一般的强化学习场景，如图\ref{fig:rl}（a）所示，在每一步骤$\mathrm{t}$能观察到环境状态$\mathrm{s_t}$。当智能体执行动作$\mathrm{a_t}$后，环境状态变为$\mathrm{s_{t+1}}$，且智能体收到奖励$\mathrm{r_t}$。环境状态的转变和智能体收到的奖励都是随机的，并被假设具有马尔科夫性质（Markov Property）。因此，智能体所处的环境被抽象为马可夫决策过程（Markov Decision Processes，MDPs）。一个马尔科夫决策过程包含了一个状态集合$\mathbb{S}$，一个动作集合$\mathbb{A}$，一个状态间转换的关于动作的条件概率分布$\mathrm{T=\mathbb{P}(s_{t+1}=s'|s_t=s, a_t = a)}$，以及在每个状态下执行一个动作使得环境状态改变至另一个状态的奖励的期望$\mathrm{R=\mathbb{E}[r_t+1|s_t=s, a_t=a, s_t+1=s']}$。
+考虑一般的强化学习场景，如图\ref{fig:rl}（a）所示，在每一步骤$\mathrm{t}$能观察到环境状态$\mathrm{s_t}$。当智能体执行动作$\mathrm{a_t}$后，环境状态变为$\mathrm{s_{t+1}}$，且智能体收到奖励$\mathrm{r_t}$。环境状态的转变和智能体收到的奖励都是随机的，并被假设具有马尔科夫性质（Markov Property）。因此，智能体所处的环境被抽象为马可夫决策过程（Markov Decision Processes，MDPs）。一个马尔科夫决策过程包含了一个状态集合$\mathbb{S}$，一个动作集合$\mathbb{A}$，一个状态间转换的关于动作的条件概率分布$\mathrm{T=\mathbb{P}(s_{t+1}=s'|s_t=s, a_t = a)}$，以及在每个状态下执行一个动作使得环境状态改变至另一个状态的奖励的期望$\mathrm{R=\mathbb{E}[r_{t+1}|s_t=s, a_t=a, s_{t+1}=s']}$。
 
 \begin{figure}
   \centering
